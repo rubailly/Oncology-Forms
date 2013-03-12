@@ -817,6 +817,17 @@ if(jQuery){
     					appendStagingKeys(null);
     				},
     				
+    				handlePathologySection: function() {//handle Pathology section	 
+    					 if(hasValue('pathologyCompletedYes')){
+    						 setInnerHtml('pathologyCompleted', 'Yes');
+    						 setInnerHtml('pathologyDate', ''+getValueOfChildSpan('dateOfPathologyObs'));
+    						 setInnerHtml('pathologySite', ''+getValueOfChildSpan('siteOfPathologyObs'));
+    					 }else{
+    						 setInnerHtml('pathologyCompleted', 'No');
+    						 $j("#pathology tr:gt(1)").remove();
+    					 }
+    				 },	
+    				
     				handleAllergiesSection: function() {//handle Allergies section
     					
     					$j('#existingAndNewAllergiesPrintView tr:gt(2)').remove();
@@ -1486,6 +1497,17 @@ if(jQuery){
  		appendStagingKeys(null);
 	 },
 	 
+	 handlePathologySection: function() {//handle Pathology section	 
+		 if(getValue('pathologyCompletedYes.value') !=null ){
+			 setInnerHtml('pathologyCompleted', 'Yes');
+			 setInnerHtml('pathologyDate', ''+getValue('dateOfPathologyObs.value'));
+			 setInnerHtml('pathologySite', ''+$j('#siteOfPathologyObs option:selected').text());
+		 }else{
+			 setInnerHtml('pathologyCompleted', 'No');
+			 $j("#pathology tr:gt(1)").remove();
+		 }
+	 },	 
+	 
 	 handleAllergiesSection: function() {//handle Allergies section
 		 
 		     $j('#existingAndNewAllergiesPrintView tr:gt(2)').remove();
@@ -1669,6 +1691,8 @@ if(jQuery){
     	  alert("No cancer type selected");
     	}
     	
+         //handle pathology section    
+        printHandler.handlePathologySection();
     	//handle allergies section    	
     	printHandler.handleAllergiesSection();
     	 
@@ -2310,6 +2334,27 @@ if(jQuery){
 		<tr class="diagnosisPrintArea">
 			<td class="lables">Other liquid staging</td>
 			<td colspan="2" class="values"><span id="otherLiquidStageOS"></span>
+			</td>
+		</tr>
+	</table>
+		<br />
+	<table id="pathology">
+		<tr class="diagnosisPrintArea">
+			<th colspan="3">PATHOLOGY</th>
+		</tr>
+		<tr class="diagnosisPrintArea">
+			<td class="lables">Pathology completed</td>
+			<td colspan="2" class="values"><span id="pathologyCompleted"></span>
+			</td>
+		</tr>
+		<tr class="diagnosisPrintArea">
+			<td class="lables">Date</td>
+			<td colspan="2" class="values"><span id="pathologyDate"></span>
+			</td>
+		</tr>
+		<tr class="diagnosisPrintArea">
+			<td class="lables">Site of Pathology</td>
+			<td colspan="2" class="values"><span id="pathologySite"></span>
 			</td>
 		</tr>
 	</table>
