@@ -1499,12 +1499,13 @@ if(jQuery){
 	 
 	 handlePathologySection: function() {//handle Pathology section	 
 		 if(getValue('pathologyCompletedYes.value') !=null ){
+			 $j("#pathology tr:gt(1)").show();
 			 setInnerHtml('pathologyCompleted', 'Yes');
 			 setInnerHtml('pathologyDate', ''+getValue('dateOfPathologyObs.value'));
 			 setInnerHtml('pathologySite', ''+$j('#siteOfPathologyObs option:selected').text());
 		 }else{
 			 setInnerHtml('pathologyCompleted', 'No');
-			 $j("#pathology tr:gt(1)").remove();
+			 $j("#pathology tr:gt(1)").hide();
 		 }
 	 },	 
 	 
