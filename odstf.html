@@ -4857,7 +4857,7 @@ if(jQuery){
       $j(document).ready(function(){
     	  
     	 var firstInitialCausesValue = $j("#firstAllergyCauses  option:selected").text();
-    	 if(firstInitialCausesValue == "")
+    	 if(firstInitialCausesValue != "OTHER NON-CODED")
     		 getField('firstCausesOtherNonCoded.value')[0].disabled = true;
     	 
     	  getField('firstAllergyCauses.value').change(function() {
@@ -4870,7 +4870,7 @@ if(jQuery){
     	         });
     	  
     	  var firstInitialReactionValue = $j("#firstAllergyReaction  option:selected").text();
-     	 if(firstInitialReactionValue == "")
+     	 if(firstInitialReactionValue != "OTHER NON-CODED")
      		 getField('firstReactionOtherNonCoded.value')[0].disabled = true;
      	 
      	  getField('firstAllergyReaction.value').change(function() {
@@ -4883,7 +4883,7 @@ if(jQuery){
      	         });
     	  
     	   	 var secondInitialCausesValue = $j("#secondAllergyCauses  option:selected").text();
-        	 if(secondInitialCausesValue == "")
+        	 if(secondInitialCausesValue != "OTHER NON-CODED")
         		 getField('secondCausesOtherNonCoded.value')[0].disabled = true;
         	 
         	  getField('secondAllergyCauses.value').change(function() {
@@ -4896,7 +4896,7 @@ if(jQuery){
         	         });
         	  
         	  var secondInitialReactionValue = $j("#secondAllergyReaction  option:selected").text();
-          	 if(secondInitialReactionValue == "")
+          	 if(secondInitialReactionValue != "OTHER NON-CODED")
           		 getField('secondReactionOtherNonCoded.value')[0].disabled = true;
           	 
           	  getField('secondAllergyReaction.value').change(function() {
@@ -4909,7 +4909,7 @@ if(jQuery){
           	         });
         	  
         	   	 var thirdInitialCausesValue = $j("#thirdAllergyCauses  option:selected").text();
-            	 if(thirdInitialCausesValue == "")
+            	 if(thirdInitialCausesValue != "OTHER NON-CODED")
             		 getField('thirdCausesOtherNonCoded.value')[0].disabled = true;
             	 
             	  getField('thirdAllergyCauses.value').change(function() {
@@ -4922,7 +4922,7 @@ if(jQuery){
             	         });
             	  
             	  var thirdInitialReactionValue = $j("#thirdAllergyReaction  option:selected").text();
-               	 if(thirdInitialReactionValue == "")
+               	 if(thirdInitialReactionValue != "OTHER NON-CODED")
                		 getField('thirdReactionOtherNonCoded.value')[0].disabled = true;
                	 
                	  getField('thirdAllergyReaction.value').change(function() {
