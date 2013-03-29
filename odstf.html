@@ -195,6 +195,13 @@ if(jQuery){
 	var setInnerHtml = function(elementId,contentToSet) {
 		$j('#'+elementId).html(''+contentToSet); 
      };
+     
+     var checkEmptyInputs = function(value,ifEmptyReturn,ifNotEmpReturn) {
+ 		if(value == "")
+ 			return ifEmptyReturn;
+ 		else
+ 			return ifNotEmpReturn;
+      };
 	
      var hideOthers = function(elementToSkip) {
     	 for (var i = 0; i &lt; printableTables.length; i++) {
@@ -893,7 +900,7 @@ if(jQuery){
     						setInnerHtml('chemotherapyRegimen', ''+getValueOfChildSpan('chemotherapyRegimenObs'));
     						setInnerHtml('chemotherapyCycles', ''+getValueOfChildSpan('chemotherapyCyclesObs'));
     						setInnerHtml('chemotherapyFirstCycle', ''+getValueOfChildSpan('chemotherapyFirstCycleObs'));
-    						setInnerHtml('chemotherapyRegimenEnd', ''+getValueOfChildSpan('chemotherapyRegimenEndObs'));
+    						setInnerHtml('chemotherapyRegimenEnd', ''+getValueOfChildSpan('chemotherapyRegimenEndObs')+' week(s)');
     						setInnerHtml('chemotherapyStandardRegimen', ''+getValueOfChildSpan('chemotherapyStandardRegimenObs'));
 
     					}
@@ -1579,9 +1586,9 @@ if(jQuery){
          if(chemotherapyPlanned == 'trigger23'){
          	$j('#chemotherapyTreatmentPlan').show();
      		setInnerHtml('chemotherapyRegimen', ''+$j('#chemotherapyRegimenObs option:selected').text());
-     		setInnerHtml('chemotherapyCycles', ''+Math.floor(getValue('chemotherapyCyclesObs.value')));
+     		setInnerHtml('chemotherapyCycles', ''+checkEmptyInputs(getValue('chemotherapyCyclesObs.value'),'',Math.floor(getValue('chemotherapyCyclesObs.value'))));
      		setInnerHtml('chemotherapyFirstCycle', ''+getValue('chemotherapyFirstCycleObs.value'));
-     		setInnerHtml('chemotherapyRegimenEnd', ''+getValue('chemotherapyRegimenEndObs.value'));
+     		setInnerHtml('chemotherapyRegimenEnd', ''+checkEmptyInputs(getValue('chemotherapyRegimenEndObs.value'),'',getValue('chemotherapyRegimenEndObs.value')+' week(s)'));
      		setInnerHtml('chemotherapyStandardRegimen', ''+getValue('chemotherapyStandardRegimenObs.value'));
 
      	}
@@ -2448,7 +2455,7 @@ if(jQuery){
 
 			<td class="lables">Planned regimen length</td>
 			<td colspan="2" class="values"><span id="chemotherapyRegimenEnd"></span>
-				Weeks</td>
+				</td>
 		</tr>
 		<tr class="diagnosisPrintArea">
 			<td class="lables">Changes to standard regimen</td>
