@@ -97,6 +97,7 @@ td {
 	}
 }
 </style>
+
 <script type="text/javascript">
 if(jQuery){
  $j(document).ready(function(){
@@ -104,723 +105,7 @@ if(jQuery){
         $j(":checkbox").click(function(){
              $j(this).change();
      });
- }
-	var printableTables = ["breast","cervical","kaposi","head","gastric","colon","prostate","nephroblastoma","lung","otherSolid","hodgkin","burkitt","large","otherNHL","ALL","CML","multiple","metastatic","otherLiquid"];
-	
-	var hideStagingKeys = function(elementsToHide) {
-		$j('.'+elementsToHide).slideToggle("fast");
-     };
-	
-	for (var i = 0; i &lt; printableTables.length; i++) {
-	    var lastRow=printableTables[i]+"CancerStagingKeys";
-	    $j('.'+lastRow+':last').after('<tr><td colspan="6" style="text-align: right;"><button style="color: #FFF; background-color: #009D8E;" type="button" id="'+lastRow+'">Toggle Staging Keys</button></td></tr>');	
-	    
-	    $j('#'+lastRow).click(function () {
-	    	hideStagingKeys(this.id);
-	    	}); 
-	    
-	}
-    
-    $j("#printLinkSpan").find("a[href]").click(function(event) {    	
-    	
-    	var diagnosis = {trigger1:'Breast cancer',trigger2:'Cervical cancer',trigger3:'KS',trigger4:'H &#38; N cancer',trigger5:'Gastric cancer',trigger6:'Colo-rectal',trigger7:'Prostate',trigger8:'Nephroblastoma',trigger9:'Lung',trigger10:'Other solid cancer',trigger11:'Hodgkin’s lymphoma',trigger12:'Burkitt’s lymphoma',trigger13:'Large B-cell lymphoma',trigger14:'Other NHL',trigger15:'ALL',trigger16:'CML',trigger17:'Multiple myeloma',trigger18:'Metastatic cancer (unknown primary)',trigger19:'Other liquid cancer'};
-    	
-    	var checked = $j(".checkboxGroup").find(":checked").closest("td").attr("id");
-    	
-    	var setInnerHtml = function(elementId,contentToSet) {
-    		$j('#'+elementId).html(''+contentToSet); 
-         };
-    	
-         var hideOthers = function(elementToSkip) {
-        	 for (var i = 0; i &lt; printableTables.length; i++) {
-     		    var tableToHide=printableTables[i];
-     		    if(tableToHide != elementToSkip)
-     		       $j('#'+tableToHide).hide();     		    	
-     		}
-          };
-          
-          if(getValue('pathologyCompletedYes.value') !=null){
-          
-          $j('#existingAndNewAllergiesScreenView tr.existingAllergy').appendTo('#existingAndNewAllergiesPrintView');  
-          
-          if(getValue('firstAllergyCauses.value') !=''){
-        	$j('#newAllergiesHeading tr').appendTo('#existingAndNewAllergiesPrintView');  
-        	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#firstAllergyCauses option:selected').text()+'</td><td>'+$j('#firstAllergyReaction option:selected').text()+'</td><td>'+getValue('firstAllergyYear.value')+'</td></tr>');
-          
-          }
-        	 
-          if(getValue('secondAllergyCauses.value') !=''){
-            	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#secondAllergyCauses option:selected').text()+'</td><td>'+$j('#secondAllergyReaction option:selected').text()+'</td><td>'+getValue('secondAllergyYear.value')+'</td></tr>');
-              
-              }
-          
-          if(getValue('thirdAllergyCauses.value') !=''){
-            	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#thirdAllergyCauses option:selected').text()+'</td><td>'+$j('#thirdAllergyReaction option:selected').text()+'</td><td>'+getValue('thirdAllergyYear.value')+'</td></tr>');
-              
-              }
-          }else{        	  
-        	  $j('#existingAndNewAllergiesPrintView').hide(); 
-          }
-          
-          var appendStagingKeys = function(elementToAppend) {        	  
-        	  $j('.selectedCancerStagingKeys').empty();
-        	  $j('.'+elementToAppend).clone().appendTo('.selectedCancerStagingKeys');        	  
-           };
-          
-         setInnerHtml("finalDiagnosis", diagnosis[checked]);
-         setInnerHtml("date", $j.datepicker.formatDate('dd/M/yy', new Date(getValue('encounterDate.value'))));
-         setInnerHtml("locationPrintArea", $j('#encounterLocation option:selected').text());
-         setInnerHtml("provider", $j('#encounterProvider option:selected').text());
-         setInnerHtml("managingDCA", getValue('managingDCA.managingDCA.value')+' '+getValue('managingDCA.newRelationship.value'));
-         setInnerHtml("managingGP", getValue('managingGP.managingGP.value')+' '+getValue('managingGP.newRelationship.value'));
-    	
-    	for (var i = 0; i &lt; printableTables.length; i++) {
-		    var tableToHide=printableTables[i];
-		    	  $j('#'+tableToHide).show();
-		}
-    	
-    	if(checked == 'trigger1'){
-    		
-    		hideOthers('breast');
-
-    		setInnerHtml("rightBreastMass", getValue('rightBreastMassObs.value'));
-    		setInnerHtml("rightBreastMassSize1", getValue('rightBreastMassSize1Obs.value'));
-    		setInnerHtml("rightBreastMassSize2", getValue('rightBreastMassSize2Obs.value'));
-    	
-    	
-    	if(getValue('rightBreastMassMobilityMobile.value') !=null )
-    		setInnerHtml('rightBreastMassMobility','Mobile');
-    	if(getValue('rightBreastMassMobilityFixed.value') !=null )
-    		setInnerHtml('rightBreastMassMobility', 'Fixed');
-    	
-    	setInnerHtml('leftBreastMass', getValue('leftBreastMassObs.value'));
-    	setInnerHtml('leftBreastMassSize1', getValue('leftBreastMassSize1Obs.value'));
-    	setInnerHtml('leftBreastMassSize2', getValue('leftBreastMassSize2Obs.value'));
-    	
-    	if(getValue('leftBreastMassMobilityMobile.value') !=null )
-    		setInnerHtml('leftBreastMassMobility','Mobile');
-        if(getValue('leftBreastMassMobilityFixed.value') !=null )
-        	setInnerHtml('leftBreastMassMobility','Fixed');
-    	
-        setInnerHtml('diagnosisSkinChanges',getValue('diagnosisSkinChangesObs.value'));
-        setInnerHtml('diagnosisLymphadenopathy',getValue('diagnosisLymphadenopathyObs.value'));
-        setInnerHtml('diagnosisComments', getValue('diagnosisCommentsObs.value'));
-    	
-        setInnerHtml('stageTNMT', $j('#stageTNMTObs option:selected').text());
-        setInnerHtml('stageTNMN', $j('#stageTNMNObs option:selected').text());
-        setInnerHtml('stageTNMM', $j('#stageTNMMObs option:selected').text());
-    	
-    	
-    	if(getValue('breastStageOS0.value') !=null )
-    		setInnerHtml('breastStageOS', '0');
-    	if(getValue('breastStageOS1.value') !=null )
-    		setInnerHtml('breastStageOS', 'I');
-    	if(getValue('breastStageOS2.value') !=null )
-    		setInnerHtml('breastStageOS', 'II');
-    	if(getValue('breastStageOS3.value') !=null )
-    		setInnerHtml('breastStageOS', 'III');
-    	if(getValue('breastStageOS4.value') !=null )
-    		setInnerHtml('breastStageOS', 'IV');
-    	
-    	
-    	if(getValue('breastStageCSEarly.value') !=null )
-    		setInnerHtml('breastStageCS', 'Early');
-    	if(getValue('breastStageCSLocallyAdvanced.value') !=null )
-    		setInnerHtml('breastStageCS', 'Locally advanced');
-    	if(getValue('breastStageCSMetastatic.value') !=null )
-    		setInnerHtml('breastStageCS', 'Metastatic');
-    	
-    	if(getValue('breastStageERER+.value') !=null )
-    		setInnerHtml('breastStageER', 'ER+');
-    	if(getValue('breastStageERER-.value') !=null )
-    		setInnerHtml('breastStageER', 'ER-');
-    	if(getValue('breastStageERNotDetermined.value') !=null )
-    		setInnerHtml('breastStageER', 'Not determined');
-    	
-    	if(getValue('breastStagePRPR+.value') !=null )
-    		setInnerHtml('breastStagePR', 'PR+');
-    	if(getValue('breastStagePRPR-.value') !=null )
-    		setInnerHtml('breastStagePR', 'PR-');
-    	if(getValue('breastStagePRNotDetermined.value') !=null )
-    		setInnerHtml('breastStagePR', 'Not determined');
-    	
-    	
-    	if(getValue('breastStageHIIHC+.value') !=null )
-    	    setInnerHtml('breastStageHI', 'HER2 IHC+');
-    	if(getValue('breastStageHIIHC-.value') !=null )
-    	    setInnerHtml('breastStageHI', 'HER2 IHC-');
-    	if(getValue('breastStageHINotDetermined.value') !=null )
-    	    setInnerHtml('breastStageHI', 'Not determined');
-    	
-    	if(getValue('breastStageHFFISH+.value') !=null )
-    	    setInnerHtml('breastStageHF', 'HER2 FISH+');
-    	if(getValue('breastStageHFFISH-.value') !=null )
-    	    setInnerHtml('breastStageHF', 'HER2 FISH-');
-    	if(getValue('breastStageHFNotDetermined.value') !=null )
-    	    setInnerHtml('breastStageHF', 'Not determined'); 
-    	
-    	appendStagingKeys('breastCancerStagingKeys');
-    	}
-    	
-    	if(checked == 'trigger2'){
-    		    		
-    		hideOthers('cervical');
-    		
-    	setInnerHtml('cervicalMass', ''+getValue('cervicalMassObs.value'));
-    	setInnerHtml('cervicalMassSize1', ''+getValue('cervicalMassSize1Obs.value'));
-    	setInnerHtml('cervicalMassSize2', ''+getValue('cervicalMassSize2Obs.value'));
-    	setInnerHtml('cervicalDiagnosisComments', ''+getValue('cervicalDiagnosisCommentsObs.value'));
-    	
-    	if(getValue('cervicalStageOS0.value') !=null )
-    	    setInnerHtml('cervicalStageOS', '0');
-    	if(getValue('cervicalStageOSI.value') !=null )
-    	    setInnerHtml('cervicalStageOS', 'I');
-    	if(getValue('cervicalStageOSIA.value') !=null )
-    	    setInnerHtml('cervicalStageOS', 'IA');
-    	if(getValue('cervicalStageOSIB1.value') !=null )
-    	    setInnerHtml('cervicalStageOS', 'IB1');
-    	if(getValue('cervicalStageOSIB2.value') !=null )
-    	    setInnerHtml('cervicalStageOS', 'IB2');
-    	if(getValue('cervicalStageOSII.value') !=null )
-    	    setInnerHtml('cervicalStageOS', 'II');
-    	if(getValue('cervicalStageOSIII.value') !=null )
-    	    setInnerHtml('cervicalStageOS', 'III');
-    	if(getValue('cervicalStageOSIVA.value') !=null )
-    	    setInnerHtml('cervicalStageOS', 'IVA');
-    	if(getValue('cervicalStageOSIVB.value') !=null )
-    	    setInnerHtml('cervicalStageOS', 'IVB');
-    	
-    	appendStagingKeys('cervicalCancerStagingKeys');
-    	    	}   
-    	if(checked == 'trigger3'){	 		
-    		
-    		hideOthers('kaposi');
-    		
-    		setInnerHtml('kaposiMass', ''+getValue('kaposiMassObs.value'));
-        	setInnerHtml('kaposiMassSize1', ''+getValue('kaposiMassSize1Obs.value'));
-        	setInnerHtml('kaposiMassSize2', ''+getValue('kaposiMassSize2Obs.value'));
-        	setInnerHtml('kaposiDiagnosisComments', ''+getValue('kaposiDiagnosisCommentsObs.value'));
-        	
-        	setInnerHtml('kaposiStageTIST', ''+$j('#kaposiStageTISTObs option:selected').text());
-        	setInnerHtml('kaposiStageTISI', ''+$j('#kaposiStageTISIObs option:selected').text());
-        	setInnerHtml('kaposiStageTISS', ''+$j('#kaposiStageTISSObs option:selected').text());
-        	
-        	if(getValue('kaposiStageOS0.value') !=null )
-        	    setInnerHtml('kaposiStageOS', '0');
-        	if(getValue('kaposiStageOS1.value') !=null )
-        	    setInnerHtml('kaposiStageOS', 'I');
-        	if(getValue('kaposiStageOS2.value') !=null )
-        	    setInnerHtml('kaposiStageOS', 'II');
-        	if(getValue('kaposiStageOS3.value') !=null )
-        	    setInnerHtml('kaposiStageOS', 'III');
-        	if(getValue('kaposiStageOS4.value') !=null )
-        	    setInnerHtml('kaposiStageOS', 'IV');
-        	
-        	appendStagingKeys('kaposiCancerStagingKeys');
- 	
-    	    	}
-    	if(checked == 'trigger4'){	
-    		
-    		hideOthers('head');
-    		
-    		if(getValue('headCancerTypeSinuses.value') !=null )
-        	    setInnerHtml('headCancerType', 'Sinuses / Nasal cavity');
-        	if(getValue('headCancerTypeOral.value') !=null )
-        	    setInnerHtml('headCancerType', 'Oral cavity / Oropharynx/Hypopharynx');
-        	if(getValue('headCancerTypeLarynx.value') !=null )
-        	    setInnerHtml('headCancerType', 'Larynx');
-        	if(getValue('headCancerTypeNasopharynx.value') !=null )
-        	    setInnerHtml('headCancerType', 'Nasopharynx');
-        	if(getValue('headCancerTypeOther.value') !=null )
-        	    setInnerHtml('headCancerType', 'Other');
-        	
-        	setInnerHtml('headMass', ''+getValue('headMassObs.value'));
-        	setInnerHtml('headMassSize1', ''+getValue('headMassSize1Obs.value'));
-        	setInnerHtml('headMassSize2', ''+getValue('headMassSize2Obs.value'));
-        	setInnerHtml('headDiagnosisComments', ''+getValue('headDiagnosisCommentsObs.value'));
-        	
-        	setInnerHtml('headStageTNMT', ''+$j('#headStageTNMTObs option:selected').text());
-        	setInnerHtml('headStageTNMN', ''+$j('#headStageTNMNObs option:selected').text());
-        	setInnerHtml('headStageTNMM', ''+$j('#headStageTNMMObs option:selected').text());
-        	
-        	if(getValue('headStageOS0.value') !=null )
-        	    setInnerHtml('headStageOS', '0');
-        	if(getValue('headStageOS1.value') !=null )
-        	    setInnerHtml('headStageOS', 'I');
-        	if(getValue('headStageOS2.value') !=null )
-        	    setInnerHtml('headStageOS', 'II');
-        	if(getValue('headStageOS3.value') !=null )
-        	    setInnerHtml('headStageOS', 'III');
-        	if(getValue('headStageOS4.value') !=null )
-        	    setInnerHtml('headStageOS', 'IV');
- 	
-        	appendStagingKeys('headCancerStagingKeys');
-        	
-    	    	}
-    	if(checked == 'trigger5'){	
-    		
-    		hideOthers('gastric');
-    		
-    		setInnerHtml('gastricMass', ''+getValue('gastricMassObs.value'));
-        	setInnerHtml('gastricMassSize1', ''+getValue('gastricMassSize1Obs.value'));
-        	setInnerHtml('gastricMassSize2', ''+getValue('gastricMassSize2Obs.value'));
-        	setInnerHtml('gastricDiagnosisComments', ''+getValue('gastricDiagnosisCommentsObs.value'));
-        	
-        	setInnerHtml('gastricStageTNMT', ''+$j('#gastricStageTNMTObs option:selected').text());
-        	setInnerHtml('gastricStageTNMN', ''+$j('#gastricStageTNMNObs option:selected').text());
-        	setInnerHtml('gastricStageTNMM', ''+$j('#gastricStageTNMMObs option:selected').text());
-        	
-        	if(getValue('gastricStageOS0.value') !=null )
-        	    setInnerHtml('gastricStageOS', '0');
-        	if(getValue('gastricStageOS1.value') !=null )
-        	    setInnerHtml('gastricStageOS', 'I');
-        	if(getValue('gastricStageOS2.value') !=null )
-        	    setInnerHtml('gastricStageOS', 'II');
-        	if(getValue('gastricStageOS3.value') !=null )
-        	    setInnerHtml('gastricStageOS', 'III');
-        	if(getValue('gastricStageOS4.value') !=null )
-        	    setInnerHtml('gastricStageOS', 'IV');
-        	
-        	if(getValue('gastricStageHPPositive.value') !=null )
-        	    setInnerHtml('gastricStageHP', 'Positive');
-        	if(getValue('gastricStageHPNegative.value') !=null )
-        	    setInnerHtml('gastricStageHP', 'Negative');
-        	if(getValue('gastricStageHPNotDetermined.value') !=null )
-        	    setInnerHtml('gastricStageHP', 'Not determined');
-        	
-        	appendStagingKeys('gastricCancerStagingKeys');
- 	
-    	    	}
-    	if(checked == 'trigger6'){
-    		
-    		hideOthers('colon');
-    		
-    		setInnerHtml('colonMass', ''+getValue('colonMassObs.value'));
-        	setInnerHtml('colonMassSize1', ''+getValue('colonMassSize1Obs.value'));
-        	setInnerHtml('colonMassSize2', ''+getValue('colonMassSize2Obs.value'));
-        	setInnerHtml('colonDiagnosisComments', ''+getValue('colonDiagnosisCommentsObs.value'));
-        	
-        	setInnerHtml('colonStageTNMT', ''+$j('#colonStageTNMTObs option:selected').text());
-        	setInnerHtml('colonStageTNMN', ''+$j('#colonStageTNMNObs option:selected').text());
-        	setInnerHtml('colonStageTNMM', ''+$j('#colonStageTNMMObs option:selected').text());
-        	
-        	if(getValue('colonStageOS0.value') !=null )
-        	    setInnerHtml('colonStageOS', '0');
-        	if(getValue('colonStageOS1.value') !=null )
-        	    setInnerHtml('colonStageOS', 'I');
-        	if(getValue('colonStageOS2.value') !=null )
-        	    setInnerHtml('colonStageOS', 'II');
-        	if(getValue('colonStageOS3.value') !=null )
-        	    setInnerHtml('colonStageOS', 'III');
-        	if(getValue('colonStageOS4.value') !=null )
-        	    setInnerHtml('colonStageOS', 'IV');
-        	
-        	appendStagingKeys('colonCancerStagingKeys');
- 	
-    	    	}
-    	if(checked == 'trigger7'){
-    		
-    		hideOthers('prostate');
-    		
-    		setInnerHtml('prostateMass', ''+getValue('prostateMassObs.value'));
-        	setInnerHtml('prostateMassSize1', ''+getValue('prostateMassSize1Obs.value'));
-        	setInnerHtml('prostateMassSize2', ''+getValue('prostateMassSize2Obs.value'));
-        	setInnerHtml('prostateDiagnosisComments', ''+getValue('prostateDiagnosisCommentsObs.value'));
-        	
-        	setInnerHtml('prostateStageTNMT', ''+$j('#prostateStageTNMTObs option:selected').text());
-        	setInnerHtml('prostateStageTNMN', ''+$j('#prostateStageTNMNObs option:selected').text());
-        	setInnerHtml('prostateStageTNMM', ''+$j('#prostateStageTNMMObs option:selected').text());
-        	
-        	if(getValue('prostateStageOS0.value') !=null )
-        	    setInnerHtml('prostateStageOS', '0');
-        	if(getValue('prostateStageOS1.value') !=null )
-        	    setInnerHtml('prostateStageOS', 'I');
-        	if(getValue('prostateStageOS2.value') !=null )
-        	    setInnerHtml('prostateStageOS', 'II');
-        	if(getValue('prostateStageOS3.value') !=null )
-        	    setInnerHtml('prostateStageOS', 'III');
-        	if(getValue('prostateStageOS4.value') !=null )
-        	    setInnerHtml('prostateStageOS', 'IV');
-        	
-        	appendStagingKeys('prostateCancerStagingKeys');
- 	
-    	    	}
-    	if(checked == 'trigger8'){
-    		
-    		hideOthers('nephroblastoma');
-    		
-    		setInnerHtml('nephroblastomaMass', ''+getValue('nephroblastomaMassObs.value'));
-        	setInnerHtml('nephroblastomaMassSize1', ''+getValue('nephroblastomaMassSize1Obs.value'));
-        	setInnerHtml('nephroblastomaMassSize2', ''+getValue('nephroblastomaMassSize2Obs.value'));
-        	setInnerHtml('nephroblastomaDiagnosisComments', ''+getValue('nephroblastomaDiagnosisCommentsObs.value'));
-        	
-        	if(getValue('nephroblastomaStageOS0.value') !=null )
-        	    setInnerHtml('nephroblastomaStageOS', '0');
-        	if(getValue('nephroblastomaStageOS1.value') !=null )
-        	    setInnerHtml('nephroblastomaStageOS', 'I');
-        	if(getValue('nephroblastomaStageOS2.value') !=null )
-        	    setInnerHtml('nephroblastomaStageOS', 'II');
-        	if(getValue('nephroblastomaStageOS3.value') !=null )
-        	    setInnerHtml('nephroblastomaStageOS', 'III');
-        	if(getValue('nephroblastomaStageOS4.value') !=null )
-        	    setInnerHtml('nephroblastomaStageOS', 'IV');
-        	if(getValue('nephroblastomaStageOS5.value') !=null )
-        	    setInnerHtml('nephroblastomaStageOS', 'V');
-        	
-        	appendStagingKeys('nephroblastomaCancerStagingKeys');
- 	
-    	    	}
-    	if(checked == 'trigger9'){
-    		
-    		hideOthers('lung');
- 	
-    		if(getValue('lungCancerTypeSmallCell.value') !=null )
-        	    setInnerHtml('lungCancerType', 'Small cell lung cancer');
-        	if(getValue('lungCancerTypeNonSmall.value') !=null )
-        	    setInnerHtml('lungCancerType', 'Non-small cell lung cancer');
-        	
-        	setInnerHtml('lungMass', ''+getValue('lungMassObs.value'));
-        	setInnerHtml('lungMassSize1', ''+getValue('lungMassSize1Obs.value'));
-        	setInnerHtml('lungMassSize2', ''+getValue('lungMassSize2Obs.value'));
-        	setInnerHtml('lungDiagnosisComments', ''+getValue('lungDiagnosisCommentsObs.value'));
-        	
-        	if(getValue('lungSmallCellLimited.value') !=null )
-        	    setInnerHtml('lungSmallCell', 'Limited stage');
-        	if(getValue('lungSmallCellExtensive.value') !=null )
-        	    setInnerHtml('lungSmallCell', 'Extensive stage');
-        	
-        	setInnerHtml('lungStageTNMT', ''+$j('#lungStageTNMTObs option:selected').text());
-        	setInnerHtml('lungStageTNMN', ''+$j('#lungStageTNMNObs option:selected').text());
-        	setInnerHtml('lungStageTNMM', ''+$j('#lungStageTNMMObs option:selected').text());
-        	
-        	if(getValue('lungStageOS0.value') !=null )
-        	    setInnerHtml('lungStageOS', '0');
-        	if(getValue('lungStageOS1.value') !=null )
-        	    setInnerHtml('lungStageOS', 'I');
-        	if(getValue('lungStageOS2.value') !=null )
-        	    setInnerHtml('lungStageOS', 'II');
-        	if(getValue('lungStageOS3A.value') !=null )
-        	    setInnerHtml('lungStageOS', 'III-A');
-        	if(getValue('lungStageOS3B.value') !=null )
-        	    setInnerHtml('lungStageOS', 'III-B ');
-        	if(getValue('lungStageOS4.value') !=null )
-        	    setInnerHtml('lungStageOS', 'IV');
-        	
-        	appendStagingKeys('lungCancerStagingKeys');
-        	
-    	    	}
-    	if(checked == 'trigger10'){	
-    		
-    		hideOthers('otherSolid');
-    		
-    		setInnerHtml('otherSolidMass', ''+getValue('otherSolidMassObs.value'));
-        	setInnerHtml('otherSolidMassSize1', ''+getValue('otherSolidMassSize1Obs.value'));
-        	setInnerHtml('otherSolidMassSize2', ''+getValue('otherSolidMassSize2Obs.value'));
-        	setInnerHtml('otherSolidDiagnosisComments', ''+getValue('otherSolidDiagnosisCommentsObs.value'));
-        	
-        	setInnerHtml('otherSolidStageTNMT', ''+$j('#otherSolidStageTNMTObs option:selected').text());
-        	setInnerHtml('otherSolidStageTNMN', ''+$j('#otherSolidStageTNMNObs option:selected').text());
-        	setInnerHtml('otherSolidStageTNMM', ''+$j('#otherSolidStageTNMMObs option:selected').text());
-        	
-        	if(getValue('otherSolidStageOS0.value') !=null )
-        	    setInnerHtml('otherSolidStageOS', '0');
-        	if(getValue('otherSolidStageOS1.value') !=null )
-        	    setInnerHtml('otherSolidStageOS', 'I');
-        	if(getValue('otherSolidStageOS2.value') !=null )
-        	    setInnerHtml('otherSolidStageOS', 'II');
-        	if(getValue('otherSolidStageOS3.value') !=null )
-        	    setInnerHtml('otherSolidStageOS', 'III');
-        	if(getValue('otherSolidStageOS4.value') !=null )
-        	    setInnerHtml('otherSolidStageOS', 'IV');
- 	
-    	    	}
-    	if(checked == 'trigger11'){	
-    		
-    		hideOthers('hodgkin');
- 	
-    		setInnerHtml('hodgkinMass', ''+getValue('hodgkinMassObs.value'));
-        	setInnerHtml('hodgkinMassSize1', ''+getValue('hodgkinMassSize1Obs.value'));
-        	setInnerHtml('hodgkinMassSize2', ''+getValue('hodgkinMassSize2Obs.value'));
-        	setInnerHtml('hodgkinDiagnosisComments', ''+getValue('hodgkinDiagnosisCommentsObs.value'));
-        	
-        	if(getValue('hodgkinStageOS0.value') !=null )
-        	    setInnerHtml('hodgkinStageOS', '0');
-        	if(getValue('hodgkinStageOS1.value') !=null )
-        	    setInnerHtml('hodgkinStageOS', 'I');
-        	if(getValue('hodgkinStageOS2.value') !=null )
-        	    setInnerHtml('hodgkinStageOS', 'II');
-        	if(getValue('hodgkinStageOS3.value') !=null )
-        	    setInnerHtml('hodgkinStageOS', 'III');
-        	if(getValue('hodgkinStageOS4.value') !=null )
-        	    setInnerHtml('hodgkinStageOS', 'IV');
-        	
-        	if(getValue('hodgkinStageBulkyYes.value') !=null )
-        	    setInnerHtml('hodgkinStageBulky', 'Yes');
-        	if(getValue('hodgkinStageBulkyNo.value') !=null )
-        	    setInnerHtml('hodgkinStageBulky', 'No');
-        	if(getValue('hodgkinStageBulkyNotDetermined.value') !=null )
-        	    setInnerHtml('hodgkinStageBulky', 'Not determined');
-        	
-        	if(getValue('hodgkinStageSymptomaticNoBSymptoms.value') !=null )
-        	    setInnerHtml('hodgkinStageSymptomatic', 'No B symptoms');
-        	if(getValue('hodgkinStageSymptomaticBSymptoms.value') !=null )
-        	    setInnerHtml('hodgkinStageSymptomatic', 'B symptoms present');
-        	
-        	appendStagingKeys('hodgkinCancerStagingKeys');
-        	
-    	    	}
-    	if(checked == 'trigger12'){			
-    		    		
-    		hideOthers('burkitt');
-    		
-    		setInnerHtml('burkittMass', ''+getValue('burkittMassObs.value'));
-        	setInnerHtml('burkittMassSize1', ''+getValue('burkittMassSize1Obs.value'));
-        	setInnerHtml('burkittMassSize2', ''+getValue('burkittMassSize2Obs.value'));
-        	setInnerHtml('burkittDiagnosisComments', ''+getValue('burkittDiagnosisCommentsObs.value'));
-        	
-        	if(getValue('burkittStageOS0.value') !=null )
-        	    setInnerHtml('burkittStageOS', '0');
-        	if(getValue('burkittStageOS1.value') !=null )
-        	    setInnerHtml('burkittStageOS', 'I');
-        	if(getValue('burkittStageOS2.value') !=null )
-        	    setInnerHtml('burkittStageOS', 'II');
-        	if(getValue('burkittStageOS3.value') !=null )
-        	    setInnerHtml('burkittStageOS', 'III');
-        	if(getValue('burkittStageOS4.value') !=null )
-        	    setInnerHtml('burkittStageOS', 'IV');
-        	
-        	if(getValue('burkittStageBulkyYes.value') !=null )
-        	    setInnerHtml('burkittStageBulky', 'Yes');
-        	if(getValue('burkittStageBulkyNo.value') !=null )
-        	    setInnerHtml('burkittStageBulky', 'No');
-        	if(getValue('burkittStageBulkyNotDetermined.value') !=null )
-        	    setInnerHtml('burkittStageBulky', 'Not determined');
-        	
-        	if(getValue('burkittStageSymptomaticNoBSymptoms.value') !=null )
-        	    setInnerHtml('burkittStageSymptomatic', 'No B symptoms');
-        	if(getValue('burkittStageSymptomaticBSymptoms.value') !=null )
-        	    setInnerHtml('burkittStageSymptomatic', 'B symptoms present');
-        	
-        	appendStagingKeys('burkittCancerStagingKeys');
- 	
-    	    	}
-    	if(checked == 'trigger13'){
-    		
-    		hideOthers('large');
-    		
-    		setInnerHtml('largeMass', ''+getValue('largeMassObs.value'));
-        	setInnerHtml('largeMassSize1', ''+getValue('largeMassSize1Obs.value'));
-        	setInnerHtml('largeMassSize2', ''+getValue('largeMassSize2Obs.value'));
-        	setInnerHtml('largeDiagnosisComments', ''+getValue('largeDiagnosisCommentsObs.value'));
-        	
-        	if(getValue('largeStageOS0.value') !=null )
-        	    setInnerHtml('largeStageOS', '0');
-        	if(getValue('largeStageOS1.value') !=null )
-        	    setInnerHtml('largeStageOS', 'I');
-        	if(getValue('largeStageOS2.value') !=null )
-        	    setInnerHtml('largeStageOS', 'II');
-        	if(getValue('largeStageOS3.value') !=null )
-        	    setInnerHtml('largeStageOS', 'III');
-        	if(getValue('largeStageOS4.value') !=null )
-        	    setInnerHtml('largeStageOS', 'IV');
-        	
-        	if(getValue('largeStageBulkyYes.value') !=null )
-        	    setInnerHtml('largeStageBulky', 'Yes');
-        	if(getValue('largeStageBulkyNo.value') !=null )
-        	    setInnerHtml('largeStageBulky', 'No');
-        	if(getValue('largeStageBulkyNotDetermined.value') !=null )
-        	    setInnerHtml('largeStageBulky', 'Not determined');
-        	
-        	if(getValue('largeStageSymptomaticNoBSymptoms.value') !=null )
-        	    setInnerHtml('largeStageSymptomatic', 'No B symptoms');
-        	if(getValue('largeStageSymptomaticBSymptoms.value') !=null )
-        	    setInnerHtml('largeStageSymptomatic', 'B symptoms present');
-        	
-        	appendStagingKeys('largeCancerStagingKeys');
- 	
-    	    	}
-    	if(checked == 'trigger14'){	 		
-    		
-    		hideOthers('otherNHL');
-    		
-    		setInnerHtml('otherNHLMass', ''+getValue('otherNHLMassObs.value'));
-        	setInnerHtml('otherNHLMassSize1', ''+getValue('otherNHLMassSize1Obs.value'));
-        	setInnerHtml('otherNHLMassSize2', ''+getValue('otherNHLMassSize2Obs.value'));
-        	setInnerHtml('otherNHLDiagnosisComments', ''+getValue('otherNHLDiagnosisCommentsObs.value'));
-        	
-        	if(getValue('otherNHLStageOS0.value') !=null )
-        	    setInnerHtml('otherNHLStageOS', '0');
-        	if(getValue('otherNHLStageOS1.value') !=null )
-        	    setInnerHtml('otherNHLStageOS', 'I');
-        	if(getValue('otherNHLStageOS2.value') !=null )
-        	    setInnerHtml('otherNHLStageOS', 'II');
-        	if(getValue('otherNHLStageOS3.value') !=null )
-        	    setInnerHtml('otherNHLStageOS', 'III');
-        	if(getValue('otherNHLStageOS4.value') !=null )
-        	    setInnerHtml('otherNHLStageOS', 'IV');
-        	
-        	if(getValue('otherNHLStageBulkyYes.value') !=null )
-        	    setInnerHtml('otherNHLStageBulky', 'Yes');
-        	if(getValue('otherNHLStageBulkyNo.value') !=null )
-        	    setInnerHtml('otherNHLStageBulky', 'No');
-        	if(getValue('otherNHLStageBulkyNotDetermined.value') !=null )
-        	    setInnerHtml('otherNHLStageBulky', 'Not determined');
-        	
-        	if(getValue('otherNHLStageSymptomaticNoBSymptoms.value') !=null )
-        	    setInnerHtml('otherNHLStageSymptomatic', 'No B symptoms');
-        	if(getValue('otherNHLStageSymptomaticBSymptoms.value') !=null )
-        	    setInnerHtml('otherNHLStageSymptomatic', 'B symptoms present');
-        	
-        	appendStagingKeys('otherNHLCancerStagingKeys');
-        	
-    	    	}
-    	if(checked == 'trigger15'){	 		
-    		    		
-    		hideOthers('ALL');
-    		
-    		setInnerHtml('ALLDiagnosisComments', ''+getValue('otherNHLDiagnosisCommentsObs.value'));
-    		
- 	
-    		if(getValue('ALLStageLowRisk.value') !=null )
-        	    setInnerHtml('ALLStage', 'Low risk');
-        	if(getValue('ALLStageMediumRisk.value') !=null )
-        	    setInnerHtml('ALLStage', 'Medium risk');
-        	if(getValue('ALLStageHighRisk.value') !=null )
-        	    setInnerHtml('ALLStage', 'High risk (always when Ph+, infant)');
-        	if(getValue('ALLStageVeryHighRisk.value') !=null )
-        	    setInnerHtml('ALLStage', 'Very High risk');
-        	
-        	if(getValue('ALLStagePhStatusPh+.value') !=null )
-        	    setInnerHtml('ALLStagePhStatus', 'Ph+');
-        	if(getValue('ALLStagePhStatusPh-.value') !=null )
-        	    setInnerHtml('ALLStagePhStatus', 'Ph-');
-        	if(getValue('ALLStagePhStatusNotDetermined.value') !=null )
-        	    setInnerHtml('ALLStagePhStatus', 'not determined');
-    	    	}
-    	
-    	if(checked == 'trigger16'){	 		
-    		
-    		hideOthers('CML');
-    		
-    		setInnerHtml('CMLDiagnosisComments', ''+getValue('CMLDiagnosisCommentsObs.value'));
-    		
-    	 	
-    		if(getValue('CMLStageChronicPhase.value') !=null )
-        	    setInnerHtml('CMLStage', 'Chronic phase');
-        	if(getValue('CMLStageAcceleratedPhase.value') !=null )
-        	    setInnerHtml('CMLStage', 'Accelerated phase');
-        	if(getValue('CMLStageBlastCrisis.value') !=null )
-        	    setInnerHtml('CMLStage', 'Blast crisis');
-        	
-        	if(getValue('ALLStagePhStatusPh+.value') !=null )
-        	    setInnerHtml('CMLStageCytogenetics', 't(9,22)+');
-        	if(getValue('ALLStagePhStatusPh-.value') !=null )
-        	    setInnerHtml('CMLStageCytogenetics', 't(9,22)-');
-        	if(getValue('ALLStagePhStatusNotDetermined.value') !=null )
-        	    setInnerHtml('CMLStageCytogenetics', 'not determined');
-        	
-        	
-        	appendStagingKeys('CMLCancerStagingKeys');
- 	
-    	    	}
-    	if(checked == 'trigger17'){	 
-    		
-    		    hideOthers('multiple');
-    		    
-    		    setInnerHtml('multipleMass', ''+getValue('multipleMassObs.value'));
-            	setInnerHtml('multipleMassSize1', ''+getValue('multipleMassSize1Obs.value'));
-            	setInnerHtml('multipleMassSize2', ''+getValue('multipleMassSize2Obs.value'));
-            	setInnerHtml('multipleDiagnosisComments', ''+getValue('multipleDiagnosisCommentsObs.value'));
-            	
-            	if(getValue('multipleStageOS0.value') !=null )
-            	    setInnerHtml('multipleStageOS', '0');
-            	if(getValue('multipleStageOS1.value') !=null )
-            	    setInnerHtml('multipleStageOS', 'I');
-            	if(getValue('multipleStageOS2.value') !=null )
-            	    setInnerHtml('multipleStageOS', 'II');
-            	if(getValue('multipleStageOS3.value') !=null )
-            	    setInnerHtml('multipleStageOS', 'III');
-            	
-            	if(getValue('multipleSubclassificationA.value') !=null )
-            	    setInnerHtml('multipleSubclassification', 'A: relatively normal renal function (serum creatinine value &lt; 2.0 mg/dl) ');
-            	if(getValue('multipleSubclassificationB.value') !=null )
-            	    setInnerHtml('multipleSubclassification', 'B: abnomal renal function (serum creatinine &gt; 2.0 mg/dl) ');
-            	
-            	appendStagingKeys('multipleCancerStagingKeys');
- 	
-    	    	}
-    	
-    	if(checked == 'trigger18'){	
-    		
-    		 hideOthers('metastatic');
- 	
-            setInnerHtml('metastaticDiagnosisComments', ''+getValue('metastaticDiagnosisCommentsObs.value'));
-        	
-        	if(getValue('metastaticStageOS0.value') !=null )
-        	    setInnerHtml('metastaticStageOS', '0');
-        	if(getValue('metastaticStageOS1.value') !=null )
-        	    setInnerHtml('metastaticStageOS', 'I');
-        	if(getValue('metastaticStageOS2.value') !=null )
-        	    setInnerHtml('metastaticStageOS', 'II');
-        	if(getValue('metastaticStageOS3.value') !=null )
-        	    setInnerHtml('metastaticStageOS', 'III');
-        	if(getValue('metastaticStageOS4.value') !=null )
-        	    setInnerHtml('metastaticStageOS', 'IV');
-    	    	}
-    	
-    	if(checked == 'trigger19'){	
-    		
-    		 hideOthers('otherLiquid');
-    		 
-    		setInnerHtml('otherLiquidDiagnosisComments', ''+getValue('otherLiquidDiagnosisCommentsObs.value'));
-    		setInnerHtml('otherLiquidStageOS', ''+getValue('otherLiquidStageOSObs.value'));
- 	
-    	    	}
-    	    
-    	var treatmentIntent = $j(".treatmentPlan").find(":checked").closest("td").attr("id");
-    	
-    	if(treatmentIntent == 'treatmentCurative'){
-    		setInnerHtml('treatmentIntent', 'Curative');
-    	}
-        if(treatmentIntent == 'treatmentPalliative'){
-        	setInnerHtml('treatmentIntent', 'Palliative systemic therapy');
-    	}
-        if(treatmentIntent == 'treatmentPalliation'){
-        	setInnerHtml('treatmentIntent', 'Palliation ONLY');
-    	}
-        
-        $j('#surgeryTreatmentPlan').hide();
-        $j('#radiationTreatmentPlan').hide();
-        $j('#chemotherapyTreatmentPlan').hide();
-        
-        var surgeryPlanned = $j(".surgery").find(":checked").closest("td").attr("id");
-        var radiationPlanned = $j(".radiation").find(":checked").closest("td").attr("id");
-        var chemotherapyPlanned = $j(".chemotherapy").find(":checked").closest("td").attr("id"); 
-       
-        if(surgeryPlanned == 'trigger21'){
-        	$j('#surgeryTreatmentPlan').show();
-    		setInnerHtml('surgeryFacility', ''+getValue('surgeryFacilityObs.value'));
-    		setInnerHtml('surgeryStartDate', ''+getValue('surgeryStartDateObs.value'));
-    		setInnerHtml('surgeryType', ''+getValue('surgeryTypeObs.value'));
-    	}
-
-        if(radiationPlanned == 'trigger22'){
-        	$j('#radiationTreatmentPlan').show();
-    		setInnerHtml('radiationFacility', ''+$j('#radiationFacilityObs option:selected').text());
-    		setInnerHtml('radiationStartDate', ''+getValue('radiationStartDateObs.value'));
-
-    	}
-        if(chemotherapyPlanned == 'trigger23'){
-        	$j('#chemotherapyTreatmentPlan').show();
-    		setInnerHtml('chemotherapyRegimen', ''+$j('#chemotherapyRegimenObs option:selected').text());
-    		setInnerHtml('chemotherapyCycles', ''+Math.floor(getValue('chemotherapyCyclesObs.value')));
-    		setInnerHtml('chemotherapyFirstCycle', ''+getValue('chemotherapyFirstCycleObs.value'));
-    		setInnerHtml('chemotherapyRegimenEnd', ''+getValue('chemotherapyRegimenEndObs.value'));
-    		setInnerHtml('chemotherapyStandardRegimen', ''+getValue('chemotherapyStandardRegimenObs.value'));
-
-    	}
-    	
-	  });
+        }
     
     $j(".checkboxGroup").each(function(){
         var group = $j(this);
@@ -839,17 +124,12 @@ if(jQuery){
            }
         }
         
-        var hideAll = function(){
-            $j(".togglebles").find("tbody[id^='toggleble']").hide();
-            $j(".togglebles").find("span[id^='toggleble']").hide();
-        }
+       
         
         var hideSection = function(which){
         	var sectionId= "toggleble"+which.substring(7);
             $j(".togglebles").find("tbody[id$="+sectionId+"]").hide();
-        }        
-               
-        hideAll();
+        }      
         
     group.find("input[type$='checkbox']").click(function(){
     	if(typeof checked != "undefined")
@@ -863,6 +143,1568 @@ if(jQuery){
     });
     
     });
+
+ });
+}
+</script> <script type="text/javascript">
+if(jQuery){
+ $j(document).ready(function(){
+    if ( $j.browser.msie ) {
+        $j(":checkbox").click(function(){
+             $j(this).change();
+     });
+ }
+	var printableTables = ["breast","cervical","kaposi","head","gastric","colon","prostate","nephroblastoma","lung","otherSolid","hodgkin","burkitt","large","otherNHL","ALL","CML","multiple","metastatic","otherLiquid"];
+	
+	var hideStagingKeys = function(elementsToHide) {
+		$j('.'+elementsToHide).slideToggle("fast");
+     };
+	
+     //add a button to toggle staging keys
+	for (var i = 0; i &lt; printableTables.length; i++) {
+	    var lastRow=printableTables[i]+"CancerStagingKeys";
+	    $j('.'+lastRow+':last').after('<tr><td colspan="6" style="text-align: right;"><button style="color: #FFF; background-color: #009D8E;" type="button" id="'+lastRow+'">Toggle Staging Keys</button></td></tr>');	
+	    
+	    $j('#'+lastRow).click(function () {
+	    	hideStagingKeys(this.id);
+	    	}); 
+	    
+	}
+     
+	var getURLParam = function(name) {
+	    var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(document.URL);
+	    if(results == null)
+	    	return;
+	    return results[1] || 0;
+	};
+     
+	var isEditMode = function() {
+		if(getURLParam('mode') == 'EDIT')
+			return true;
+		else
+			return false;
+     };
+     
+     var isViewMode = function() {
+    	 if(getURLParam('inPopup') == 'true')
+    		 return true;
+    	 else
+    		 return false;
+     };
+	
+	var setInnerHtml = function(elementId,contentToSet) {
+		$j('#'+elementId).html(''+contentToSet); 
+     };
+	
+     var hideOthers = function(elementToSkip) {
+    	 for (var i = 0; i &lt; printableTables.length; i++) {
+ 		    var tableToHide=printableTables[i];
+ 		    if(tableToHide != elementToSkip)
+ 		       $j('#'+tableToHide).hide();     		    	
+ 		}
+      };
+      
+      var appendStagingKeys = function(elementToAppend) { 
+    	  if(typeof elementToAppend == null){
+    		  $j('.selectedCancerStagingKeys').empty();
+    		  return;
+    	  }
+    	  $j('.selectedCancerStagingKeys').empty();
+    	  $j('.'+elementToAppend).clone().appendTo('.selectedCancerStagingKeys');        	  
+       };
+       
+       var getValueOfChildSpan = function(parentId) { 
+        return $j('#'+parentId).children("span").html();
+       };
+       
+       var hasValue = function(elementId) { 
+    	   if($j('#'+elementId).children("span").attr("class") == 'value')
+               return true;
+    	   else
+    		   return false;
+          };
+       
+       var ViewModeHandler = function(){};
+       ViewModeHandler.prototype = {
+
+    		    handleHeadingSection: function(finalDiagnosis) { //handle heading section
+    		    	 setInnerHtml("finalDiagnosis", finalDiagnosis);
+    		         setInnerHtml("date", getValueOfChildSpan('encounterDate'));
+    		         setInnerHtml("locationPrintArea", getValueOfChildSpan('encounterLocation'));
+    		         setInnerHtml("provider", getValueOfChildSpan('encounterProvider'));    		       
+    		         setInnerHtml("managingDCA", document.getElementById('managingDCA.managingDCA').value);
+    		         setInnerHtml("managingGP", document.getElementById('managingGP.managingGP').value);
+    		    },
+    		    
+    			 handleBreastCancerSection: function() { //handle Breast cancer section
+    				 hideOthers('breast');
+
+    		 		setInnerHtml("rightBreastMass", getValueOfChildSpan('rightBreastMassObs'));
+    		 		setInnerHtml("rightBreastMassSize1", getValueOfChildSpan('rightBreastMassSize1Obs'));
+    		 		setInnerHtml("rightBreastMassSize2", getValueOfChildSpan('rightBreastMassSize2Obs'));
+    		 	
+    		 	if(hasValue('rightBreastMassMobilityMobile'))
+    		 		setInnerHtml('rightBreastMassMobility','Mobile');
+    		 	if(hasValue('rightBreastMassMobilityFixed'))
+    		 		setInnerHtml('rightBreastMassMobility', 'Fixed');
+    		 	
+    		 	setInnerHtml('leftBreastMass', getValueOfChildSpan('leftBreastMassObs'));
+    		 	setInnerHtml('leftBreastMassSize1', getValueOfChildSpan('leftBreastMassSize1Obs'));
+    		 	setInnerHtml('leftBreastMassSize2', getValueOfChildSpan('leftBreastMassSize2Obs'));
+    		 	
+    		 	if(hasValue('leftBreastMassMobilityMobile'))
+    		 		setInnerHtml('leftBreastMassMobility','Mobile');
+    		     if(hasValue('leftBreastMassMobilityFixed'))
+    		     	setInnerHtml('leftBreastMassMobility','Fixed');
+    		 	
+    		     setInnerHtml('diagnosisSkinChanges',getValueOfChildSpan('diagnosisSkinChangesObs'));
+    		     setInnerHtml('diagnosisLymphadenopathy',getValueOfChildSpan('diagnosisLymphadenopathyObs'));
+    		     setInnerHtml('diagnosisComments', getValueOfChildSpan('diagnosisCommentsObs'));
+    		 	
+    		     setInnerHtml('stageTNMT', getValueOfChildSpan('stageTNMTObs'));
+    		     setInnerHtml('stageTNMN', getValueOfChildSpan('stageTNMNObs'));
+    		     setInnerHtml('stageTNMM', getValueOfChildSpan('stageTNMMObs'));
+    		 	
+    		 	
+    		 	if(hasValue('breastStageOS0'))
+    		 		setInnerHtml('breastStageOS', '0');
+    		 	if(hasValue('breastStageOS1'))
+    		 		setInnerHtml('breastStageOS', 'I');
+    		 	if(hasValue('breastStageOS2'))
+    		 		setInnerHtml('breastStageOS', 'II');
+    		 	if(hasValue('breastStageOS3'))
+    		 		setInnerHtml('breastStageOS', 'III');
+    		 	if(hasValue('breastStageOS4'))
+    		 		setInnerHtml('breastStageOS', 'IV');
+    		 	
+    		 	
+    		 	if(hasValue('breastStageCSEarly'))
+    		 		setInnerHtml('breastStageCS', 'Early');
+    		 	if(hasValue('breastStageCSLocallyAdvanced'))
+    		 		setInnerHtml('breastStageCS', 'Locally advanced');
+    		 	if(hasValue('breastStageCSMetastatic'))
+    		 		setInnerHtml('breastStageCS', 'Metastatic');
+    		 	
+    		 	if(hasValue('breastStageERER+'))
+    		 		setInnerHtml('breastStageER', 'ER+');
+    		 	if(hasValue('breastStageERER-'))
+    		 		setInnerHtml('breastStageER', 'ER-');
+    		 	if(hasValue('breastStageERNotDetermined'))
+    		 		setInnerHtml('breastStageER', 'Not determined');
+    		 	
+    		 	if(hasValue('breastStagePRPR+'))
+    		 		setInnerHtml('breastStagePR', 'PR+');
+    		 	if(hasValue('breastStagePRPR-'))
+    		 		setInnerHtml('breastStagePR', 'PR-');
+    		 	if(hasValue('breastStagePRNotDetermined'))
+    		 		setInnerHtml('breastStagePR', 'Not determined');
+    		 	
+    		 	
+    		 	if(hasValue('breastStageHIIHC+'))
+    		 	    setInnerHtml('breastStageHI', 'HER2 IHC+');
+    		 	if(hasValue('breastStageHIIHC-'))
+    		 	    setInnerHtml('breastStageHI', 'HER2 IHC-');
+    		 	if(hasValue('breastStageHINotDetermined'))
+    		 	    setInnerHtml('breastStageHI', 'Not determined');
+    		 	
+    		 	if(hasValue('breastStageHFFISH+'))
+    		 	    setInnerHtml('breastStageHF', 'HER2 FISH+');
+    		 	if(hasValue('breastStageHFFISH-'))
+    		 	    setInnerHtml('breastStageHF', 'HER2 FISH-');
+    		 	if(hasValue('breastStageHFNotDetermined'))
+    		 	    setInnerHtml('breastStageHF', 'Not determined'); 
+    		 	
+    		 	appendStagingKeys('breastCancerStagingKeys');
+    			 },
+    			 
+    			 handleCervicalCancerSection: function() { //handle Cervical cancer section
+    					hideOthers('cervical');
+    					
+    					setInnerHtml('cervicalMass', ''+getValueOfChildSpan('cervicalMassObs'));
+    					setInnerHtml('cervicalMassSize1', ''+getValueOfChildSpan('cervicalMassSize1Obs'));
+    					setInnerHtml('cervicalMassSize2', ''+getValueOfChildSpan('cervicalMassSize2Obs'));
+    					setInnerHtml('cervicalDiagnosisComments', ''+getValueOfChildSpan('cervicalDiagnosisCommentsObs'));
+    					
+    					if(hasValue('cervicalStageOS0'))
+    					    setInnerHtml('cervicalStageOS', '0');
+    					if(hasValue('cervicalStageOSI'))
+    					    setInnerHtml('cervicalStageOS', 'I');
+    					if(hasValue('cervicalStageOSIA'))
+    					    setInnerHtml('cervicalStageOS', 'IA');
+    					if(hasValue('cervicalStageOSIB1'))
+    					    setInnerHtml('cervicalStageOS', 'IB1');
+    					if(hasValue('cervicalStageOSIB2'))
+    					    setInnerHtml('cervicalStageOS', 'IB2');
+    					if(hasValue('cervicalStageOSII'))
+    					    setInnerHtml('cervicalStageOS', 'II');
+    					if(hasValue('cervicalStageOSIII'))
+    					    setInnerHtml('cervicalStageOS', 'III');
+    					if(hasValue('cervicalStageOSIVA'))
+    					    setInnerHtml('cervicalStageOS', 'IVA');
+    					if(hasValue('cervicalStageOSIVB'))
+    					    setInnerHtml('cervicalStageOS', 'IVB');
+    					
+    					appendStagingKeys('cervicalCancerStagingKeys');
+    				},
+    				
+    				handleKarposiSection: function() { //handle karposi cancer section
+    					 hideOthers('kaposi');
+    					
+    					setInnerHtml('kaposiMass', ''+getValueOfChildSpan('kaposiMassObs'));
+    					setInnerHtml('kaposiMassSize1', ''+getValueOfChildSpan('kaposiMassSize1Obs'));
+    					setInnerHtml('kaposiMassSize2', ''+getValueOfChildSpan('kaposiMassSize2Obs'));
+    					setInnerHtml('kaposiDiagnosisComments', ''+getValueOfChildSpan('kaposiDiagnosisCommentsObs'));
+    					
+    					setInnerHtml('kaposiStageTIST', ''+getValueOfChildSpan('kaposiStageTISTObs'));
+    					setInnerHtml('kaposiStageTISI', ''+getValueOfChildSpan('kaposiStageTISIObs'));
+    					setInnerHtml('kaposiStageTISS', ''+getValueOfChildSpan('kaposiStageTISSObs'));
+    					
+    					if(hasValue('kaposiStageOS0'))
+    					    setInnerHtml('kaposiStageOS', '0');
+    					if(hasValue('kaposiStageOS1'))
+    					    setInnerHtml('kaposiStageOS', 'I');
+    					if(hasValue('kaposiStageOS2'))
+    					    setInnerHtml('kaposiStageOS', 'II');
+    					if(hasValue('kaposiStageOS3'))
+    					    setInnerHtml('kaposiStageOS', 'III');
+    					if(hasValue('kaposiStageOS4'))
+    					    setInnerHtml('kaposiStageOS', 'IV');
+    					
+    					appendStagingKeys('kaposiCancerStagingKeys');
+    				},
+    				
+    				handleHeadAndNeckSection: function() {//handle H and N cancer section
+    					 hideOthers('head');
+    					
+    					if(hasValue('headCancerTypeSinuses'))
+    					    setInnerHtml('headCancerType', 'Sinuses / Nasal cavity');
+    					if(hasValue('headCancerTypeOral'))
+    					    setInnerHtml('headCancerType', 'Oral cavity / Oropharynx/Hypopharynx');
+    					if(hasValue('headCancerTypeLarynx'))
+    					    setInnerHtml('headCancerType', 'Larynx');
+    					if(hasValue('headCancerTypeNasopharynx'))
+    					    setInnerHtml('headCancerType', 'Nasopharynx');
+    					if(hasValue('headCancerTypeOther'))
+    					    setInnerHtml('headCancerType', 'Other');
+    					
+    					setInnerHtml('headMass', ''+getValueOfChildSpan('headMassObs'));
+    					setInnerHtml('headMassSize1', ''+getValueOfChildSpan('headMassSize1Obs'));
+    					setInnerHtml('headMassSize2', ''+getValueOfChildSpan('headMassSize2Obs'));
+    					setInnerHtml('headDiagnosisComments', ''+getValueOfChildSpan('headDiagnosisCommentsObs'));
+    					
+    					setInnerHtml('headStageTNMT', ''+getValueOfChildSpan('headStageTNMTObs'));
+    					setInnerHtml('headStageTNMN', ''+getValueOfChildSpan('headStageTNMNObs'));
+    					setInnerHtml('headStageTNMM', ''+getValueOfChildSpan('headStageTNMMObs'));
+    					
+    					if(hasValue('headStageOS0'))
+    					    setInnerHtml('headStageOS', '0');
+    					if(hasValue('headStageOS1'))
+    					    setInnerHtml('headStageOS', 'I');
+    					if(hasValue('headStageOS2'))
+    					    setInnerHtml('headStageOS', 'II');
+    					if(hasValue('headStageOS3'))
+    					    setInnerHtml('headStageOS', 'III');
+    					if(hasValue('headStageOS4'))
+    					    setInnerHtml('headStageOS', 'IV');
+
+    					appendStagingKeys('headCancerStagingKeys');
+    				},
+    				
+    				handleGastricCancerSection: function() {//handle Gastric cancer section
+    					 hideOthers('gastric');
+    					
+    					setInnerHtml('gastricMass', ''+getValueOfChildSpan('gastricMassObs'));
+    					setInnerHtml('gastricMassSize1', ''+getValueOfChildSpan('gastricMassSize1Obs'));
+    					setInnerHtml('gastricMassSize2', ''+getValueOfChildSpan('gastricMassSize2Obs'));
+    					setInnerHtml('gastricDiagnosisComments', ''+getValueOfChildSpan('gastricDiagnosisCommentsObs'));
+    					
+    					setInnerHtml('gastricStageTNMT', ''+getValueOfChildSpan('gastricStageTNMTObs'));
+    					setInnerHtml('gastricStageTNMN', ''+getValueOfChildSpan('gastricStageTNMNObs'));
+    					setInnerHtml('gastricStageTNMM', ''+getValueOfChildSpan('gastricStageTNMMObs'));
+    					
+    					if(hasValue('gastricStageOS0'))
+    					    setInnerHtml('gastricStageOS', '0');
+    					if(hasValue('gastricStageOS1'))
+    					    setInnerHtml('gastricStageOS', 'I');
+    					if(hasValue('gastricStageOS2'))
+    					    setInnerHtml('gastricStageOS', 'II');
+    					if(hasValue('gastricStageOS3'))
+    					    setInnerHtml('gastricStageOS', 'III');
+    					if(hasValue('gastricStageOS4'))
+    					    setInnerHtml('gastricStageOS', 'IV');
+    					
+    					if(hasValue('gastricStageHPPositive'))
+    					    setInnerHtml('gastricStageHP', 'Positive');
+    					if(hasValue('gastricStageHPNegative'))
+    					    setInnerHtml('gastricStageHP', 'Negative');
+    					if(hasValue('gastricStageHPNotDetermined'))
+    					    setInnerHtml('gastricStageHP', 'Not determined');
+    					
+    					appendStagingKeys('gastricCancerStagingKeys');
+    				},
+    				
+    				handleColonCancerSection: function() {//handle Colon cancer section
+    					 hideOthers('colon');
+    					
+    					setInnerHtml('colonMass', ''+getValueOfChildSpan('colonMassObs'));
+    					setInnerHtml('colonMassSize1', ''+getValueOfChildSpan('colonMassSize1Obs'));
+    					setInnerHtml('colonMassSize2', ''+getValueOfChildSpan('colonMassSize2Obs'));
+    					setInnerHtml('colonDiagnosisComments', ''+getValueOfChildSpan('colonDiagnosisCommentsObs'));
+    					
+    					setInnerHtml('colonStageTNMT', ''+getValueOfChildSpan('colonStageTNMTObs'));
+    					setInnerHtml('colonStageTNMN', ''+getValueOfChildSpan('colonStageTNMNObs'));
+    					setInnerHtml('colonStageTNMM', ''+getValueOfChildSpan('colonStageTNMMObs'));
+    					
+    					if(hasValue('colonStageOS0'))
+    					    setInnerHtml('colonStageOS', '0');
+    					if(hasValue('colonStageOS1'))
+    					    setInnerHtml('colonStageOS', 'I');
+    					if(hasValue('colonStageOS2'))
+    					    setInnerHtml('colonStageOS', 'II');
+    					if(hasValue('colonStageOS3'))
+    					    setInnerHtml('colonStageOS', 'III');
+    					if(hasValue('colonStageOS4'))
+    					    setInnerHtml('colonStageOS', 'IV');
+    					
+    					appendStagingKeys('colonCancerStagingKeys');
+    				},
+
+    				handleProstateCancerSection: function() {//handle Prostate cancer section
+    					 hideOthers('prostate');
+    					
+    					setInnerHtml('prostateMass', ''+getValueOfChildSpan('prostateMassObs'));
+    					setInnerHtml('prostateMassSize1', ''+getValueOfChildSpan('prostateMassSize1Obs'));
+    					setInnerHtml('prostateMassSize2', ''+getValueOfChildSpan('prostateMassSize2Obs'));
+    					setInnerHtml('prostateDiagnosisComments', ''+getValueOfChildSpan('prostateDiagnosisCommentsObs'));
+    					
+    					setInnerHtml('prostateStageTNMT', ''+getValueOfChildSpan('prostateStageTNMTObs'));
+    					setInnerHtml('prostateStageTNMN', ''+getValueOfChildSpan('prostateStageTNMNObs'));
+    					setInnerHtml('prostateStageTNMM', ''+getValueOfChildSpan('prostateStageTNMMObs'));
+    					
+    					if(hasValue('prostateStageOS0'))
+    					    setInnerHtml('prostateStageOS', '0');
+    					if(hasValue('prostateStageOS1'))
+    					    setInnerHtml('prostateStageOS', 'I');
+    					if(hasValue('prostateStageOS2'))
+    					    setInnerHtml('prostateStageOS', 'II');
+    					if(hasValue('prostateStageOS3'))
+    					    setInnerHtml('prostateStageOS', 'III');
+    					if(hasValue('prostateStageOS4'))
+    					    setInnerHtml('prostateStageOS', 'IV');
+    					
+    					appendStagingKeys('prostateCancerStagingKeys');
+    				},
+    				
+    				handleNephroblastomaCancerSection: function() {//handle Nephroblastoma cancer section
+    					 hideOthers('nephroblastoma');
+    					
+    					setInnerHtml('nephroblastomaMass', ''+getValueOfChildSpan('nephroblastomaMassObs'));
+    					setInnerHtml('nephroblastomaMassSize1', ''+getValueOfChildSpan('nephroblastomaMassSize1Obs'));
+    					setInnerHtml('nephroblastomaMassSize2', ''+getValueOfChildSpan('nephroblastomaMassSize2Obs'));
+    					setInnerHtml('nephroblastomaDiagnosisComments', ''+getValueOfChildSpan('nephroblastomaDiagnosisCommentsObs'));
+    					
+    					if(hasValue('nephroblastomaStageOS0'))
+    					    setInnerHtml('nephroblastomaStageOS', '0');
+    					if(hasValue('nephroblastomaStageOS1'))
+    					    setInnerHtml('nephroblastomaStageOS', 'I');
+    					if(hasValue('nephroblastomaStageOS2'))
+    					    setInnerHtml('nephroblastomaStageOS', 'II');
+    					if(hasValue('nephroblastomaStageOS3'))
+    					    setInnerHtml('nephroblastomaStageOS', 'III');
+    					if(hasValue('nephroblastomaStageOS4'))
+    					    setInnerHtml('nephroblastomaStageOS', 'IV');
+    					if(hasValue('nephroblastomaStageOS5'))
+    					    setInnerHtml('nephroblastomaStageOS', 'V');
+    					
+    					appendStagingKeys('nephroblastomaCancerStagingKeys');
+    				},
+
+    				handleLungCancerSection: function() {//handle Lung cancer section
+    					 hideOthers('lung');
+    					 	
+    					if(hasValue('lungCancerTypeSmallCell'))
+    					    setInnerHtml('lungCancerType', 'Small cell lung cancer');
+    					if(hasValue('lungCancerTypeNonSmall'))
+    					    setInnerHtml('lungCancerType', 'Non-small cell lung cancer');
+    					
+    					setInnerHtml('lungMass', ''+getValueOfChildSpan('lungMassObs'));
+    					setInnerHtml('lungMassSize1', ''+getValueOfChildSpan('lungMassSize1Obs'));
+    					setInnerHtml('lungMassSize2', ''+getValueOfChildSpan('lungMassSize2Obs'));
+    					setInnerHtml('lungDiagnosisComments', ''+getValueOfChildSpan('lungDiagnosisCommentsObs'));
+    					
+    					if(hasValue('lungSmallCellLimited'))
+    					    setInnerHtml('lungSmallCell', 'Limited stage');
+    					if(hasValue('lungSmallCellExtensive'))
+    					    setInnerHtml('lungSmallCell', 'Extensive stage');
+    					
+    					setInnerHtml('lungStageTNMT', ''+getValueOfChildSpan('lungStageTNMTObs'));
+    					setInnerHtml('lungStageTNMN', ''+getValueOfChildSpan('lungStageTNMNObs'));
+    					setInnerHtml('lungStageTNMM', ''+getValueOfChildSpan('lungStageTNMMObs'));
+    					
+    					if(hasValue('lungStageOS0'))
+    					    setInnerHtml('lungStageOS', '0');
+    					if(hasValue('lungStageOS1'))
+    					    setInnerHtml('lungStageOS', 'I');
+    					if(hasValue('lungStageOS2'))
+    					    setInnerHtml('lungStageOS', 'II');
+    					if(hasValue('lungStageOS3A'))
+    					    setInnerHtml('lungStageOS', 'III-A');
+    					if(hasValue('lungStageOS3B'))
+    					    setInnerHtml('lungStageOS', 'III-B ');
+    					if(hasValue('lungStageOS4'))
+    					    setInnerHtml('lungStageOS', 'IV');
+    					
+    					appendStagingKeys('lungCancerStagingKeys');
+    				},
+
+    				handleOtherSolidCancerSection: function() {//handle other solid cancer section
+    					 hideOthers('otherSolid');
+    					
+    					setInnerHtml('otherSolidMass', ''+getValueOfChildSpan('otherSolidMassObs'));
+    					setInnerHtml('otherSolidMassSize1', ''+getValueOfChildSpan('otherSolidMassSize1Obs'));
+    					setInnerHtml('otherSolidMassSize2', ''+getValueOfChildSpan('otherSolidMassSize2Obs'));
+    					setInnerHtml('otherSolidDiagnosisComments', ''+getValueOfChildSpan('otherSolidDiagnosisCommentsObs'));
+    					
+    					setInnerHtml('otherSolidStageTNMT', ''+getValueOfChildSpan('otherSolidStageTNMTObs'));
+    					setInnerHtml('otherSolidStageTNMN', ''+getValueOfChildSpan('otherSolidStageTNMNObs'));
+    					setInnerHtml('otherSolidStageTNMM', ''+getValueOfChildSpan('otherSolidStageTNMMObs'));
+    					
+    					if(hasValue('otherSolidStageOS0'))
+    					    setInnerHtml('otherSolidStageOS', '0');
+    					if(hasValue('otherSolidStageOS1'))
+    					    setInnerHtml('otherSolidStageOS', 'I');
+    					if(hasValue('otherSolidStageOS2'))
+    					    setInnerHtml('otherSolidStageOS', 'II');
+    					if(hasValue('otherSolidStageOS3'))
+    					    setInnerHtml('otherSolidStageOS', 'III');
+    					if(hasValue('otherSolidStageOS4'))
+    					    setInnerHtml('otherSolidStageOS', 'IV');
+    				},
+    				
+    				handleHodgkinCancerSection: function() {//handle Hodgkin cancer section
+    					 hideOthers('hodgkin');
+    					 	
+    					setInnerHtml('hodgkinMass', ''+getValueOfChildSpan('hodgkinMassObs'));
+    					setInnerHtml('hodgkinMassSize1', ''+getValueOfChildSpan('hodgkinMassSize1Obs'));
+    					setInnerHtml('hodgkinMassSize2', ''+getValueOfChildSpan('hodgkinMassSize2Obs'));
+    					setInnerHtml('hodgkinDiagnosisComments', ''+getValueOfChildSpan('hodgkinDiagnosisCommentsObs'));
+    					
+    					if(hasValue('hodgkinStageOS0'))
+    					    setInnerHtml('hodgkinStageOS', '0');
+    					if(hasValue('hodgkinStageOS1'))
+    					    setInnerHtml('hodgkinStageOS', 'I');
+    					if(hasValue('hodgkinStageOS2'))
+    					    setInnerHtml('hodgkinStageOS', 'II');
+    					if(hasValue('hodgkinStageOS3'))
+    					    setInnerHtml('hodgkinStageOS', 'III');
+    					if(hasValue('hodgkinStageOS4'))
+    					    setInnerHtml('hodgkinStageOS', 'IV');
+    					
+    					if(hasValue('hodgkinStageBulkyYes'))
+    					    setInnerHtml('hodgkinStageBulky', 'Yes');
+    					if(hasValue('hodgkinStageBulkyNo'))
+    					    setInnerHtml('hodgkinStageBulky', 'No');
+    					if(hasValue('hodgkinStageBulkyNotDetermined'))
+    					    setInnerHtml('hodgkinStageBulky', 'Not determined');
+    					
+    					if(hasValue('hodgkinStageSymptomaticNoBSymptoms'))
+    					    setInnerHtml('hodgkinStageSymptomatic', 'No B symptoms');
+    					if(hasValue('hodgkinStageSymptomaticBSymptoms'))
+    					    setInnerHtml('hodgkinStageSymptomatic', 'B symptoms present');
+    					
+    					appendStagingKeys('hodgkinCancerStagingKeys');
+    				},
+
+    				handleBurkittCancerSection: function() {//handle Burkitt cancer section
+    					 hideOthers('burkitt');
+    					
+    					setInnerHtml('burkittMass', ''+getValueOfChildSpan('burkittMassObs'));
+    					setInnerHtml('burkittMassSize1', ''+getValueOfChildSpan('burkittMassSize1Obs'));
+    					setInnerHtml('burkittMassSize2', ''+getValueOfChildSpan('burkittMassSize2Obs'));
+    					setInnerHtml('burkittDiagnosisComments', ''+getValueOfChildSpan('burkittDiagnosisCommentsObs'));
+    					
+    					if(hasValue('burkittStageOS0'))
+    					    setInnerHtml('burkittStageOS', '0');
+    					if(hasValue('burkittStageOS1'))
+    					    setInnerHtml('burkittStageOS', 'I');
+    					if(hasValue('burkittStageOS2'))
+    					    setInnerHtml('burkittStageOS', 'II');
+    					if(hasValue('burkittStageOS3'))
+    					    setInnerHtml('burkittStageOS', 'III');
+    					if(hasValue('burkittStageOS4'))
+    					    setInnerHtml('burkittStageOS', 'IV');
+    					
+    					if(hasValue('burkittStageBulkyYes'))
+    					    setInnerHtml('burkittStageBulky', 'Yes');
+    					if(hasValue('burkittStageBulkyNo'))
+    					    setInnerHtml('burkittStageBulky', 'No');
+    					if(hasValue('burkittStageBulkyNotDetermined'))
+    					    setInnerHtml('burkittStageBulky', 'Not determined');
+    					
+    					if(hasValue('burkittStageSymptomaticNoBSymptoms'))
+    					    setInnerHtml('burkittStageSymptomatic', 'No B symptoms');
+    					if(hasValue('burkittStageSymptomaticBSymptoms'))
+    					    setInnerHtml('burkittStageSymptomatic', 'B symptoms present');
+    					
+    					appendStagingKeys('burkittCancerStagingKeys');
+    				},
+
+    				handleLargeBCellCancerSection: function() {//handle large B cell cancer section
+    					 hideOthers('large');
+    					
+    					setInnerHtml('largeMass', ''+getValueOfChildSpan('largeMassObs'));
+    					setInnerHtml('largeMassSize1', ''+getValueOfChildSpan('largeMassSize1Obs'));
+    					setInnerHtml('largeMassSize2', ''+getValueOfChildSpan('largeMassSize2Obs'));
+    					setInnerHtml('largeDiagnosisComments', ''+getValueOfChildSpan('largeDiagnosisCommentsObs'));
+    					
+    					if(hasValue('largeStageOS0'))
+    					    setInnerHtml('largeStageOS', '0');
+    					if(hasValue('largeStageOS1'))
+    					    setInnerHtml('largeStageOS', 'I');
+    					if(hasValue('largeStageOS2'))
+    					    setInnerHtml('largeStageOS', 'II');
+    					if(hasValue('largeStageOS3'))
+    					    setInnerHtml('largeStageOS', 'III');
+    					if(hasValue('largeStageOS4'))
+    					    setInnerHtml('largeStageOS', 'IV');
+    					
+    					if(hasValue('largeStageBulkyYes'))
+    					    setInnerHtml('largeStageBulky', 'Yes');
+    					if(hasValue('largeStageBulkyNo'))
+    					    setInnerHtml('largeStageBulky', 'No');
+    					if(hasValue('largeStageBulkyNotDetermined'))
+    					    setInnerHtml('largeStageBulky', 'Not determined');
+    					
+    					if(hasValue('largeStageSymptomaticNoBSymptoms'))
+    					    setInnerHtml('largeStageSymptomatic', 'No B symptoms');
+    					if(hasValue('largeStageSymptomaticBSymptoms'))
+    					    setInnerHtml('largeStageSymptomatic', 'B symptoms present');
+    					
+    					appendStagingKeys('largeCancerStagingKeys');
+    				},
+
+    				handleNHLCancerSection: function() {//handle NHL cancer section
+    					 hideOthers('otherNHL');
+    					
+    					setInnerHtml('otherNHLMass', ''+getValueOfChildSpan('otherNHLMassObs'));
+    					setInnerHtml('otherNHLMassSize1', ''+getValueOfChildSpan('otherNHLMassSize1Obs'));
+    					setInnerHtml('otherNHLMassSize2', ''+getValueOfChildSpan('otherNHLMassSize2Obs'));
+    					setInnerHtml('otherNHLDiagnosisComments', ''+getValueOfChildSpan('otherNHLDiagnosisCommentsObs'));
+    					
+    					if(hasValue('otherNHLStageOS0'))
+    					    setInnerHtml('otherNHLStageOS', '0');
+    					if(hasValue('otherNHLStageOS1'))
+    					    setInnerHtml('otherNHLStageOS', 'I');
+    					if(hasValue('otherNHLStageOS2'))
+    					    setInnerHtml('otherNHLStageOS', 'II');
+    					if(hasValue('otherNHLStageOS3'))
+    					    setInnerHtml('otherNHLStageOS', 'III');
+    					if(hasValue('otherNHLStageOS4'))
+    					    setInnerHtml('otherNHLStageOS', 'IV');
+    					
+    					if(hasValue('otherNHLStageBulkyYes'))
+    					    setInnerHtml('otherNHLStageBulky', 'Yes');
+    					if(hasValue('otherNHLStageBulkyNo'))
+    					    setInnerHtml('otherNHLStageBulky', 'No');
+    					if(hasValue('otherNHLStageBulkyNotDetermined'))
+    					    setInnerHtml('otherNHLStageBulky', 'Not determined');
+    					
+    					if(hasValue('otherNHLStageSymptomaticNoBSymptoms'))
+    					    setInnerHtml('otherNHLStageSymptomatic', 'No B symptoms');
+    					if(hasValue('otherNHLStageSymptomaticBSymptoms'))
+    					    setInnerHtml('otherNHLStageSymptomatic', 'B symptoms present');
+    					
+    					appendStagingKeys('otherNHLCancerStagingKeys');
+    				},
+
+    				handleALLCancerSection: function() {//handle ALL cancer section
+    					 hideOthers('ALL');
+    					
+    					setInnerHtml('ALLDiagnosisComments', ''+getValueOfChildSpan('ALLDiagnosisCommentsObs'));
+    					
+
+    					if(hasValue('ALLStageLowRisk'))
+    					    setInnerHtml('ALLStage', 'Low risk');
+    					if(hasValue('ALLStageMediumRisk'))
+    					    setInnerHtml('ALLStage', 'Medium risk');
+    					if(hasValue('ALLStageHighRisk'))
+    					    setInnerHtml('ALLStage', 'High risk (always when Ph+, infant)');
+    					if(hasValue('ALLStageVeryHighRisk'))
+    					    setInnerHtml('ALLStage', 'Very High risk');
+    					
+    					if(hasValue('ALLStagePhStatusPh+'))
+    					    setInnerHtml('ALLStagePhStatus', 'Ph+');
+    					if(hasValue('ALLStagePhStatusPh-'))
+    					    setInnerHtml('ALLStagePhStatus', 'Ph-');
+    					if(hasValue('ALLStagePhStatusNotDetermined'))
+    					    setInnerHtml('ALLStagePhStatus', 'not determined');
+    					 
+    				},
+    				handleCMLCancerSection: function() {//handle CML cancer section
+    					 hideOthers('CML');
+    					
+    					setInnerHtml('CMLDiagnosisComments', ''+getValueOfChildSpan('CMLDiagnosisCommentsObs'));
+    					
+    				 	
+    					if(hasValue('CMLStageChronicPhase'))
+    					    setInnerHtml('CMLStage', 'Chronic phase');
+    					if(hasValue('CMLStageAcceleratedPhase'))
+    					    setInnerHtml('CMLStage', 'Accelerated phase');
+    					if(hasValue('CMLStageBlastCrisis'))
+    					    setInnerHtml('CMLStage', 'Blast crisis');
+    					
+    					if(hasValue('CMLStageCytogeneticsTPositive'))
+    					    setInnerHtml('CMLStageCytogenetics', 't(9,22)+');
+    					if(hasValue('CMLStageCytogeneticsT-'))
+    					    setInnerHtml('CMLStageCytogenetics', 't(9,22)-');
+    					if(hasValue('CMLStageCytogeneticsNotDetermined'))
+    					    setInnerHtml('CMLStageCytogenetics', 'not determined');
+    					
+    					
+    					appendStagingKeys('CMLCancerStagingKeys');
+    				},
+
+    				handleMultipleMyelomaCancerSection: function() {//handle Multiple Myeloma cancer section
+    					 
+    					 hideOthers('multiple');
+    					    
+    					    setInnerHtml('multipleMass', ''+getValueOfChildSpan('multipleMassObs'));
+    					setInnerHtml('multipleMassSize1', ''+getValueOfChildSpan('multipleMassSize1Obs'));
+    					setInnerHtml('multipleMassSize2', ''+getValueOfChildSpan('multipleMassSize2Obs'));
+    					setInnerHtml('multipleDiagnosisComments', ''+getValueOfChildSpan('multipleDiagnosisCommentsObs'));
+    					
+    					if(hasValue('multipleStageOS0'))
+    					    setInnerHtml('multipleStageOS', '0');
+    					if(hasValue('multipleStageOS1'))
+    					    setInnerHtml('multipleStageOS', 'I');
+    					if(hasValue('multipleStageOS2'))
+    					    setInnerHtml('multipleStageOS', 'II');
+    					if(hasValue('multipleStageOS3'))
+    					    setInnerHtml('multipleStageOS', 'III');
+    					
+    					if(hasValue('multipleSubclassificationA'))
+    					    setInnerHtml('multipleSubclassification', 'A: relatively normal renal function (serum creatinine value &lt; 2.0 mg/dl) ');
+    					if(hasValue('multipleSubclassificationB'))
+    					    setInnerHtml('multipleSubclassification', 'B: abnomal renal function (serum creatinine &gt; 2.0 mg/dl) ');
+    					
+    					appendStagingKeys('multipleCancerStagingKeys');
+    					 
+    				},
+
+    				handleMetastaticCancerSection: function() {//handle Metastatic cancer section
+    					 hideOthers('metastatic');
+    					 	
+    				    setInnerHtml('metastaticDiagnosisComments', ''+getValueOfChildSpan('metastaticDiagnosisCommentsObs'));
+    					
+    					if(hasValue('metastaticStageOS0'))
+    					    setInnerHtml('metastaticStageOS', '0');
+    					if(hasValue('metastaticStageOS1'))
+    					    setInnerHtml('metastaticStageOS', 'I');
+    					if(hasValue('metastaticStageOS2'))
+    					    setInnerHtml('metastaticStageOS', 'II');
+    					if(hasValue('metastaticStageOS3'))
+    					    setInnerHtml('metastaticStageOS', 'III');
+    					if(hasValue('metastaticStageOS4'))
+    					    setInnerHtml('metastaticStageOS', 'IV');
+    					
+    					appendStagingKeys(null);
+    				},
+
+    				handleOtherLiquidCancerSection: function() {//handle Other Liquid cancer section
+    					 hideOthers('otherLiquid');		 
+    					setInnerHtml('otherLiquidDiagnosisComments', ''+getValueOfChildSpan('otherLiquidDiagnosisCommentsObs'));
+    					setInnerHtml('otherLiquidStageOS', ''+getValueOfChildSpan('otherLiquidStageOSObs'));
+    					appendStagingKeys(null);
+    				},
+    				
+    				handlePathologySection: function() {//handle Pathology section	 
+    					 if(hasValue('pathologyCompletedYes')){
+    						 setInnerHtml('pathologyCompleted', 'Yes');
+    						 setInnerHtml('pathologyDate', ''+getValueOfChildSpan('dateOfPathologyObs'));
+    						 setInnerHtml('pathologySite', ''+getValueOfChildSpan('siteOfPathologyObs'));
+    					 }else{
+    						 setInnerHtml('pathologyCompleted', 'No');
+    						 $j("#pathology tr:gt(1)").hide();
+    					 }
+    				 },	
+    				
+    				handleAllergiesSection: function() {//handle Allergies section
+    					
+    					$j('#existingAndNewAllergiesPrintView tr:gt(2)').remove();
+    				    
+    					$j('#existingAndNewAllergiesScreenView tr.existingAllergy').appendTo('#existingAndNewAllergiesPrintView');   
+    				    
+    				    if(hasValue('firstAllergyCauses')){
+    				    	$j('#newAllergiesHeading tr').appendTo('#existingAndNewAllergiesPrintView');  
+    				    	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+getValueOfChildSpan('firstAllergyCauses')+'</td><td>'+getValueOfChildSpan('firstAllergyReaction')+'</td><td>'+getValueOfChildSpan('firstAllergyYear')+'</td></tr>');
+    				    
+    				    }
+    				  	 
+    				    if(hasValue('secondAllergyCauses')){
+    				    	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+getValueOfChildSpan('secondAllergyCauses')+'</td><td>'+getValueOfChildSpan('secondAllergyReaction')+'</td><td>'+getValueOfChildSpan('secondAllergyYear')+'</td></tr>');
+    				        
+    				        }
+    				    
+    				    if(hasValue('thirdAllergyCauses')){
+    				    	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+getValueOfChildSpan('thirdAllergyCauses')+'</td><td>'+getValueOfChildSpan('thirdAllergyReaction')+'</td><td>'+getValueOfChildSpan('thirdAllergyYear')+'</td></tr>');
+    				        
+    				        }
+    				},
+    				
+    				handleTreatmentItentSection: function() {//handle Treatment Intent section
+    				   	
+    				   	if(hasValue('treatmentCurative')){
+    				   		setInnerHtml('treatmentIntent', 'Curative');
+    				   	}
+    				       if(hasValue('treatmentPalliative')){
+    				       	setInnerHtml('treatmentIntent', 'Palliative systemic therapy');
+    				   	}
+    				       if(hasValue('treatmentPalliation')){
+    				       	setInnerHtml('treatmentIntent', 'Palliation ONLY');
+    				   	}
+    				},
+    				
+    				handleTreatmentPlanSection: function() {//handle Treatment Plan section
+    				    /*  now that we are going to play with the treatment plan sections (i.e surgery, radiation and chemotherapy) 
+    				    we need to initisalize them to hidden state and we'll be toggling them one by one according to whether a section is selected or not */
+    				    $j('#surgeryTreatmentPlan').hide();
+    				    $j('#radiationTreatmentPlan').hide();
+    				    $j('#chemotherapyTreatmentPlan').hide(); 
+    				   
+    				  //handle surgery section if selected
+    				    if(hasValue('trigger21')){
+    				    	$j('#surgeryTreatmentPlan').show();
+    						setInnerHtml('surgeryFacility', ''+getValueOfChildSpan('surgeryFacilityObs'));
+    						setInnerHtml('surgeryStartDate', ''+getValueOfChildSpan('surgeryStartDateObs'));
+    						setInnerHtml('surgeryType', ''+getValueOfChildSpan('surgeryTypeObs'));
+    					}
+
+    				    //handle radiation section if selected
+    				    if(hasValue('trigger22')){
+    				    	$j('#radiationTreatmentPlan').show();
+    						setInnerHtml('radiationFacility', ''+getValueOfChildSpan('radiationFacilityObs'));
+    						setInnerHtml('radiationStartDate', ''+getValueOfChildSpan('radiationStartDateObs'));
+
+    					}
+    				    
+    				  //handle chemotherapy section if selected
+    				    if(hasValue('trigger23')){
+    				    	$j('#chemotherapyTreatmentPlan').show();
+    						setInnerHtml('chemotherapyRegimen', ''+getValueOfChildSpan('chemotherapyRegimenObs'));
+    						setInnerHtml('chemotherapyCycles', ''+getValueOfChildSpan('chemotherapyCyclesObs'));
+    						setInnerHtml('chemotherapyFirstCycle', ''+getValueOfChildSpan('chemotherapyFirstCycleObs'));
+    						setInnerHtml('chemotherapyRegimenEnd', ''+getValueOfChildSpan('chemotherapyRegimenEndObs'));
+    						setInnerHtml('chemotherapyStandardRegimen', ''+getValueOfChildSpan('chemotherapyStandardRegimenObs'));
+
+    					}
+    				},
+       }
+       
+       
+       //this class contains methods used to handle printing of this form while in the EDIT or ENTER mode 
+	var EditModeHandler = function(){};
+	EditModeHandler.prototype = {
+
+	    handleHeadingSection: function(finalDiagnosis) { //handle heading section
+	         setInnerHtml("finalDiagnosis", finalDiagnosis);
+	         setInnerHtml("date", $j.datepicker.formatDate('dd/M/yy', new Date(getValue('encounterDate.value'))));
+	         setInnerHtml("locationPrintArea", $j('#encounterLocation option:selected').text());
+	         setInnerHtml("provider", $j('#encounterProvider option:selected').text());
+	         setInnerHtml("managingDCA", getValue('managingDCA.managingDCA.value')+' '+getValue('managingDCA.newRelationship.value'));
+	         setInnerHtml("managingGP", getValue('managingGP.managingGP.value')+' '+getValue('managingGP.newRelationship.value'));
+	    },
+	
+	 handleBreastCancerSection: function() { //handle Breast cancer section
+		 hideOthers('breast');
+
+ 		setInnerHtml("rightBreastMass", getValue('rightBreastMassObs.value'));
+ 		setInnerHtml("rightBreastMassSize1", getValue('rightBreastMassSize1Obs.value'));
+ 		setInnerHtml("rightBreastMassSize2", getValue('rightBreastMassSize2Obs.value'));
+ 	
+ 	
+ 	if(getValue('rightBreastMassMobilityMobile.value') !=null )
+ 		setInnerHtml('rightBreastMassMobility','Mobile');
+ 	if(getValue('rightBreastMassMobilityFixed.value') !=null )
+ 		setInnerHtml('rightBreastMassMobility', 'Fixed');
+ 	
+ 	setInnerHtml('leftBreastMass', getValue('leftBreastMassObs.value'));
+ 	setInnerHtml('leftBreastMassSize1', getValue('leftBreastMassSize1Obs.value'));
+ 	setInnerHtml('leftBreastMassSize2', getValue('leftBreastMassSize2Obs.value'));
+ 	
+ 	if(getValue('leftBreastMassMobilityMobile.value') !=null )
+ 		setInnerHtml('leftBreastMassMobility','Mobile');
+     if(getValue('leftBreastMassMobilityFixed.value') !=null )
+     	setInnerHtml('leftBreastMassMobility','Fixed');
+ 	
+     setInnerHtml('diagnosisSkinChanges',getValue('diagnosisSkinChangesObs.value'));
+     setInnerHtml('diagnosisLymphadenopathy',getValue('diagnosisLymphadenopathyObs.value'));
+     setInnerHtml('diagnosisComments', getValue('diagnosisCommentsObs.value'));
+ 	
+     setInnerHtml('stageTNMT', $j('#stageTNMTObs option:selected').text());
+     setInnerHtml('stageTNMN', $j('#stageTNMNObs option:selected').text());
+     setInnerHtml('stageTNMM', $j('#stageTNMMObs option:selected').text());
+ 	
+ 	
+ 	if(getValue('breastStageOS0.value') !=null )
+ 		setInnerHtml('breastStageOS', '0');
+ 	if(getValue('breastStageOS1.value') !=null )
+ 		setInnerHtml('breastStageOS', 'I');
+ 	if(getValue('breastStageOS2.value') !=null )
+ 		setInnerHtml('breastStageOS', 'II');
+ 	if(getValue('breastStageOS3.value') !=null )
+ 		setInnerHtml('breastStageOS', 'III');
+ 	if(getValue('breastStageOS4.value') !=null )
+ 		setInnerHtml('breastStageOS', 'IV');
+ 	
+ 	
+ 	if(getValue('breastStageCSEarly.value') !=null )
+ 		setInnerHtml('breastStageCS', 'Early');
+ 	if(getValue('breastStageCSLocallyAdvanced.value') !=null )
+ 		setInnerHtml('breastStageCS', 'Locally advanced');
+ 	if(getValue('breastStageCSMetastatic.value') !=null )
+ 		setInnerHtml('breastStageCS', 'Metastatic');
+ 	
+ 	if(getValue('breastStageERER+.value') !=null )
+ 		setInnerHtml('breastStageER', 'ER+');
+ 	if(getValue('breastStageERER-.value') !=null )
+ 		setInnerHtml('breastStageER', 'ER-');
+ 	if(getValue('breastStageERNotDetermined.value') !=null )
+ 		setInnerHtml('breastStageER', 'Not determined');
+ 	
+ 	if(getValue('breastStagePRPR+.value') !=null )
+ 		setInnerHtml('breastStagePR', 'PR+');
+ 	if(getValue('breastStagePRPR-.value') !=null )
+ 		setInnerHtml('breastStagePR', 'PR-');
+ 	if(getValue('breastStagePRNotDetermined.value') !=null )
+ 		setInnerHtml('breastStagePR', 'Not determined');
+ 	
+ 	
+ 	if(getValue('breastStageHIIHC+.value') !=null )
+ 	    setInnerHtml('breastStageHI', 'HER2 IHC+');
+ 	if(getValue('breastStageHIIHC-.value') !=null )
+ 	    setInnerHtml('breastStageHI', 'HER2 IHC-');
+ 	if(getValue('breastStageHINotDetermined.value') !=null )
+ 	    setInnerHtml('breastStageHI', 'Not determined');
+ 	
+ 	if(getValue('breastStageHFFISH+.value') !=null )
+ 	    setInnerHtml('breastStageHF', 'HER2 FISH+');
+ 	if(getValue('breastStageHFFISH-.value') !=null )
+ 	    setInnerHtml('breastStageHF', 'HER2 FISH-');
+ 	if(getValue('breastStageHFNotDetermined.value') !=null )
+ 	    setInnerHtml('breastStageHF', 'Not determined'); 
+ 	
+ 	appendStagingKeys('breastCancerStagingKeys');
+	 },
+	 
+	 handleCervicalCancerSection: function() { //handle Cervical cancer section
+			hideOthers('cervical');
+    		
+	    	setInnerHtml('cervicalMass', ''+getValue('cervicalMassObs.value'));
+	    	setInnerHtml('cervicalMassSize1', ''+getValue('cervicalMassSize1Obs.value'));
+	    	setInnerHtml('cervicalMassSize2', ''+getValue('cervicalMassSize2Obs.value'));
+	    	setInnerHtml('cervicalDiagnosisComments', ''+getValue('cervicalDiagnosisCommentsObs.value'));
+	    	
+	    	if(getValue('cervicalStageOS0.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', '0');
+	    	if(getValue('cervicalStageOSI.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', 'I');
+	    	if(getValue('cervicalStageOSIA.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', 'IA');
+	    	if(getValue('cervicalStageOSIB1.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', 'IB1');
+	    	if(getValue('cervicalStageOSIB2.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', 'IB2');
+	    	if(getValue('cervicalStageOSII.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', 'II');
+	    	if(getValue('cervicalStageOSIII.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', 'III');
+	    	if(getValue('cervicalStageOSIVA.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', 'IVA');
+	    	if(getValue('cervicalStageOSIVB.value') !=null )
+	    	    setInnerHtml('cervicalStageOS', 'IVB');
+	    	
+	    	appendStagingKeys('cervicalCancerStagingKeys');
+	 },
+	 
+	 handleKarposiSection: function() { //handle karposi cancer section
+		 hideOthers('kaposi');
+ 		
+ 		setInnerHtml('kaposiMass', ''+getValue('kaposiMassObs.value'));
+     	setInnerHtml('kaposiMassSize1', ''+getValue('kaposiMassSize1Obs.value'));
+     	setInnerHtml('kaposiMassSize2', ''+getValue('kaposiMassSize2Obs.value'));
+     	setInnerHtml('kaposiDiagnosisComments', ''+getValue('kaposiDiagnosisCommentsObs.value'));
+     	
+     	setInnerHtml('kaposiStageTIST', ''+$j('#kaposiStageTISTObs option:selected').text());
+     	setInnerHtml('kaposiStageTISI', ''+$j('#kaposiStageTISIObs option:selected').text());
+     	setInnerHtml('kaposiStageTISS', ''+$j('#kaposiStageTISSObs option:selected').text());
+     	
+     	if(getValue('kaposiStageOS0.value') !=null )
+     	    setInnerHtml('kaposiStageOS', '0');
+     	if(getValue('kaposiStageOS1.value') !=null )
+     	    setInnerHtml('kaposiStageOS', 'I');
+     	if(getValue('kaposiStageOS2.value') !=null )
+     	    setInnerHtml('kaposiStageOS', 'II');
+     	if(getValue('kaposiStageOS3.value') !=null )
+     	    setInnerHtml('kaposiStageOS', 'III');
+     	if(getValue('kaposiStageOS4.value') !=null )
+     	    setInnerHtml('kaposiStageOS', 'IV');
+     	
+     	appendStagingKeys('kaposiCancerStagingKeys');
+	 },
+	 
+	 handleHeadAndNeckSection: function() {//handle H and N cancer section
+		 hideOthers('head');
+ 		
+ 		if(getValue('headCancerTypeSinuses.value') !=null )
+     	    setInnerHtml('headCancerType', 'Sinuses / Nasal cavity');
+     	if(getValue('headCancerTypeOral.value') !=null )
+     	    setInnerHtml('headCancerType', 'Oral cavity / Oropharynx/Hypopharynx');
+     	if(getValue('headCancerTypeLarynx.value') !=null )
+     	    setInnerHtml('headCancerType', 'Larynx');
+     	if(getValue('headCancerTypeNasopharynx.value') !=null )
+     	    setInnerHtml('headCancerType', 'Nasopharynx');
+     	if(getValue('headCancerTypeOther.value') !=null )
+     	    setInnerHtml('headCancerType', 'Other');
+     	
+     	setInnerHtml('headMass', ''+getValue('headMassObs.value'));
+     	setInnerHtml('headMassSize1', ''+getValue('headMassSize1Obs.value'));
+     	setInnerHtml('headMassSize2', ''+getValue('headMassSize2Obs.value'));
+     	setInnerHtml('headDiagnosisComments', ''+getValue('headDiagnosisCommentsObs.value'));
+     	
+     	setInnerHtml('headStageTNMT', ''+$j('#headStageTNMTObs option:selected').text());
+     	setInnerHtml('headStageTNMN', ''+$j('#headStageTNMNObs option:selected').text());
+     	setInnerHtml('headStageTNMM', ''+$j('#headStageTNMMObs option:selected').text());
+     	
+     	if(getValue('headStageOS0.value') !=null )
+     	    setInnerHtml('headStageOS', '0');
+     	if(getValue('headStageOS1.value') !=null )
+     	    setInnerHtml('headStageOS', 'I');
+     	if(getValue('headStageOS2.value') !=null )
+     	    setInnerHtml('headStageOS', 'II');
+     	if(getValue('headStageOS3.value') !=null )
+     	    setInnerHtml('headStageOS', 'III');
+     	if(getValue('headStageOS4.value') !=null )
+     	    setInnerHtml('headStageOS', 'IV');
+	
+     	appendStagingKeys('headCancerStagingKeys');
+	 },
+	 
+	 handleGastricCancerSection: function() {//handle Gastric cancer section
+		 hideOthers('gastric');
+ 		
+ 		setInnerHtml('gastricMass', ''+getValue('gastricMassObs.value'));
+     	setInnerHtml('gastricMassSize1', ''+getValue('gastricMassSize1Obs.value'));
+     	setInnerHtml('gastricMassSize2', ''+getValue('gastricMassSize2Obs.value'));
+     	setInnerHtml('gastricDiagnosisComments', ''+getValue('gastricDiagnosisCommentsObs.value'));
+     	
+     	setInnerHtml('gastricStageTNMT', ''+$j('#gastricStageTNMTObs option:selected').text());
+     	setInnerHtml('gastricStageTNMN', ''+$j('#gastricStageTNMNObs option:selected').text());
+     	setInnerHtml('gastricStageTNMM', ''+$j('#gastricStageTNMMObs option:selected').text());
+     	
+     	if(getValue('gastricStageOS0.value') !=null )
+     	    setInnerHtml('gastricStageOS', '0');
+     	if(getValue('gastricStageOS1.value') !=null )
+     	    setInnerHtml('gastricStageOS', 'I');
+     	if(getValue('gastricStageOS2.value') !=null )
+     	    setInnerHtml('gastricStageOS', 'II');
+     	if(getValue('gastricStageOS3.value') !=null )
+     	    setInnerHtml('gastricStageOS', 'III');
+     	if(getValue('gastricStageOS4.value') !=null )
+     	    setInnerHtml('gastricStageOS', 'IV');
+     	
+     	if(getValue('gastricStageHPPositive.value') !=null )
+     	    setInnerHtml('gastricStageHP', 'Positive');
+     	if(getValue('gastricStageHPNegative.value') !=null )
+     	    setInnerHtml('gastricStageHP', 'Negative');
+     	if(getValue('gastricStageHPNotDetermined.value') !=null )
+     	    setInnerHtml('gastricStageHP', 'Not determined');
+     	
+     	appendStagingKeys('gastricCancerStagingKeys');
+	 },
+	 
+	 handleColonCancerSection: function() {//handle Colon cancer section
+		 hideOthers('colon');
+ 		
+ 		setInnerHtml('colonMass', ''+getValue('colonMassObs.value'));
+     	setInnerHtml('colonMassSize1', ''+getValue('colonMassSize1Obs.value'));
+     	setInnerHtml('colonMassSize2', ''+getValue('colonMassSize2Obs.value'));
+     	setInnerHtml('colonDiagnosisComments', ''+getValue('colonDiagnosisCommentsObs.value'));
+     	
+     	setInnerHtml('colonStageTNMT', ''+$j('#colonStageTNMTObs option:selected').text());
+     	setInnerHtml('colonStageTNMN', ''+$j('#colonStageTNMNObs option:selected').text());
+     	setInnerHtml('colonStageTNMM', ''+$j('#colonStageTNMMObs option:selected').text());
+     	
+     	if(getValue('colonStageOS0.value') !=null )
+     	    setInnerHtml('colonStageOS', '0');
+     	if(getValue('colonStageOS1.value') !=null )
+     	    setInnerHtml('colonStageOS', 'I');
+     	if(getValue('colonStageOS2.value') !=null )
+     	    setInnerHtml('colonStageOS', 'II');
+     	if(getValue('colonStageOS3.value') !=null )
+     	    setInnerHtml('colonStageOS', 'III');
+     	if(getValue('colonStageOS4.value') !=null )
+     	    setInnerHtml('colonStageOS', 'IV');
+     	
+     	appendStagingKeys('colonCancerStagingKeys');
+	 },
+	 
+	 handleProstateCancerSection: function() {//handle Prostate cancer section
+		 hideOthers('prostate');
+ 		
+ 		setInnerHtml('prostateMass', ''+getValue('prostateMassObs.value'));
+     	setInnerHtml('prostateMassSize1', ''+getValue('prostateMassSize1Obs.value'));
+     	setInnerHtml('prostateMassSize2', ''+getValue('prostateMassSize2Obs.value'));
+     	setInnerHtml('prostateDiagnosisComments', ''+getValue('prostateDiagnosisCommentsObs.value'));
+     	
+     	setInnerHtml('prostateStageTNMT', ''+$j('#prostateStageTNMTObs option:selected').text());
+     	setInnerHtml('prostateStageTNMN', ''+$j('#prostateStageTNMNObs option:selected').text());
+     	setInnerHtml('prostateStageTNMM', ''+$j('#prostateStageTNMMObs option:selected').text());
+     	
+     	if(getValue('prostateStageOS0.value') !=null )
+     	    setInnerHtml('prostateStageOS', '0');
+     	if(getValue('prostateStageOS1.value') !=null )
+     	    setInnerHtml('prostateStageOS', 'I');
+     	if(getValue('prostateStageOS2.value') !=null )
+     	    setInnerHtml('prostateStageOS', 'II');
+     	if(getValue('prostateStageOS3.value') !=null )
+     	    setInnerHtml('prostateStageOS', 'III');
+     	if(getValue('prostateStageOS4.value') !=null )
+     	    setInnerHtml('prostateStageOS', 'IV');
+     	
+     	appendStagingKeys('prostateCancerStagingKeys');
+	 },
+	 
+	 handleNephroblastomaCancerSection: function() {//handle Nephroblastoma cancer section
+		 hideOthers('nephroblastoma');
+ 		
+ 		setInnerHtml('nephroblastomaMass', ''+getValue('nephroblastomaMassObs.value'));
+     	setInnerHtml('nephroblastomaMassSize1', ''+getValue('nephroblastomaMassSize1Obs.value'));
+     	setInnerHtml('nephroblastomaMassSize2', ''+getValue('nephroblastomaMassSize2Obs.value'));
+     	setInnerHtml('nephroblastomaDiagnosisComments', ''+getValue('nephroblastomaDiagnosisCommentsObs.value'));
+     	
+     	if(getValue('nephroblastomaStageOS0.value') !=null )
+     	    setInnerHtml('nephroblastomaStageOS', '0');
+     	if(getValue('nephroblastomaStageOS1.value') !=null )
+     	    setInnerHtml('nephroblastomaStageOS', 'I');
+     	if(getValue('nephroblastomaStageOS2.value') !=null )
+     	    setInnerHtml('nephroblastomaStageOS', 'II');
+     	if(getValue('nephroblastomaStageOS3.value') !=null )
+     	    setInnerHtml('nephroblastomaStageOS', 'III');
+     	if(getValue('nephroblastomaStageOS4.value') !=null )
+     	    setInnerHtml('nephroblastomaStageOS', 'IV');
+     	if(getValue('nephroblastomaStageOS5.value') !=null )
+     	    setInnerHtml('nephroblastomaStageOS', 'V');
+     	
+     	appendStagingKeys('nephroblastomaCancerStagingKeys');
+	 },
+	 
+	 handleLungCancerSection: function() {//handle Lung cancer section
+		 hideOthers('lung');
+		 	
+ 		if(getValue('lungCancerTypeSmallCell.value') !=null )
+     	    setInnerHtml('lungCancerType', 'Small cell lung cancer');
+     	if(getValue('lungCancerTypeNonSmall.value') !=null )
+     	    setInnerHtml('lungCancerType', 'Non-small cell lung cancer');
+     	
+     	setInnerHtml('lungMass', ''+getValue('lungMassObs.value'));
+     	setInnerHtml('lungMassSize1', ''+getValue('lungMassSize1Obs.value'));
+     	setInnerHtml('lungMassSize2', ''+getValue('lungMassSize2Obs.value'));
+     	setInnerHtml('lungDiagnosisComments', ''+getValue('lungDiagnosisCommentsObs.value'));
+     	
+     	if(getValue('lungSmallCellLimited.value') !=null )
+     	    setInnerHtml('lungSmallCell', 'Limited stage');
+     	if(getValue('lungSmallCellExtensive.value') !=null )
+     	    setInnerHtml('lungSmallCell', 'Extensive stage');
+     	
+     	setInnerHtml('lungStageTNMT', ''+$j('#lungStageTNMTObs option:selected').text());
+     	setInnerHtml('lungStageTNMN', ''+$j('#lungStageTNMNObs option:selected').text());
+     	setInnerHtml('lungStageTNMM', ''+$j('#lungStageTNMMObs option:selected').text());
+     	
+     	if(getValue('lungStageOS0.value') !=null )
+     	    setInnerHtml('lungStageOS', '0');
+     	if(getValue('lungStageOS1.value') !=null )
+     	    setInnerHtml('lungStageOS', 'I');
+     	if(getValue('lungStageOS2.value') !=null )
+     	    setInnerHtml('lungStageOS', 'II');
+     	if(getValue('lungStageOS3A.value') !=null )
+     	    setInnerHtml('lungStageOS', 'III-A');
+     	if(getValue('lungStageOS3B.value') !=null )
+     	    setInnerHtml('lungStageOS', 'III-B ');
+     	if(getValue('lungStageOS4.value') !=null )
+     	    setInnerHtml('lungStageOS', 'IV');
+     	
+     	appendStagingKeys('lungCancerStagingKeys');
+	 },
+	 
+     handleOtherSolidCancerSection: function() {//handle other solid cancer section
+    	 hideOthers('otherSolid');
+ 		
+ 		setInnerHtml('otherSolidMass', ''+getValue('otherSolidMassObs.value'));
+     	setInnerHtml('otherSolidMassSize1', ''+getValue('otherSolidMassSize1Obs.value'));
+     	setInnerHtml('otherSolidMassSize2', ''+getValue('otherSolidMassSize2Obs.value'));
+     	setInnerHtml('otherSolidDiagnosisComments', ''+getValue('otherSolidDiagnosisCommentsObs.value'));
+     	
+     	setInnerHtml('otherSolidStageTNMT', ''+$j('#otherSolidStageTNMTObs option:selected').text());
+     	setInnerHtml('otherSolidStageTNMN', ''+$j('#otherSolidStageTNMNObs option:selected').text());
+     	setInnerHtml('otherSolidStageTNMM', ''+$j('#otherSolidStageTNMMObs option:selected').text());
+     	
+     	if(getValue('otherSolidStageOS0.value') !=null )
+     	    setInnerHtml('otherSolidStageOS', '0');
+     	if(getValue('otherSolidStageOS1.value') !=null )
+     	    setInnerHtml('otherSolidStageOS', 'I');
+     	if(getValue('otherSolidStageOS2.value') !=null )
+     	    setInnerHtml('otherSolidStageOS', 'II');
+     	if(getValue('otherSolidStageOS3.value') !=null )
+     	    setInnerHtml('otherSolidStageOS', 'III');
+     	if(getValue('otherSolidStageOS4.value') !=null )
+     	    setInnerHtml('otherSolidStageOS', 'IV');
+	 },
+	 
+	 handleHodgkinCancerSection: function() {//handle Hodgkin cancer section
+		 hideOthers('hodgkin');
+		 	
+ 		setInnerHtml('hodgkinMass', ''+getValue('hodgkinMassObs.value'));
+     	setInnerHtml('hodgkinMassSize1', ''+getValue('hodgkinMassSize1Obs.value'));
+     	setInnerHtml('hodgkinMassSize2', ''+getValue('hodgkinMassSize2Obs.value'));
+     	setInnerHtml('hodgkinDiagnosisComments', ''+getValue('hodgkinDiagnosisCommentsObs.value'));
+     	
+     	if(getValue('hodgkinStageOS0.value') !=null )
+     	    setInnerHtml('hodgkinStageOS', '0');
+     	if(getValue('hodgkinStageOS1.value') !=null )
+     	    setInnerHtml('hodgkinStageOS', 'I');
+     	if(getValue('hodgkinStageOS2.value') !=null )
+     	    setInnerHtml('hodgkinStageOS', 'II');
+     	if(getValue('hodgkinStageOS3.value') !=null )
+     	    setInnerHtml('hodgkinStageOS', 'III');
+     	if(getValue('hodgkinStageOS4.value') !=null )
+     	    setInnerHtml('hodgkinStageOS', 'IV');
+     	
+     	if(getValue('hodgkinStageBulkyYes.value') !=null )
+     	    setInnerHtml('hodgkinStageBulky', 'Yes');
+     	if(getValue('hodgkinStageBulkyNo.value') !=null )
+     	    setInnerHtml('hodgkinStageBulky', 'No');
+     	if(getValue('hodgkinStageBulkyNotDetermined.value') !=null )
+     	    setInnerHtml('hodgkinStageBulky', 'Not determined');
+     	
+     	if(getValue('hodgkinStageSymptomaticNoBSymptoms.value') !=null )
+     	    setInnerHtml('hodgkinStageSymptomatic', 'No B symptoms');
+     	if(getValue('hodgkinStageSymptomaticBSymptoms.value') !=null )
+     	    setInnerHtml('hodgkinStageSymptomatic', 'B symptoms present');
+     	
+     	appendStagingKeys('hodgkinCancerStagingKeys');
+	 },
+	 
+	 handleBurkittCancerSection: function() {//handle Burkitt cancer section
+		 hideOthers('burkitt');
+ 		
+ 		setInnerHtml('burkittMass', ''+getValue('burkittMassObs.value'));
+     	setInnerHtml('burkittMassSize1', ''+getValue('burkittMassSize1Obs.value'));
+     	setInnerHtml('burkittMassSize2', ''+getValue('burkittMassSize2Obs.value'));
+     	setInnerHtml('burkittDiagnosisComments', ''+getValue('burkittDiagnosisCommentsObs.value'));
+     	
+     	if(getValue('burkittStageOS0.value') !=null )
+     	    setInnerHtml('burkittStageOS', '0');
+     	if(getValue('burkittStageOS1.value') !=null )
+     	    setInnerHtml('burkittStageOS', 'I');
+     	if(getValue('burkittStageOS2.value') !=null )
+     	    setInnerHtml('burkittStageOS', 'II');
+     	if(getValue('burkittStageOS3.value') !=null )
+     	    setInnerHtml('burkittStageOS', 'III');
+     	if(getValue('burkittStageOS4.value') !=null )
+     	    setInnerHtml('burkittStageOS', 'IV');
+     	
+     	if(getValue('burkittStageBulkyYes.value') !=null )
+     	    setInnerHtml('burkittStageBulky', 'Yes');
+     	if(getValue('burkittStageBulkyNo.value') !=null )
+     	    setInnerHtml('burkittStageBulky', 'No');
+     	if(getValue('burkittStageBulkyNotDetermined.value') !=null )
+     	    setInnerHtml('burkittStageBulky', 'Not determined');
+     	
+     	if(getValue('burkittStageSymptomaticNoBSymptoms.value') !=null )
+     	    setInnerHtml('burkittStageSymptomatic', 'No B symptoms');
+     	if(getValue('burkittStageSymptomaticBSymptoms.value') !=null )
+     	    setInnerHtml('burkittStageSymptomatic', 'B symptoms present');
+     	
+     	appendStagingKeys('burkittCancerStagingKeys');
+	 },
+	 
+	 handleLargeBCellCancerSection: function() {//handle large B cell cancer section
+		 hideOthers('large');
+ 		
+ 		setInnerHtml('largeMass', ''+getValue('largeMassObs.value'));
+     	setInnerHtml('largeMassSize1', ''+getValue('largeMassSize1Obs.value'));
+     	setInnerHtml('largeMassSize2', ''+getValue('largeMassSize2Obs.value'));
+     	setInnerHtml('largeDiagnosisComments', ''+getValue('largeDiagnosisCommentsObs.value'));
+     	
+     	if(getValue('largeStageOS0.value') !=null )
+     	    setInnerHtml('largeStageOS', '0');
+     	if(getValue('largeStageOS1.value') !=null )
+     	    setInnerHtml('largeStageOS', 'I');
+     	if(getValue('largeStageOS2.value') !=null )
+     	    setInnerHtml('largeStageOS', 'II');
+     	if(getValue('largeStageOS3.value') !=null )
+     	    setInnerHtml('largeStageOS', 'III');
+     	if(getValue('largeStageOS4.value') !=null )
+     	    setInnerHtml('largeStageOS', 'IV');
+     	
+     	if(getValue('largeStageBulkyYes.value') !=null )
+     	    setInnerHtml('largeStageBulky', 'Yes');
+     	if(getValue('largeStageBulkyNo.value') !=null )
+     	    setInnerHtml('largeStageBulky', 'No');
+     	if(getValue('largeStageBulkyNotDetermined.value') !=null )
+     	    setInnerHtml('largeStageBulky', 'Not determined');
+     	
+     	if(getValue('largeStageSymptomaticNoBSymptoms.value') !=null )
+     	    setInnerHtml('largeStageSymptomatic', 'No B symptoms');
+     	if(getValue('largeStageSymptomaticBSymptoms.value') !=null )
+     	    setInnerHtml('largeStageSymptomatic', 'B symptoms present');
+     	
+     	appendStagingKeys('largeCancerStagingKeys');
+	 },
+	 
+	 handleNHLCancerSection: function() {//handle NHL cancer section
+		 hideOthers('otherNHL');
+ 		
+ 		setInnerHtml('otherNHLMass', ''+getValue('otherNHLMassObs.value'));
+     	setInnerHtml('otherNHLMassSize1', ''+getValue('otherNHLMassSize1Obs.value'));
+     	setInnerHtml('otherNHLMassSize2', ''+getValue('otherNHLMassSize2Obs.value'));
+     	setInnerHtml('otherNHLDiagnosisComments', ''+getValue('otherNHLDiagnosisCommentsObs.value'));
+     	
+     	if(getValue('otherNHLStageOS0.value') !=null )
+     	    setInnerHtml('otherNHLStageOS', '0');
+     	if(getValue('otherNHLStageOS1.value') !=null )
+     	    setInnerHtml('otherNHLStageOS', 'I');
+     	if(getValue('otherNHLStageOS2.value') !=null )
+     	    setInnerHtml('otherNHLStageOS', 'II');
+     	if(getValue('otherNHLStageOS3.value') !=null )
+     	    setInnerHtml('otherNHLStageOS', 'III');
+     	if(getValue('otherNHLStageOS4.value') !=null )
+     	    setInnerHtml('otherNHLStageOS', 'IV');
+     	
+     	if(getValue('otherNHLStageBulkyYes.value') !=null )
+     	    setInnerHtml('otherNHLStageBulky', 'Yes');
+     	if(getValue('otherNHLStageBulkyNo.value') !=null )
+     	    setInnerHtml('otherNHLStageBulky', 'No');
+     	if(getValue('otherNHLStageBulkyNotDetermined.value') !=null )
+     	    setInnerHtml('otherNHLStageBulky', 'Not determined');
+     	
+     	if(getValue('otherNHLStageSymptomaticNoBSymptoms.value') !=null )
+     	    setInnerHtml('otherNHLStageSymptomatic', 'No B symptoms');
+     	if(getValue('otherNHLStageSymptomaticBSymptoms.value') !=null )
+     	    setInnerHtml('otherNHLStageSymptomatic', 'B symptoms present');
+     	
+     	appendStagingKeys('otherNHLCancerStagingKeys');
+	 },
+	 
+	 handleALLCancerSection: function() {//handle ALL cancer section
+		 hideOthers('ALL');
+ 		
+ 		setInnerHtml('ALLDiagnosisComments', ''+getValue('ALLDiagnosisCommentsObs.value'));
+ 		
+	
+ 		if(getValue('ALLStageLowRisk.value') !=null )
+     	    setInnerHtml('ALLStage', 'Low risk');
+     	if(getValue('ALLStageMediumRisk.value') !=null )
+     	    setInnerHtml('ALLStage', 'Medium risk');
+     	if(getValue('ALLStageHighRisk.value') !=null )
+     	    setInnerHtml('ALLStage', 'High risk (always when Ph+, infant)');
+     	if(getValue('ALLStageVeryHighRisk.value') !=null )
+     	    setInnerHtml('ALLStage', 'Very High risk');
+     	
+     	if(getValue('ALLStagePhStatusPh+.value') !=null )
+     	    setInnerHtml('ALLStagePhStatus', 'Ph+');
+     	if(getValue('ALLStagePhStatusPh-.value') !=null )
+     	    setInnerHtml('ALLStagePhStatus', 'Ph-');
+     	if(getValue('ALLStagePhStatusNotDetermined.value') !=null )
+     	    setInnerHtml('ALLStagePhStatus', 'not determined');
+		 
+	 },
+	 
+	 handleCMLCancerSection: function() {//handle CML cancer section
+		 hideOthers('CML');
+ 		
+ 		setInnerHtml('CMLDiagnosisComments', ''+getValue('CMLDiagnosisCommentsObs.value'));
+ 		
+ 	 	
+ 		if(getValue('CMLStageChronicPhase.value') !=null )
+     	    setInnerHtml('CMLStage', 'Chronic phase');
+     	if(getValue('CMLStageAcceleratedPhase.value') !=null )
+     	    setInnerHtml('CMLStage', 'Accelerated phase');
+     	if(getValue('CMLStageBlastCrisis.value') !=null )
+     	    setInnerHtml('CMLStage', 'Blast crisis');
+     	
+     	if(getValue('CMLStageCytogeneticsTPositive.value') !=null )
+     	    setInnerHtml('CMLStageCytogenetics', 't(9,22)+');
+     	if(getValue('CMLStageCytogeneticsT-.value') !=null )
+     	    setInnerHtml('CMLStageCytogenetics', 't(9,22)-');
+     	if(getValue('CMLStageCytogeneticsNotDetermined.value') !=null )
+     	    setInnerHtml('CMLStageCytogenetics', 'not determined');
+     	
+     	
+     	appendStagingKeys('CMLCancerStagingKeys');
+	 },
+	 
+	 handleMultipleMyelomaCancerSection: function() {//handle Multiple Myeloma cancer section
+		 
+		 hideOthers('multiple');
+		    
+		    setInnerHtml('multipleMass', ''+getValue('multipleMassObs.value'));
+     	setInnerHtml('multipleMassSize1', ''+getValue('multipleMassSize1Obs.value'));
+     	setInnerHtml('multipleMassSize2', ''+getValue('multipleMassSize2Obs.value'));
+     	setInnerHtml('multipleDiagnosisComments', ''+getValue('multipleDiagnosisCommentsObs.value'));
+     	
+     	if(getValue('multipleStageOS0.value') !=null )
+     	    setInnerHtml('multipleStageOS', '0');
+     	if(getValue('multipleStageOS1.value') !=null )
+     	    setInnerHtml('multipleStageOS', 'I');
+     	if(getValue('multipleStageOS2.value') !=null )
+     	    setInnerHtml('multipleStageOS', 'II');
+     	if(getValue('multipleStageOS3.value') !=null )
+     	    setInnerHtml('multipleStageOS', 'III');
+     	
+     	if(getValue('multipleSubclassificationA.value') !=null )
+     	    setInnerHtml('multipleSubclassification', 'A: relatively normal renal function (serum creatinine value &lt; 2.0 mg/dl) ');
+     	if(getValue('multipleSubclassificationB.value') !=null )
+     	    setInnerHtml('multipleSubclassification', 'B: abnomal renal function (serum creatinine &gt; 2.0 mg/dl) ');
+     	
+     	appendStagingKeys('multipleCancerStagingKeys');
+		 
+	 },
+	 
+	 handleMetastaticCancerSection: function() {//handle Metastatic cancer section
+		 hideOthers('metastatic');
+		 	
+         setInnerHtml('metastaticDiagnosisComments', ''+getValue('metastaticDiagnosisCommentsObs.value'));
+     	
+     	if(getValue('metastaticStageOS0.value') !=null )
+     	    setInnerHtml('metastaticStageOS', '0');
+     	if(getValue('metastaticStageOS1.value') !=null )
+     	    setInnerHtml('metastaticStageOS', 'I');
+     	if(getValue('metastaticStageOS2.value') !=null )
+     	    setInnerHtml('metastaticStageOS', 'II');
+     	if(getValue('metastaticStageOS3.value') !=null )
+     	    setInnerHtml('metastaticStageOS', 'III');
+     	if(getValue('metastaticStageOS4.value') !=null )
+     	    setInnerHtml('metastaticStageOS', 'IV');
+     	
+     	appendStagingKeys(null);
+	 },
+	 
+	 handleOtherLiquidCancerSection: function() {//handle Other Liquid cancer section
+		 hideOthers('otherLiquid');		 
+ 		setInnerHtml('otherLiquidDiagnosisComments', ''+getValue('otherLiquidDiagnosisCommentsObs.value'));
+ 		setInnerHtml('otherLiquidStageOS', ''+getValue('otherLiquidStageOSObs.value'));
+ 		appendStagingKeys(null);
+	 },
+	 
+	 handlePathologySection: function() {//handle Pathology section	 
+		 if(getValue('pathologyCompletedYes.value') !=null ){
+			 $j("#pathology tr:gt(1)").show();
+			 setInnerHtml('pathologyCompleted', 'Yes');
+			 setInnerHtml('pathologyDate', ''+getValue('dateOfPathologyObs.value'));
+			 setInnerHtml('pathologySite', ''+$j('#siteOfPathologyObs option:selected').text());
+		 }else{
+			 setInnerHtml('pathologyCompleted', 'No');
+			 $j("#pathology tr:gt(1)").hide();
+		 }
+	 },	 
+	 
+	 handleAllergiesSection: function() {//handle Allergies section
+		 
+		     $j('#existingAndNewAllergiesPrintView tr:gt(2)').remove();
+                      
+             $j('#existingAndNewAllergiesScreenView tr.existingAllergy').appendTo('#existingAndNewAllergiesPrintView');  
+             
+             if(getValue('firstAllergyCauses.value') !=''){
+           	$j('#newAllergiesHeading tr').appendTo('#existingAndNewAllergiesPrintView');  
+           	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#firstAllergyCauses option:selected').text()+'</td><td>'+$j('#firstAllergyReaction option:selected').text()+'</td><td>'+getValue('firstAllergyYear.value')+'</td></tr>');
+             
+             }
+           	 
+             if(getValue('secondAllergyCauses.value') !=''){
+               	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#secondAllergyCauses option:selected').text()+'</td><td>'+$j('#secondAllergyReaction option:selected').text()+'</td><td>'+getValue('secondAllergyYear.value')+'</td></tr>');
+                 
+                 }
+             
+             if(getValue('thirdAllergyCauses.value') !=''){
+               	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#thirdAllergyCauses option:selected').text()+'</td><td>'+$j('#thirdAllergyReaction option:selected').text()+'</td><td>'+getValue('thirdAllergyYear.value')+'</td></tr>');
+                 
+                 }
+	 },
+	 
+	 handleTreatmentItentSection: function() {//handle Treatment Intent section
+		 //see which treatment intent selected
+	    	var treatmentIntent = $j(".treatmentPlan").find(":checked").closest("td").attr("id");
+	    	
+	    	if(treatmentIntent == 'treatmentCurative'){
+	    		setInnerHtml('treatmentIntent', 'Curative');
+	    	}
+	        if(treatmentIntent == 'treatmentPalliative'){
+	        	setInnerHtml('treatmentIntent', 'Palliative systemic therapy');
+	    	}
+	        if(treatmentIntent == 'treatmentPalliation'){
+	        	setInnerHtml('treatmentIntent', 'Palliation ONLY');
+	    	}
+	 },
+	 
+     handleTreatmentPlanSection: function() {//handle Treatment Plan section
+         /*  now that we are going to play with the treatment plan sections (i.e surgery, radiation and chemotherapy) 
+         we need to initisalize them to hidden state and we'll be toggling them one by one according to whether a section is selected or not */
+         $j('#surgeryTreatmentPlan').hide();
+         $j('#radiationTreatmentPlan').hide();
+         $j('#chemotherapyTreatmentPlan').hide();
+         
+       //find selected sections
+         var surgeryPlanned = $j(".surgery").find(":checked").closest("td").attr("id");
+         var radiationPlanned = $j(".radiation").find(":checked").closest("td").attr("id");
+         var chemotherapyPlanned = $j(".chemotherapy").find(":checked").closest("td").attr("id"); 
+        
+       //handle surgery section if selected
+         if(surgeryPlanned == 'trigger21'){
+         	$j('#surgeryTreatmentPlan').show();
+     		setInnerHtml('surgeryFacility', ''+getValue('surgeryFacilityObs.value'));
+     		setInnerHtml('surgeryStartDate', ''+getValue('surgeryStartDateObs.value'));
+     		setInnerHtml('surgeryType', ''+getValue('surgeryTypeObs.value'));
+     	}
+
+         //handle radiation section if selected
+         if(radiationPlanned == 'trigger22'){
+         	$j('#radiationTreatmentPlan').show();
+     		setInnerHtml('radiationFacility', ''+$j('#radiationFacilityObs option:selected').text());
+     		setInnerHtml('radiationStartDate', ''+getValue('radiationStartDateObs.value'));
+
+     	}
+         
+       //handle chemotherapy section if selected
+         if(chemotherapyPlanned == 'trigger23'){
+         	$j('#chemotherapyTreatmentPlan').show();
+     		setInnerHtml('chemotherapyRegimen', ''+$j('#chemotherapyRegimenObs option:selected').text());
+     		setInnerHtml('chemotherapyCycles', ''+Math.floor(getValue('chemotherapyCyclesObs.value')));
+     		setInnerHtml('chemotherapyFirstCycle', ''+getValue('chemotherapyFirstCycleObs.value'));
+     		setInnerHtml('chemotherapyRegimenEnd', ''+getValue('chemotherapyRegimenEndObs.value'));
+     		setInnerHtml('chemotherapyStandardRegimen', ''+getValue('chemotherapyStandardRegimenObs.value'));
+
+     	}
+	 },
+	};
+    
+    $j("#printLinkSpan").find("a[href]").click(function(event) {    
+    	var diagnosis = {trigger1:'Breast cancer',trigger2:'Cervical cancer',trigger3:'KS',trigger4:'H &#38; N cancer',trigger5:'Gastric cancer',trigger6:'Colo-rectal',trigger7:'Prostate',trigger8:'Nephroblastoma',trigger9:'Lung',trigger10:'Other solid cancer',trigger11:'Hodgkin’s lymphoma',trigger12:'Burkitt’s lymphoma',trigger13:'Large B-cell lymphoma',trigger14:'Other NHL',trigger15:'ALL',trigger16:'CML',trigger17:'Multiple myeloma',trigger18:'Metastatic cancer (unknown primary)',trigger19:'Other liquid cancer'};
+		
+    	var printHandler = null;
+    	var checked = null;
+    	
+    	if(isEditMode()){ //the form is in the edit mode
+    		
+    		printHandler = new EditModeHandler();    		
+    	    checked = $j(".checkboxGroup").find(":checked").closest("td").attr("id");
+    	    
+    	}else if(isViewMode()){//the form is in the view mode
+    		
+    		printHandler = new ViewModeHandler();    		
+    		 var elements = [];
+    			$j("td[id^='trigger']").each(function(){
+    			   elements.push(this.id); 
+    			});
+
+    			for(var i = 0; i &lt; 19; i++){
+    				if($j('#'+elements[i]).children("span").attr("class") == 'value'){
+    					 checked = elements[i];
+    				}
+    			}
+    	}else{//this should be the enter mode which should be handled the same way as the edit mode
+    		//(..this means we treat the edit mode as the default mode)
+    		
+    		printHandler = new EditModeHandler();    		
+    	    checked = $j(".checkboxGroup").find(":checked").closest("td").attr("id");
+    	}
+    	
+          
+    	printHandler.handleHeadingSection(diagnosis[checked]);
+    	
+         /* now that we want to play with the printable sections, lets set them all to visible 
+         and we'll be hinding them one by one skiping the one whe have to show (see the hideOthers method) */
+    	for (var i = 0; i &lt; printableTables.length; i++) {
+		    var tableToHide=printableTables[i];
+		    	  $j('#'+tableToHide).show();
+		}
+    	
+    switch(checked)
+    {
+       case 'trigger1':
+    	   printHandler.handleBreastCancerSection();    	
+      break;
+       case 'trigger2':
+    	   printHandler.handleCervicalCancerSection();
+      break;
+        case 'trigger3':
+        	printHandler.handleKarposiSection();
+   	  break;
+    	case 'trigger4':
+    		printHandler.handleHeadAndNeckSection();        	
+   	  break;
+    	case 'trigger5':
+    		printHandler.handleGastricCancerSection();   	
+   	  break;
+    	case 'trigger6':
+    		printHandler.handleColonCancerSection();   	
+   	  break;
+    	case 'trigger7':
+    		printHandler.handleProstateCancerSection();  
+   	  break;
+    	case 'trigger8':
+    		printHandler.handleNephroblastomaCancerSection();  
+   	  break;
+    	case 'trigger9':
+    		printHandler.handleLungCancerSection(); 
+   	  break;
+    	case 'trigger10':
+    		printHandler.handleOtherSolidCancerSection(); 
+   	  break;
+    	case 'trigger11':
+    		printHandler.handleHodgkinCancerSection(); 
+   	  break;
+    	case 'trigger12':
+    		printHandler.handleBurkittCancerSection(); 
+   	  break;
+    	case 'trigger13':
+    		printHandler.handleLargeBCellCancerSection(); 
+   	  break;
+    	case 'trigger14':
+    		printHandler.handleNHLCancerSection(); 
+   	  break;
+    	case 'trigger15':
+    		printHandler.handleALLCancerSection(); 
+   	  break;
+    	case 'trigger16':
+    		printHandler.handleCMLCancerSection(); 
+   	  break;
+    	case 'trigger17':
+    		printHandler.handleMultipleMyelomaCancerSection(); 
+   	  break;
+    	case 'trigger18':
+    		printHandler.handleMetastaticCancerSection(); 
+   	  break;
+    	case 'trigger19':
+    		printHandler.handleOtherLiquidCancerSection(); 
+   	  break;
+    	default:
+    	  alert("No cancer type selected");
+    	}
+    	
+         //handle pathology section    
+        printHandler.handlePathologySection();
+    	//handle allergies section    	
+    	printHandler.handleAllergiesSection();
+    	 
+    	 /* the following lines are about handling the treatment plan section  */
+ 	    
+ 	    //handle treatment intent section
+        printHandler.handleTreatmentItentSection();
+    	 
+    	 //handle surgery, radiation and chemotherapy sections
+        printHandler.handleTreatmentPlanSection();    	
+	  });
 
  });
 }
@@ -1294,7 +2136,7 @@ if(jQuery){
 			<td class="lables">Bulky Mediastinal disease</td>
 			<td colspan="2" class="values"><span id="hodgkinStageBulky"></span>
 			</td>
-		</tr>		
+		</tr>
 		<tr class="diagnosisPrintArea">
 			<td class="lables">Symptomatic</td>
 			<td colspan="2" class="values"><span
@@ -1496,6 +2338,27 @@ if(jQuery){
 			</td>
 		</tr>
 	</table>
+		<br />
+	<table id="pathology">
+		<tr class="diagnosisPrintArea">
+			<th colspan="3">PATHOLOGY</th>
+		</tr>
+		<tr class="diagnosisPrintArea">
+			<td class="lables">Pathology completed</td>
+			<td colspan="2" class="values"><span id="pathologyCompleted"></span>
+			</td>
+		</tr>
+		<tr class="diagnosisPrintArea">
+			<td class="lables">Date</td>
+			<td colspan="2" class="values"><span id="pathologyDate"></span>
+			</td>
+		</tr>
+		<tr class="diagnosisPrintArea">
+			<td class="lables">Site of Pathology</td>
+			<td colspan="2" class="values"><span id="pathologySite"></span>
+			</td>
+		</tr>
+	</table>
 	<br />
 	<table id="existingAndNewAllergiesPrintView">
 		<tr class="diagnosisPrintArea">
@@ -1632,10 +2495,10 @@ if(jQuery){
 		</tr>
 
 		<tr>
-			<td><img src="/openmrs/moduleResources/rwandareports/images/pihHands.png" align="left"
-			height="65" ></img>
+			<td><img src="/openmrs/images/emr_hands.gif" align="left"
+				height="75" width="56"></img>
 				<h2>
-					&#160;&#160;Inshuti Mu Buzima <br /> &#160;&#160;PIH Rwanda
+					Inshuti Mu Buzima <br /> PIH Rwanda
 				</h2>
 			</td>
 			<td><strong> Oncology Program / Programme d'oncologie <br />
@@ -1643,10 +2506,10 @@ if(jQuery){
 			</td>
 		</tr>
 		<tr>
-			<td>Clinique / Clinic: <encounterLocation id="encounterLocation" />
+			<td>Clinique / Clinic: <encounterLocation id="encounterLocation" default="Butaro Hospital" />
 			</td>
 			<td>Author:<encounterProvider id="encounterProvider"
-					role="Oncology Provider" default="currentUser"/>
+					role="Oncology Provider" />
 			</td>
 		</tr>
 	</table>
@@ -2722,7 +3585,8 @@ if(jQuery){
 				<td><obs id="nephroblastomaStageOS4"
 						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
 						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
-						answerLabel="IV" />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<obs id="nephroblastomaStageOS5"
+						answerLabel="IV" />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<obs
+						id="nephroblastomaStageOS5"
 						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
 						answerConceptId="afe0e350-6be0-4093-a701-923a446f1924"
 						answerLabel="V" /></td>
@@ -3049,7 +3913,8 @@ if(jQuery){
 			</tr>
 			<tr class="spaceUnder">
 				<td></td>
-				<td colspan="5">(bulky disease is defined as > 10cm in greatest dimension)</td>
+				<td colspan="5">(bulky disease is defined as > 10cm in greatest
+					dimension)</td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Symptomatic:</td>
@@ -3067,7 +3932,8 @@ if(jQuery){
 			</tr>
 			<tr>
 				<td></td>
-				<td colspan="5">(presence of fevers, night sweats, and/or >10% body weight loss)</td>
+				<td colspan="5">(presence of fevers, night sweats, and/or >10%
+					body weight loss)</td>
 			</tr>
 			</obsgroup>
 			<tr class="hodgkinCancerStagingKeys">
@@ -3153,7 +4019,8 @@ if(jQuery){
 			</tr>
 			<tr class="spaceUnder">
 				<td></td>
-				<td colspan="5">(bulky disease is defined as > 10cm in greatest dimension)</td>
+				<td colspan="5">(bulky disease is defined as > 10cm in greatest
+					dimension)</td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Symptomatic:</td>
@@ -3171,7 +4038,8 @@ if(jQuery){
 			</tr>
 			<tr>
 				<td></td>
-				<td colspan="5">(presence of fevers, night sweats, and/or >10% body weight loss)</td>
+				<td colspan="5">(presence of fevers, night sweats, and/or >10%
+					body weight loss)</td>
 			</tr>
 			</obsgroup>
 			<tr class="burkittCancerStagingKeys">
@@ -3257,7 +4125,8 @@ if(jQuery){
 			</tr>
 			<tr class="spaceUnder">
 				<td></td>
-				<td colspan="5">(bulky disease is defined as > 10cm in greatest dimension)</td>
+				<td colspan="5">(bulky disease is defined as > 10cm in greatest
+					dimension)</td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Symptomatic:</td>
@@ -3275,7 +4144,8 @@ if(jQuery){
 			</tr>
 			<tr>
 				<td></td>
-				<td colspan="5">(presence of fevers, night sweats, and/or >10% body weight loss)</td>
+				<td colspan="5">(presence of fevers, night sweats, and/or >10%
+					body weight loss)</td>
 			</tr>
 			</obsgroup>
 			<tr class="largeCancerStagingKeys">
@@ -3361,7 +4231,8 @@ if(jQuery){
 			</tr>
 			<tr class="spaceUnder">
 				<td></td>
-				<td colspan="5">(bulky disease is defined as > 10cm in greatest dimension)</td>
+				<td colspan="5">(bulky disease is defined as > 10cm in greatest
+					dimension)</td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Symptomatic:</td>
@@ -3379,7 +4250,8 @@ if(jQuery){
 			</tr>
 			<tr>
 				<td></td>
-				<td colspan="5">(presence of fevers, night sweats, and/or >10% body weight loss)</td>
+				<td colspan="5">(presence of fevers, night sweats, and/or >10%
+					body weight loss)</td>
 			</tr>
 			</obsgroup>
 			<tr class="otherNHLCancerStagingKeys">
@@ -3479,7 +4351,7 @@ if(jQuery){
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Cytogenetics:</td>
-				<td><obs id="CMLStageCytogeneticsT+"
+				<td><obs id="CMLStageCytogeneticsTPositive"
 						conceptId="e591db39-b26d-4e28-802e-1e435d2c0d22"
 						answerConceptId="5fc18aa2-9d23-4a82-886e-3b8c5c7bbb38"
 						answerLabel="t(9,22)+" /></td>
@@ -3747,12 +4619,14 @@ if(jQuery){
 			<td><obs id="firstAllergyCauses"
 					conceptId="3cd95ed6-26fe-102b-80cb-0017a47871b2" /> <obs
 					id="firstCausesOtherNonCoded"
-					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27" labelText="Specify:" />
+					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27"
+					labelText="Specify:" />
 			</td>
 			<td><obs id="firstAllergyReaction"
 					conceptId="3cd96052-26fe-102b-80cb-0017a47871b2" /> <obs
 					id="firstReactionOtherNonCoded"
-					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2" labelText="Specify:" />
+					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2"
+					labelText="Specify:" />
 			</td>
 			<td><obs id="firstAllergyYear"
 					conceptId="3cd964bc-26fe-102b-80cb-0017a47871b2" /></td>
@@ -3763,12 +4637,14 @@ if(jQuery){
 			<td><obs id="secondAllergyCauses"
 					conceptId="3cd95ed6-26fe-102b-80cb-0017a47871b2" /> <obs
 					id="secondCausesOtherNonCoded"
-					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27" labelText="Specify:" />
+					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27"
+					labelText="Specify:" />
 			</td>
 			<td><obs id="secondAllergyReaction"
 					conceptId="3cd96052-26fe-102b-80cb-0017a47871b2" /> <obs
 					id="secondReactionOtherNonCoded"
-					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2" labelText="Specify:" />
+					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2"
+					labelText="Specify:" />
 			</td>
 			<td><obs id="secondAllergyYear"
 					conceptId="3cd964bc-26fe-102b-80cb-0017a47871b2" /></td>
@@ -3779,12 +4655,14 @@ if(jQuery){
 			<td><obs id="thirdAllergyCauses"
 					conceptId="3cd95ed6-26fe-102b-80cb-0017a47871b2" /> <obs
 					id="thirdCausesOtherNonCoded"
-					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27" labelText="Specify:" />
+					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27"
+					labelText="Specify:" />
 			</td>
 			<td><obs id="thirdAllergyReaction"
-					conceptId="3cd96052-26fe-102b-80cb-0017a47871b2" />  
-				<obs id="thirdReactionOtherNonCoded"
-					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2" labelText="Specify:" /></td>
+					conceptId="3cd96052-26fe-102b-80cb-0017a47871b2" /> <obs
+					id="thirdReactionOtherNonCoded"
+					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2"
+					labelText="Specify:" /></td>
 			<td><obs id="thirdAllergyYear"
 					conceptId="3cd964bc-26fe-102b-80cb-0017a47871b2" />
 			</td>
@@ -3945,7 +4823,7 @@ if(jQuery){
 			<tr>
 				<td>Planned first cycle</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" labelText="" allowFutureDates="true"/>
+						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -3979,7 +4857,7 @@ if(jQuery){
       $j(document).ready(function(){
     	  
     	 var firstInitialCausesValue = $j("#firstAllergyCauses  option:selected").text();
-    	 if(firstInitialCausesValue == "")
+    	 if(firstInitialCausesValue != "OTHER NON-CODED")
     		 getField('firstCausesOtherNonCoded.value')[0].disabled = true;
     	 
     	  getField('firstAllergyCauses.value').change(function() {
@@ -3992,7 +4870,7 @@ if(jQuery){
     	         });
     	  
     	  var firstInitialReactionValue = $j("#firstAllergyReaction  option:selected").text();
-     	 if(firstInitialReactionValue == "")
+     	 if(firstInitialReactionValue != "OTHER NON-CODED")
      		 getField('firstReactionOtherNonCoded.value')[0].disabled = true;
      	 
      	  getField('firstAllergyReaction.value').change(function() {
@@ -4005,7 +4883,7 @@ if(jQuery){
      	         });
     	  
     	   	 var secondInitialCausesValue = $j("#secondAllergyCauses  option:selected").text();
-        	 if(secondInitialCausesValue == "")
+        	 if(secondInitialCausesValue != "OTHER NON-CODED")
         		 getField('secondCausesOtherNonCoded.value')[0].disabled = true;
         	 
         	  getField('secondAllergyCauses.value').change(function() {
@@ -4018,7 +4896,7 @@ if(jQuery){
         	         });
         	  
         	  var secondInitialReactionValue = $j("#secondAllergyReaction  option:selected").text();
-          	 if(secondInitialReactionValue == "")
+          	 if(secondInitialReactionValue != "OTHER NON-CODED")
           		 getField('secondReactionOtherNonCoded.value')[0].disabled = true;
           	 
           	  getField('secondAllergyReaction.value').change(function() {
@@ -4031,7 +4909,7 @@ if(jQuery){
           	         });
         	  
         	   	 var thirdInitialCausesValue = $j("#thirdAllergyCauses  option:selected").text();
-            	 if(thirdInitialCausesValue == "")
+            	 if(thirdInitialCausesValue != "OTHER NON-CODED")
             		 getField('thirdCausesOtherNonCoded.value')[0].disabled = true;
             	 
             	  getField('thirdAllergyCauses.value').change(function() {
@@ -4044,7 +4922,7 @@ if(jQuery){
             	         });
             	  
             	  var thirdInitialReactionValue = $j("#thirdAllergyReaction  option:selected").text();
-               	 if(thirdInitialReactionValue == "")
+               	 if(thirdInitialReactionValue != "OTHER NON-CODED")
                		 getField('thirdReactionOtherNonCoded.value')[0].disabled = true;
                	 
                	  getField('thirdAllergyReaction.value').change(function() {
@@ -4121,10 +4999,37 @@ if(jQuery){
 		});
 		
 	}
-</script> 
-<br/>
-<br/>
-<br/>
-<br/>
-<encounterVoided/>
-</htmlform>
+</script> <ifMode mode="EDIT"> <script type="text/javascript">
+  var hideAll = function(){
+            $j(".togglebles").find("tbody[id^='toggleble']").hide();
+            $j(".togglebles").find("span[id^='toggleble']").hide();
+        }
+               
+        hideAll();
+        </script> </ifMode> <ifMode mode="ENTER"> <script type="text/javascript">
+  var hideAll = function(){
+            $j(".togglebles").find("tbody[id^='toggleble']").hide();
+            $j(".togglebles").find("span[id^='toggleble']").hide();
+        }
+               
+        hideAll();
+        </script> </ifMode> <ifMode mode="VIEW"> <script type="text/javascript">
+ 	
+       var elements = [];
+		$j("td[id^='trigger']").each(function(){
+		   elements.push(this.id); 
+		});
+
+		for(var i = 0; i &lt; elements.length; i++){
+			
+			if($j('#'+elements[i]).children("span").attr("class") != 'value' &amp;&amp; $j('#'+elements[i]).children("span").attr("id") != 'pathologyCompletedYes'){
+				var triggerIndex = elements[i].substring(7);
+	        	var sectionId= "toggleble"+triggerIndex;
+	        	 $j(".togglebles").find("tbody[id$="+sectionId+"]").hide();
+			 }
+			if(elements[i] == 'trigger20' &amp;&amp; $j('#pathologyCompletedNo').children("span").attr("class") == 'value'){
+				$j("#toggleble20").hide();
+			}
+		}
+ 	 
+       </script> </ifMode> </htmlform>
