@@ -4942,6 +4942,20 @@ if(jQuery){
 					stateLabel="Palliation ONLY" type="checkbox" />
 			</td>
 		</tr>
+		<tr class="checkboxGroup , chemotherapy">
+			<td>Chemotherapy</td>
+			<td id="trigger23"><workflowState
+					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
+					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
+					type="checkbox" />
+			</td>
+			<td><workflowState
+					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
+					stateId="3f13abb5-0a00-4fac-b89b-4d0679c3b6e1"
+					stateLabel="Not planned" type="checkbox" />
+			</td>
+			<td></td>
+		</tr>
 		<tr class="checkboxGroup , surgery">
 			<td>Surgery</td>
 			<td id="trigger21"><workflowState
@@ -4972,81 +4986,6 @@ if(jQuery){
 			<td></td>
 
 		</tr>
-		<tr class="checkboxGroup , chemotherapy">
-			<td>Chemotherapy</td>
-			<td id="trigger23"><workflowState
-					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
-					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
-					type="checkbox" />
-			</td>
-			<td><workflowState
-					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
-					stateId="3f13abb5-0a00-4fac-b89b-4d0679c3b6e1"
-					stateLabel="Not planned" type="checkbox" />
-			</td>
-			<td></td>
-		</tr>
-	</table>
-	<table class="togglebles" width="100%">
-		<obsgroup groupingConceptId="c0f544c2-b233-4956-a8d6-b75153992f00">
-		<TBODY id="toggleble21">
-			<tr>
-				<th class="tableHeader" colspan="4">SURGERY</th>
-			</tr>
-			<tr>
-				<td>Facility</td>
-				<td><obs id="surgeryFacilityObs"
-						conceptId="eca1ee04-ad37-41c3-8c09-e4c7e8b1caf0" labelText="" />
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Planned dates</td>
-				<td><obs id="surgeryStartDateObs"
-						conceptId="374720cf-262b-4b96-ab08-c34979230f0b"
-						labelText="Start date:" />
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Type of surgery</td>
-				<td><obs id="surgeryTypeObs"
-						conceptId="3a794302-d39d-41ba-a835-917c23bf5560" labelText="" />
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-		</TBODY>
-		</obsgroup>
-	</table>
-	<table class="togglebles" width="100%">
-		<obsgroup groupingConceptId="63ad7caa-b6e2-4b9a-b462-771a9b048c36">
-		<TBODY id="toggleble22">
-			<tr>
-				<th class="tableHeader" colspan="4">RADIATION THERAPY</th>
-			</tr>
-			<tr>
-				<td>Facility</td>
-				<td><obs id="radiationFacilityObs"
-						conceptId="09693eb4-aa3d-4804-bcc3-eb149cb0614a"
-						defaultValue="ceac8227-23ec-4f51-9dab-6ed3886151aa" labelText="" />
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Planned dates</td>
-				<td><obs id="radiationStartDateObs"
-						conceptId="b5f3650e-7614-4d13-8676-dd420458e1ba"
-						labelText="Start date:" />
-				</td>
-				<td></td>
-				<td></td>
-			</tr>
-		</TBODY>
-		</obsgroup>
 	</table>
 	<table class="togglebles" width="100%">
 		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
@@ -5103,10 +5042,77 @@ if(jQuery){
 				<td></td>
 				<td></td>
 			</tr>
-			<tr>
+			<tr class="spaceUnder">
 				<td>Planned changes to standard regimen</td>
 				<td><obs id="chemotherapyStandardRegimenObs"
 						conceptId="d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a id="chemoTable" onclick="toggleTable();" href="#">Click to Add/Remove Chemotherapy</a></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</TBODY>
+		</obsgroup>
+	</table>
+	<table class="togglebles" width="100%">
+		<obsgroup groupingConceptId="c0f544c2-b233-4956-a8d6-b75153992f00">
+		<TBODY id="toggleble21">
+			<tr>
+				<th class="tableHeader" colspan="4">SURGERY</th>
+			</tr>
+			<tr>
+				<td>Facility</td>
+				<td><obs id="surgeryFacilityObs"
+						conceptId="eca1ee04-ad37-41c3-8c09-e4c7e8b1caf0" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Planned dates</td>
+				<td><obs id="surgeryStartDateObs"
+						conceptId="374720cf-262b-4b96-ab08-c34979230f0b"
+						labelText="Start date:" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Type of surgery</td>
+				<td><obs id="surgeryTypeObs"
+						conceptId="3a794302-d39d-41ba-a835-917c23bf5560" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</TBODY>
+		</obsgroup>
+	</table>
+	<table class="togglebles" width="100%">
+		<obsgroup groupingConceptId="63ad7caa-b6e2-4b9a-b462-771a9b048c36">
+		<TBODY id="toggleble22">
+			<tr>
+				<th class="tableHeader" colspan="4">RADIATION THERAPY</th>
+			</tr>
+			<tr>
+				<td>Facility</td>
+				<td><obs id="radiationFacilityObs"
+						conceptId="09693eb4-aa3d-4804-bcc3-eb149cb0614a"
+						defaultValue="ceac8227-23ec-4f51-9dab-6ed3886151aa" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Planned dates</td>
+				<td><obs id="radiationStartDateObs"
+						conceptId="b5f3650e-7614-4d13-8676-dd420458e1ba"
+						labelText="Start date:" />
 				</td>
 				<td></td>
 				<td></td>
