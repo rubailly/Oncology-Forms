@@ -5054,14 +5054,31 @@ if(jQuery){
 			<tr>
 				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
 			</tr>
-			<tr>
-				<td>Regimen</td>
+			<tr class="spaceUnder">
+				<td>Regimen Type</td>
 				<td><obs id="chemotherapyRegimenObs"
 						conceptId="012df739-5bd1-445c-a76e-de0d5702d86a" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
 			</tr>
+			<tr class="checkboxGroup">
+				<td>Regimen Timing</td>
+				<td><obs id="regimenTimingNeoadjuvant"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0"
+						answerLabel="Neoadjuvant" />
+				</td>
+				<td><obs id="regimenTimingAdjuvant"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="0270b13f-7641-4544-a41b-4e66649b679d"
+						answerLabel="Adjuvant" /></td>
+				<td><obs id="regimenTimingPalliative"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="b4c1df8a-9e39-4132-89a7-463394e765cd"
+						answerLabel="Palliative" /></td>
+			</tr>
+			
 			<tr>
 				<td>Cycles</td>
 				<td><obs id="chemotherapyCyclesObs"
@@ -5079,9 +5096,10 @@ if(jQuery){
 				<td></td>
 			</tr>
 			<tr>
-				<td>Planned regimen length</td>
-				<td><obs id="chemotherapyRegimenEndObs"
-						conceptId="6ecc0570-9711-47ad-b9f9-997dd0964e17" labelText="" />weeks</td>
+				<td>Planned regimen end</td>
+				<td><obs id="chemotherapyFirstCycleObs"
+						conceptId="989c2c3c-b000-45e2-9bc4-0bab9808d9c4" allowFutureDates="true" labelText="" />
+				</td>
 				<td></td>
 				<td></td>
 			</tr>
