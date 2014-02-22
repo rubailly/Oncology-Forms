@@ -2642,8 +2642,213 @@ if(jQuery){
 					conceptId="5988cf36-80fb-46b9-bf19-93ec759c4bb6" labelText="" /></td>
 		</tr>
 	</table>
+	<br/>
 	<table class="togglebles">
+	
 		<TBODY id="toggleble1">
+		
+		<!-- Begin of the pathology section -->
+		<tr>
+			<td colspan="6">DISEASE WORK-UP</td>
+		</tr>
+		
+		<tr>
+	<td colspan="6"><table class="togglebles" width="100%">
+		<obsgroup groupingConceptId="639fb794-8a5a-4958-b4b1-749e554f44fb">
+		<tr class="checkboxGroup , spaceUnder">
+			<td width="400px">Pathology completed</td>
+			<td id="trigger20" width="265px"><obs id="pathologyCompletedYes"
+					conceptId="145c13d3-dfbb-4dc6-9986-d10fd5e9bf48"
+					answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2"
+					answerLabel="Yes" style="checkbox" /></td>
+			<td><obs id="pathologyCompletedNo"
+					conceptId="145c13d3-dfbb-4dc6-9986-d10fd5e9bf48"
+					answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
+					answerLabel="NO" style="checkbox" /></td>
+					<td colspan="3"></td>
+		</tr>
+		<TBODY id="toggleble20">
+			<tr class="checkboxGroup , spaceUnder">
+				<td>Date:<obs id="dateOfPathologyObs"
+						conceptId="926dd83d-5c6c-43d9-9fb8-a8c2e364d5f6" labelText="" /><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(date
+					of report)</td>
+				<td colspan="2">Site of Pathology:<obs id="siteOfPathologyObs"
+						conceptId="ca421c58-2c81-4fac-8cf7-aced4f2896e8" labelText="" />
+				</td>
+				<td colspan="3"></td>
+			</tr>
+			<tr>
+				<td>PathologicDiagnosis:</td>
+				<td><obs id="invasiveDuctalCarcinoma"
+						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
+						answerConceptId="ae859e04-95b2-4b1c-ad61-61d643a96556"
+						answerLabel="Invasive Ductal Carcinoma" /></td>
+				<td><obs id="invasiveLobularCarcinoma"
+						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
+						answerConceptId="6a37d4d3-7d2a-48fa-89fc-b4a314ffd253"
+						answerLabel="Invasive Lobular Carcinoma" /></td>
+						<td colspan="3"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="5"><obs id="otherInvasiveCarcinoma"
+						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
+						answerConceptId="ff5273ea-bc19-480f-9056-d830d137bca1"
+						answerLabel="OtherInvasive Carcinoma (specify) :" /><obs
+						id="otherInvasiveCarcinomaNonCoded"
+						conceptId="ff5273ea-bc19-480f-9056-d830d137bca1"
+						labelText="" />
+				</td>
+			</tr>
+			<tr class="spaceUnder">
+				<td></td>
+				<td colspan="5"><obs id="otherPathologicDiagnosis"
+						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
+						answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
+						answerLabel="Other (specify) :" /> <obs
+						id="otherPathologicDiagnosisNonCoded"
+						conceptId="387dc461-bde7-4d27-8754-8ee35e5be3ee"
+						labelText="" />
+				</td>
+			</tr>
+			<tr class="checkboxGroup">
+				<td>Estrogen receptor:</td>
+				<td><obs id="breastStageERER+"
+						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
+						answerConceptId="28fa396e-5330-43b3-8c69-d978003f24ff"
+						answerLabel="ER+" /></td>
+				<td><obs id="breastStageERER-"
+						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
+						answerConceptId="d65a1323-e3b2-43ac-ad35-b36359d00504"
+						answerLabel="ER-" /></td>
+				<td><obs id="breastStageERNotDetermined"
+						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
+						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						answerLabel="not determined" /></td>
+						<td colspan="2"></td>
+			</tr>
+			<tr class="checkboxGroup">
+				<td>Progesterone receptor:</td>
+				<td><obs id="breastStagePRPR+"
+						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
+						answerConceptId="a054fa15-43aa-4271-bc24-dc24f34014ac"
+						answerLabel="PR+" /></td>
+				<td><obs id="breastStagePRPR-"
+						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
+						answerConceptId="5007fcdc-becb-474a-ab79-c36a94e56f66"
+						answerLabel="PR-" /></td>
+				<td><obs id="breastStagePRNotDetermined"
+						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
+						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						answerLabel="not determined" /></td>
+						<td colspan="2"></td>
+			</tr>
+			<tr class="checkboxGroup">
+				<td>HER2 IHC:</td>
+				<td><obs id="breastStageHIIHC+"
+						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
+						answerConceptId="f8e53211-e01c-4439-86e5-083b6a044652"
+						answerLabel="HER2 IHC+" /></td>
+				<td><obs id="breastStageHIIHC-"
+						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
+						answerConceptId="2a7e3812-da32-437e-b967-079706ca955e"
+						answerLabel="HER2 IHC-" /></td>
+				<td><obs id="breastStageHINotDetermined"
+						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
+						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						answerLabel="not determined" /></td>
+						<td colspan="2"></td>
+			</tr>
+			<tr class="checkboxGroup, spaceUnder">
+				<td>HER2 FISH:</td>
+				<td><obs id="breastStageHFFISH+"
+						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
+						answerConceptId="7c7b9746-010e-42a1-97f7-4b5e5fe0f374"
+						answerLabel="HER2 FISH+" /></td>
+				<td><obs id="breastStageHFFISH-"
+						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
+						answerConceptId="bc45c3ef-701d-4279-8434-ce94525fc7df"
+						answerLabel="HER2 FISH-" /></td>
+				<td><obs id="breastStageHFNotDetermined"
+						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
+						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						answerLabel="not determined" /></td>
+						<td colspan="2"></td>
+			</tr>
+			<tr class="spaceUnder">
+			<td colspan="6">Imaging Studies (includea copy of imaging report in chart, if applicable)</td>
+			</tr>
+			<tr>
+				<td><obs id="chestXRay"
+						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
+						answerConceptId="3ccc6186-26fe-102b-80cb-0017a47871b2"
+						answerLabel="Chest X-ray" /></td>
+				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesChest"
+						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
+				</td>
+				<td>Site: <obs id="siteOfImagingStudiesChest"
+						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
+				</td>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<td><obs id="abdominalPelvicUltrasound "
+						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
+						answerConceptId="0ffd0c89-efdf-474f-8d2d-e4f8de7c7d90"
+						answerLabel="Abdominal/Pelvic Ultrasound"/></td>
+				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesUltrasound"
+						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
+				</td>
+				<td>Site: <obs id="siteOfImagingStudiesUltrasound"
+						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
+				</td>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<td><obs id="scanOfChestAbdomenPelvis"
+						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
+						answerConceptId="f0645e5e-ad7e-45c3-a4d4-a412aa61b64c"
+						answerLabel="CT scan of Chest/Abdomen/Pelvis (7561)" /></td>
+				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesChestAbdomenPelvis"
+						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
+				</td>
+				<td>Site: <obs id="siteOfImagingStudiesChestAbdomenPelvis"
+						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
+				</td>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<td><obs id="CTscanOtherNonCode"
+						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
+						answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
+						answerLabel="Other:"/></td>
+				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesOtherNonCode"
+						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
+				</td>
+				<td>Site: <obs id="siteOfImagingStudiesOtherNonCode"
+						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
+				</td>
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<td><obs id="CTscanNone"
+						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
+						answerConceptId="3cd743f8-26fe-102b-80cb-0017a47871b2"
+						answerLabel="None" /></td>
+				<td colspan="5">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3"><obs id="imagingAssessmentAndFindings"
+						conceptId="997d8e3c-a93c-4cd4-822d-9630bdb5fffe" labelText="Imaging Assessment &#38; Findings:"/></td>
+				<td colspan="3"></td>
+			</tr>
+		</TBODY>
+		</obsgroup>
+	</table> </td>
+	</tr>
+		
+		<!-- End of the pathology section -->
 
 			<tr class="spaceUnder">
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
@@ -4608,198 +4813,6 @@ if(jQuery){
 			</tr>
 			</obsgroup>
 		</TBODY>
-	</table>
-	<br />
-	<table class="togglebles" width="100%">
-		<tr>
-			<th class="tableHeader" colspan="4">PATHOLOGY</th>
-		</tr>
-		<obsgroup groupingConceptId="639fb794-8a5a-4958-b4b1-749e554f44fb">
-		<tr class="checkboxGroup , spaceUnder">
-			<td width="400px">Pathology completed</td>
-			<td id="trigger20" width="265px"><obs id="pathologyCompletedYes"
-					conceptId="145c13d3-dfbb-4dc6-9986-d10fd5e9bf48"
-					answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2"
-					answerLabel="Yes" style="checkbox" /></td>
-			<td><obs id="pathologyCompletedNo"
-					conceptId="145c13d3-dfbb-4dc6-9986-d10fd5e9bf48"
-					answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
-					answerLabel="NO" style="checkbox" /></td>
-					<td></td>
-		</tr>
-		<TBODY id="toggleble20">
-			<tr class="checkboxGroup , spaceUnder">
-				<td>Date:<obs id="dateOfPathologyObs"
-						conceptId="926dd83d-5c6c-43d9-9fb8-a8c2e364d5f6" labelText="" /><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(date
-					of report)</td>
-				<td colspan="2">Site of Pathology:<obs id="siteOfPathologyObs"
-						conceptId="ca421c58-2c81-4fac-8cf7-aced4f2896e8" labelText="" />
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>PathologicDiagnosis:</td>
-				<td><obs id="invasiveDuctalCarcinoma"
-						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
-						answerConceptId="ae859e04-95b2-4b1c-ad61-61d643a96556"
-						answerLabel="Invasive Ductal Carcinoma" /></td>
-				<td><obs id="invasiveLobularCarcinoma"
-						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
-						answerConceptId="6a37d4d3-7d2a-48fa-89fc-b4a314ffd253"
-						answerLabel="Invasive Lobular Carcinoma" /></td>
-						<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td colspan="3"><obs id="otherInvasiveCarcinoma"
-						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
-						answerConceptId="ff5273ea-bc19-480f-9056-d830d137bca1"
-						answerLabel="OtherInvasive Carcinoma (specify) :" /><obs
-						id="otherInvasiveCarcinomaNonCoded"
-						conceptId="ff5273ea-bc19-480f-9056-d830d137bca1"
-						labelText="" />
-				</td>
-			</tr>
-			<tr class="spaceUnder">
-				<td></td>
-				<td colspan="3"><obs id="otherPathologicDiagnosis"
-						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
-						answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
-						answerLabel="Other (specify) :" /> <obs
-						id="otherPathologicDiagnosisNonCoded"
-						conceptId="387dc461-bde7-4d27-8754-8ee35e5be3ee"
-						labelText="" />
-				</td>
-			</tr>
-			<tr class="checkboxGroup">
-				<td>Estrogen receptor:</td>
-				<td><obs id="breastStageERER+"
-						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
-						answerConceptId="28fa396e-5330-43b3-8c69-d978003f24ff"
-						answerLabel="ER+" /></td>
-				<td><obs id="breastStageERER-"
-						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
-						answerConceptId="d65a1323-e3b2-43ac-ad35-b36359d00504"
-						answerLabel="ER-" /></td>
-				<td><obs id="breastStageERNotDetermined"
-						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
-						answerLabel="not determined" /></td>
-			</tr>
-			<tr class="checkboxGroup">
-				<td>Progesterone receptor:</td>
-				<td><obs id="breastStagePRPR+"
-						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
-						answerConceptId="a054fa15-43aa-4271-bc24-dc24f34014ac"
-						answerLabel="PR+" /></td>
-				<td><obs id="breastStagePRPR-"
-						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
-						answerConceptId="5007fcdc-becb-474a-ab79-c36a94e56f66"
-						answerLabel="PR-" /></td>
-				<td><obs id="breastStagePRNotDetermined"
-						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
-						answerLabel="not determined" /></td>
-			</tr>
-			<tr class="checkboxGroup">
-				<td>HER2 IHC:</td>
-				<td><obs id="breastStageHIIHC+"
-						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
-						answerConceptId="f8e53211-e01c-4439-86e5-083b6a044652"
-						answerLabel="HER2 IHC+" /></td>
-				<td><obs id="breastStageHIIHC-"
-						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
-						answerConceptId="2a7e3812-da32-437e-b967-079706ca955e"
-						answerLabel="HER2 IHC-" /></td>
-				<td><obs id="breastStageHINotDetermined"
-						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
-						answerLabel="not determined" /></td>
-			</tr>
-			<tr class="checkboxGroup, spaceUnder">
-				<td>HER2 FISH:</td>
-				<td><obs id="breastStageHFFISH+"
-						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
-						answerConceptId="7c7b9746-010e-42a1-97f7-4b5e5fe0f374"
-						answerLabel="HER2 FISH+" /></td>
-				<td><obs id="breastStageHFFISH-"
-						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
-						answerConceptId="bc45c3ef-701d-4279-8434-ce94525fc7df"
-						answerLabel="HER2 FISH-" /></td>
-				<td><obs id="breastStageHFNotDetermined"
-						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
-						answerLabel="not determined" /></td>
-			</tr>
-			<tr class="spaceUnder">
-			<td colspan="4">Imaging Studies (includea copy of imaging report in chart, if applicable)</td>
-			</tr>
-			<tr>
-				<td><obs id="chestXRay"
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="3ccc6186-26fe-102b-80cb-0017a47871b2"
-						answerLabel="Chest X-ray" /></td>
-				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesChest"
-						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
-				</td>
-				<td>Site: <obs id="siteOfImagingStudiesChest"
-						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
-				</td>
-			</tr>
-			<tr>
-				<td><obs id="abdominalPelvicUltrasound "
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="0ffd0c89-efdf-474f-8d2d-e4f8de7c7d90"
-						answerLabel="Abdominal/Pelvic Ultrasound"/></td>
-				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesUltrasound"
-						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
-				</td>
-				<td>Site: <obs id="siteOfImagingStudiesUltrasound"
-						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
-				</td>
-			</tr>
-			<tr>
-				<td><obs id="scanOfChestAbdomenPelvis"
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="f0645e5e-ad7e-45c3-a4d4-a412aa61b64c"
-						answerLabel="CT scan of Chest/Abdomen/Pelvis (7561)" /></td>
-				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesChestAbdomenPelvis"
-						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
-				</td>
-				<td>Site: <obs id="siteOfImagingStudiesChestAbdomenPelvis"
-						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
-				</td>
-			</tr>
-			<tr>
-				<td><obs id="CTscanOtherNonCode"
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
-						answerLabel="Other:"/></td>
-				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesOtherNonCode"
-						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
-				</td>
-				<td>Site: <obs id="siteOfImagingStudiesOtherNonCode"
-						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
-				</td>
-			</tr>
-			<tr>
-				<td><obs id="CTscanNone"
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="3cd743f8-26fe-102b-80cb-0017a47871b2"
-						answerLabel="None" /></td>
-				<td colspan="2">
-				</td>
-				<td>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3"><obs id="imagingAssessmentAndFindings"
-						conceptId="997d8e3c-a93c-4cd4-822d-9630bdb5fffe" labelText="Imaging Assessment &#38; Findings:"/></td>
-				<td>
-				</td>
-			</tr>
-		</TBODY>
-		</obsgroup>
 	</table>
 	<br />
 	<table id="existingAndNewAllergiesScreenView" class="togglebles"
