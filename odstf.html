@@ -876,7 +876,10 @@ if(jQuery){
     				    we need to initisalize them to hidden state and we'll be toggling them one by one according to whether a section is selected or not */
     				    $j('#surgeryTreatmentPlan').hide();
     				    $j('#radiationTreatmentPlan').hide();
-    				    $j('#chemotherapyTreatmentPlan').hide(); 
+    				    $j('#chemotherapyTreatmentPlan_1').hide(); 
+    				    $j('#chemotherapyTreatmentPlan_2').hide(); 
+    				    $j('#chemotherapyTreatmentPlan_3').hide(); 
+    				    $j('#chemotherapyTreatmentPlan_4').hide(); 
     				   
     				  //handle surgery section if selected
     				    if(hasValue('trigger21')){
@@ -895,8 +898,18 @@ if(jQuery){
     					}
     				    
     				  //handle chemotherapy section if selected
-    				    if(hasValue('trigger23')){
-    				    	$j('#chemotherapyTreatmentPlan').show();
+    				    if(hasValue('trigger23_1')){
+    				    	$j('#chemotherapyTreatmentPlan_1').show();
+    						setInnerHtml('chemotherapyRegimen', ''+getValueOfChildSpan('chemotherapyRegimenObs'));
+    						setInnerHtml('chemotherapyCycles', ''+getValueOfChildSpan('chemotherapyCyclesObs'));
+    						setInnerHtml('chemotherapyFirstCycle', ''+getValueOfChildSpan('chemotherapyFirstCycleObs'));
+    						setInnerHtml('chemotherapyRegimenEnd', ''+getValueOfChildSpan('chemotherapyRegimenEndObs')+' week(s)');
+    						setInnerHtml('chemotherapyStandardRegimen', ''+getValueOfChildSpan('chemotherapyStandardRegimenObs'));
+
+    					}
+    				  
+    				    if(hasValue('trigger23_2')){
+    				    	$j('#chemotherapyTreatmentPlan_2').show();
     						setInnerHtml('chemotherapyRegimen', ''+getValueOfChildSpan('chemotherapyRegimenObs'));
     						setInnerHtml('chemotherapyCycles', ''+getValueOfChildSpan('chemotherapyCyclesObs'));
     						setInnerHtml('chemotherapyFirstCycle', ''+getValueOfChildSpan('chemotherapyFirstCycleObs'));
@@ -1559,7 +1572,10 @@ if(jQuery){
          we need to initisalize them to hidden state and we'll be toggling them one by one according to whether a section is selected or not */
          $j('#surgeryTreatmentPlan').hide();
          $j('#radiationTreatmentPlan').hide();
-         $j('#chemotherapyTreatmentPlan').hide();
+         $j('#chemotherapyTreatmentPlan_1').hide();
+         $j('#chemotherapyTreatmentPlan_2').hide();
+         $j('#chemotherapyTreatmentPlan_3').hide();
+         $j('#chemotherapyTreatmentPlan_4').hide();
          
        //find selected sections
          var surgeryPlanned = $j(".surgery").find(":checked").closest("td").attr("id");
@@ -1583,8 +1599,8 @@ if(jQuery){
      	}
          
        //handle chemotherapy section if selected
-         if(chemotherapyPlanned == 'trigger23'){
-         	$j('#chemotherapyTreatmentPlan').show();
+         if(chemotherapyPlanned == 'trigger23_1'){
+         	$j('#chemotherapyTreatmentPlan_1').show();
      		setInnerHtml('chemotherapyRegimen', ''+$j('#chemotherapyRegimenObs option:selected').text());
      		setInnerHtml('chemotherapyCycles', ''+checkEmptyInputs(getValue('chemotherapyCyclesObs.value'),'',Math.floor(getValue('chemotherapyCyclesObs.value'))));
      		setInnerHtml('chemotherapyFirstCycle', ''+getValue('chemotherapyFirstCycleObs.value'));
@@ -1592,6 +1608,16 @@ if(jQuery){
      		setInnerHtml('chemotherapyStandardRegimen', ''+getValue('chemotherapyStandardRegimenObs.value'));
 
      	}
+       
+         if(chemotherapyPlanned == 'trigger23_2'){
+          	$j('#chemotherapyTreatmentPlan_2').show();
+      		setInnerHtml('chemotherapyRegimen', ''+$j('#chemotherapyRegimenObs option:selected').text());
+      		setInnerHtml('chemotherapyCycles', ''+checkEmptyInputs(getValue('chemotherapyCyclesObs.value'),'',Math.floor(getValue('chemotherapyCyclesObs.value'))));
+      		setInnerHtml('chemotherapyFirstCycle', ''+getValue('chemotherapyFirstCycleObs.value'));
+      		setInnerHtml('chemotherapyRegimenEnd', ''+checkEmptyInputs(getValue('chemotherapyRegimenEndObs.value'),'',getValue('chemotherapyRegimenEndObs.value')+' week(s)'));
+      		setInnerHtml('chemotherapyStandardRegimen', ''+getValue('chemotherapyStandardRegimenObs.value'));
+
+      	}
 	 },
 	};
     
@@ -4954,7 +4980,21 @@ if(jQuery){
 		</tr>
 		<tr class="checkboxGroup , chemotherapy">
 			<td>Chemotherapy</td>
-			<td id="trigger23"><workflowState
+			<td id="trigger23_1"><workflowState
+					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
+					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
+					type="checkbox" />
+			</td>
+			<td><workflowState
+					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
+					stateId="3f13abb5-0a00-4fac-b89b-4d0679c3b6e1"
+					stateLabel="Not planned" type="checkbox" />
+			</td>
+			<td></td>
+		</tr>
+		<tr class="checkboxGroup , chemotherapy">
+			<td>Chemotherapy</td>
+			<td id="trigger23_2"><workflowState
 					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
 					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
 					type="checkbox" />
@@ -4999,7 +5039,7 @@ if(jQuery){
 	</table>
 	<table class="togglebles" width="100%">
 		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
-		<TBODY id="toggleble23">
+		<TBODY id="toggleble23_2">
 			<tr>
 				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
 			</tr>
@@ -5061,13 +5101,93 @@ if(jQuery){
 				<td></td>
 			</tr>
 			<tr>
-				<td><a id="chemoTable" onclick="toggleTable();" href="#">Click to Add/Remove Chemotherapy</a></td>
 				<td></td>
 				<td></td>
 				<td></td>
+				<td style="text-align: right;"><a id="chemoTable" onclick="toggleTable();" href="#">Click to remove this chemotherapy</a></td>
 			</tr>
 		</TBODY>
 		</obsgroup>
+		<!-- Begin of second chemo -->
+		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
+		<TBODY id="toggleble23_1">
+			<tr>
+				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
+			</tr>
+			<tr class="spaceUnder">
+				<td>Regimen Type</td>
+				<td><obs id="chemotherapyRegimenObs"
+						conceptId="012df739-5bd1-445c-a76e-de0d5702d86a" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="checkboxGroup">
+				<td>Regimen Timing</td>
+				<td><obs id="regimenTimingNeoadjuvant"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0"
+						answerLabel="Neoadjuvant" />
+				</td>
+				<td><obs id="regimenTimingAdjuvant"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="0270b13f-7641-4544-a41b-4e66649b679d"
+						answerLabel="Adjuvant" /></td>
+				<td><obs id="regimenTimingPalliative"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="b4c1df8a-9e39-4132-89a7-463394e765cd"
+						answerLabel="Palliative" /></td>
+			</tr>
+			
+			<tr>
+				<td>Cycles</td>
+				<td><obs id="chemotherapyCyclesObs"
+						conceptId="aaeb5782-3ee6-4cb8-9d27-c557ad91e241" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Planned first cycle</td>
+				<td><obs id="chemotherapyFirstCycleObs"
+						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" allowFutureDates="true" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Planned regimen end</td>
+				<td><obs id="chemotherapyFirstCycleObs"
+						conceptId="989c2c3c-b000-45e2-9bc4-0bab9808d9c4" allowFutureDates="true" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="spaceUnder">
+				<td>Planned changes to standard regimen</td>
+				<td><obs id="chemotherapyStandardRegimenObs"
+						conceptId="d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td style="text-align: right;"><a id="chemoTable" onclick="toggleTable();" href="#">Click to remove this chemotherapy</a></td>
+			</tr>
+		</TBODY>
+		</obsgroup>
+		<!-- End of second chemo -->
+	</table>
+	<table style='border: 0px;'>
+		<tr>
+			<td><a id="chemoTable" onclick="toggleTable();" href="#">Click to add chemotherapy</a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
 	</table>
 	<table class="togglebles" width="100%">
 		<obsgroup groupingConceptId="c0f544c2-b233-4956-a8d6-b75153992f00">
