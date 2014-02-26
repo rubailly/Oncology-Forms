@@ -169,7 +169,7 @@ if(jQuery){
 	    	hideStagingKeys(this.id);
 	    	}); 
 	    
-	}
+	};
      
 	var getURLParam = function(name) {
 	    var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(document.URL);
@@ -5027,21 +5027,21 @@ lymph node metastases.</li>
 					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
 					type="checkbox" />
 			</td>
-			<td><workflowState
+			<td id="chemoRemover1"><workflowState
 					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
 					stateId="3f13abb5-0a00-4fac-b89b-4d0679c3b6e1"
 					stateLabel="Not planned" type="checkbox" />
 			</td>
 			<td></td>
 		</tr>
-		<tr class="checkboxGroup , chemotherapy">
+		<tr class="checkboxGroup , chemotherapy" style="display:none;">
 			<td>Chemotherapy #2</td>
 			<td id="trigger23_2"><workflowState
 					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
 					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
 					type="checkbox" />
 			</td>
-			<td><workflowState
+			<td id="chemoRemover2"><workflowState
 					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
 					stateId="3f13abb5-0a00-4fac-b89b-4d0679c3b6e1"
 					stateLabel="Not planned" type="checkbox" />
@@ -5081,7 +5081,7 @@ lymph node metastases.</li>
 	</table>
 	<table class="togglebles" width="100%">
 		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
-		<TBODY id="toggleble23_2">
+		<TBODY id="toggleble23_1">
 			<tr>
 				<th class="tableHeader" colspan="4">CHEMOTHERAPY #1</th>
 			</tr>
@@ -5146,13 +5146,13 @@ lymph node metastases.</li>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td style="text-align: right;"><a id="chemoTable" onclick="toggleTable();" href="#">Click to remove this chemotherapy</a></td>
+				<td style="text-align: right;"><a id="chemoTable" onclick="removeChemo('chemoRemover1');" href="#">Click to remove this chemotherapy</a></td>
 			</tr>
 		</TBODY>
 		</obsgroup>
 		<!-- Begin of second chemo -->
 		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
-		<TBODY id="toggleble23_1">
+		<TBODY id="toggleble23_2">
 			<tr>
 				<th class="tableHeader" colspan="4">CHEMOTHERAPY #2</th>
 			</tr>
@@ -5217,7 +5217,7 @@ lymph node metastases.</li>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td style="text-align: right;"><a id="chemoTable" onclick="toggleTable();" href="#">Click to remove this chemotherapy</a></td>
+				<td style="text-align: right;"><a id="chemoTable" onclick="removeChemo('chemoRemover2');" href="#">Click to remove this chemotherapy</a></td>
 			</tr>
 		</TBODY>
 		</obsgroup>
@@ -5225,7 +5225,7 @@ lymph node metastases.</li>
 	</table>
 	<table style='border: 0px;'>
 		<tr>
-			<td><a id="chemoTable" onclick="toggleTable();" href="#">Click to add chemotherapy</a></td>
+			<td><a id="chemoTable" onclick="addChemo();" href="#">Click to add chemotherapy</a></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -5445,7 +5445,24 @@ lymph node metastases.</li>
 		});
 		
 	}
-</script> <ifMode mode="EDIT"> <script type="text/javascript">
+</script> 
+
+<!-- Handle adding/removing chemotherapy sections --> 
+<script type="text/javascript">
+function addChemo()
+{
+	$j('#trigger23_2').find("input[type$='checkbox']").click();
+	$j('#trigger23_2').find("input[type$='checkbox']").attr("checked",true);
+}
+
+function removeChemo(elementId)
+{
+	$j('#'+elementId).find("input[type$='checkbox']").click();
+	$j('#'+elementId).find("input[type$='checkbox']").attr("checked",true);
+}
+</script>
+
+<ifMode mode="EDIT"> <script type="text/javascript">
   var hideAll = function(){
             $j(".togglebles").find("tbody[id^='toggleble']").hide();
             $j(".togglebles").find("span[id^='toggleble']").hide();
