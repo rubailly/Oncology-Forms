@@ -3140,7 +3140,7 @@ if(jQuery){
 						answerLabel="IV" /></td>
 			</tr>
 
-			<tr class="checkboxGroup">
+			<tr class="checkboxGroup spaceUnder">
 				<td>Clustered Stage:</td>
 				<td><obs id="breastStageCSEarly"
 						conceptId="40a6d86f-dcd3-4e5e-88e6-bb55db8deef3"
@@ -3159,38 +3159,76 @@ if(jQuery){
 			</tr>
 			</obsgroup>
 			<tr class="breastCancerStagingKeys">
+			<td colspan="6">
+			<b>*Overall Stage (AJCC 7 Edition Breast Cancer Staging):</b>
+			</td></tr>
+			<tr class="breastCancerStagingKeys">
 				<td colspan="6"><span style="float: left;">
-						<h5>*TNM Pathologic Staging Key</h5>
+						<h5>*T Staging</h5>
 						<ul>
+						    <li>TX Tumor size cannot be assessed</li>
 							<li>T0 No evidence of primary tumor</li>
 							<li>Tis Carcinoma in situ only</li>
 							<li>T1 ≤2 cm</li>
 							<li>T2 >2 cm, and ≤5 cm</li>
 							<li>T3 >5 cm</li>
 							<li>T4 Involvement of skin or chest wall</li>
-						</ul> </span> <span style="float: left;">
-						<ul>
-							<li>N0 No axillary node involvement</li>
-							<li>N1 Involvement of 1-3 axillary nodes</li>
-							<li>N2 Involvement of 4-9 axillary nodes</li>
-							<li>N3 Involvement of ≥10 axillary nodes, or supraclavicular
-								nodes</li>
-						</ul> </span> <span style="float: left;">
-						<ul>
-							<li>M0 No evidence of distant metastases</li>
-							<li>M1 Evidence of distant metastases (includes cervical
-								adenopathy)</li>
-						</ul> </span></td>
+						</ul> </span> </td>
 			</tr>
 			<tr class="breastCancerStagingKeys">
 				<td colspan="6"><span style="float: left;">
-						<h5>*Overall Staging Key</h5>
+						<h5>*Clinical N Staging</h5>
 						<ul>
-							<li>I T1/N0</li>
-							<li>II T2/N0-1, T1/N1</li>
-							<li>III T3/N0-1, T1-3/N2</li>
-							<li>IV M1</li>
-						</ul> </span></td>
+						    <li>NX Regional lymph nodes cannot be assessed (eg, previously removed)</li>
+							<li>N0 No regional lymph node metastases</li>
+							<li>N1 Metastases to movable ipsilateral level I, II axillary lymph node(s)</li>
+							<li>N2 Metastases in ipsilateral level I, II axillary lymph nodes that are clinically fixed or matted; or in clinically detected ipsilateral internal mammary<br/>
+nodes in the absence of clinically evident axillary lymph node metastases.</li>
+							<li>N2a Metastases in ispilateral level I, II axillary lymph nodes fixed to one another (matted) or to other structures.</li>
+							<li>N2b Metastases only in clinically detected ipsilateral internal mammary nodes and in the absence of clinically evident level I, II axillary<br/>
+lymph node metastases.</li>
+							<li>N3 Metastases in ipsilateralinfraclavicular (level II axillary) lymph node(s) with or without level I, II axillary lymph node involvement or in clinically
+<br/>detected ipsilateral internal mammary lymph node(s) with clinically evident level I, II axillary lymph node metastases; or metastases in
+<br/>ipsilateral supraclavicular lymph node(s) with or without axillary or internal mammary lymph node involvement.</li>
+							<li>N3a Metastases in ipsilateralinfraclavicular lymph node(s).Metastases in ipsilateral internal mammary lymph node(s) and axillary lymph
+<br/>node(s).Metastases in ipsilateralsupraclavicular lymph node(s).
+</li>
+							<li>N3b Regional lymph nodes cannot be assessed (eg, previously removed)</li>
+							<li>N3c No regional lymph node metastases</li>
+						</ul> </span> </td>
+			</tr>
+			<tr class="breastCancerStagingKeys">
+				<td colspan="6"><span style="float: left;">
+						<h5>*Pathologic pN Staging</h5>
+						<ul>
+						    <li>pNX Regional lymph nodes cannot be assessed (eg, previously removed, or not removed for pathologic study)</li>
+							<li>pN0 No regional lymph node metastasis identified histologically</li>
+							<li>pN1 Micrometastases, or metastases in one to three axillary lymph nodes, and/or in internal mammarynodes with metastases detected by
+<br/>sentinel lymph node biopsy but not clinically detected</li>
+							<li>pN2 Metastases in four to nine axillary lymph nodes, or in clinically detected internal mammary lymph nodes in the absence of axillary lymph
+<br/>node metastases</li>
+							<li>pN3 Metastases in 10 or more axillary lymph nodes; or in infraclavicular (level III axillary) lymph nodes;or in clinically detectedipsilateral internal
+<br/>mammary lymph nodes in the presence of 1 or more positivelevel I, II axillary lymph nodes; or in more than 3 axillary lymph nodes and in
+<br/>internal mammary lymph nodeswith micrometastases or macrometastases detected by sentinel lymph node biopsy but not clinically
+</li>
+						</ul> </span> </td>
+			</tr>
+			<tr class="breastCancerStagingKeys">
+				<td colspan="6"><span style="float: left;">
+						<h5>*M Staging</h5>
+						<ul>
+						    <li>M0 No evidence of distant metastases</li>
+							<li>M1 Evidence of distant metastases (includes cervical adenopathy)</li>
+						</ul> </span> </td>
+			</tr>
+			<tr class="breastCancerStagingKeys">
+				<td colspan="6"><span style="float: left;">
+						<h5>*Anatomic stage/prognostic groups</h5>
+						<ul>
+						    <li>Stage 0 Tis N0 M0</li>
+							<li>Stage I T1 N0 M0</li>
+							<li>Stage II T0 N1 M0, T1 N1 M0, T2 N0 M0, T2 N1 M0, T3 N0 M0</li>
+						</ul> </span> </td>
 			</tr>
 		</TBODY>
 
