@@ -163,7 +163,7 @@ if(jQuery){
      //add a button to toggle staging keys
 	for (var i = 0; i &lt; printableTables.length; i++) {
 	    var lastRow=printableTables[i]+"CancerStagingKeys";
-	    $j('.'+lastRow+':last').after('<tr><td colspan="6" style="text-align: right;"><button style="color: #FFF; background-color: #009D8E;" type="button" id="'+lastRow+'">Toggle Staging Keys</button></td></tr>');	
+	    $j('.'+lastRow+':last').after('<tr><td colspan="6" style="text-align: left;"><button style="color: #FFF; background-color: #BB2714;" type="button" id="'+lastRow+'">Click here to see staging guidelines</button></td></tr>');	
 	    
 	    $j('#'+lastRow).click(function () {
 	    	hideStagingKeys(this.id);
