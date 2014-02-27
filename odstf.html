@@ -169,7 +169,7 @@ if(jQuery){
 	    	hideStagingKeys(this.id);
 	    	}); 
 	    
-	};
+	}
      
 	var getURLParam = function(name) {
 	    var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(document.URL);
@@ -5021,7 +5021,7 @@ lymph node metastases.</li>
 			</td>
 		</tr>
 		<tr class="checkboxGroup , chemotherapy">
-			<td>Chemotherapy #1</td>
+			<td>Chemotherapy</td>
 			<td id="trigger23_1"><workflowState
 					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
 					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
@@ -5035,13 +5035,41 @@ lymph node metastases.</li>
 			<td></td>
 		</tr>
 		<tr class="checkboxGroup , chemotherapy" style="display:none;">
-			<td>Chemotherapy #2</td>
+			<td>Chemotherapy</td>
 			<td id="trigger23_2"><workflowState
 					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
 					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
 					type="checkbox" />
 			</td>
 			<td id="chemoRemover2"><workflowState
+					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
+					stateId="3f13abb5-0a00-4fac-b89b-4d0679c3b6e1"
+					stateLabel="Not planned" type="checkbox" />
+			</td>
+			<td></td>
+		</tr>
+		<tr class="checkboxGroup , chemotherapy" style="display:none;">
+			<td>Chemotherapy</td>
+			<td id="trigger23_3"><workflowState
+					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
+					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
+					type="checkbox" />
+			</td>
+			<td id="chemoRemover3"><workflowState
+					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
+					stateId="3f13abb5-0a00-4fac-b89b-4d0679c3b6e1"
+					stateLabel="Not planned" type="checkbox" />
+			</td>
+			<td></td>
+		</tr>
+		<tr class="checkboxGroup , chemotherapy" style="display:none;">
+			<td>Chemotherapy</td>
+			<td id="trigger23_4"><workflowState
+					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
+					stateId="73521919-ea8b-43e9-ad44-20fbdad33a75" stateLabel="Planned"
+					type="checkbox" />
+			</td>
+			<td id="chemoRemover4"><workflowState
 					workflowId="e0a43e8d-27ce-4417-a497-54974c699bc0"
 					stateId="3f13abb5-0a00-4fac-b89b-4d0679c3b6e1"
 					stateLabel="Not planned" type="checkbox" />
@@ -5083,7 +5111,7 @@ lymph node metastases.</li>
 		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
 		<TBODY id="toggleble23_1">
 			<tr>
-				<th class="tableHeader" colspan="4">CHEMOTHERAPY #1</th>
+				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
 			</tr>
 			<tr class="spaceUnder">
 				<td>Regimen Type</td>
@@ -5146,7 +5174,7 @@ lymph node metastases.</li>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td style="text-align: right;"><a id="chemoTable" onclick="removeChemo('chemoRemover1');" href="#">Click to remove this chemotherapy</a></td>
+				<td style="text-align: right;"><a id="chemoTable" onclick="removeChemo('chemoRemover1');" href="javascript:void(0);">Click to remove this chemotherapy</a></td>
 			</tr>
 		</TBODY>
 		</obsgroup>
@@ -5154,7 +5182,7 @@ lymph node metastases.</li>
 		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
 		<TBODY id="toggleble23_2">
 			<tr>
-				<th class="tableHeader" colspan="4">CHEMOTHERAPY #2</th>
+				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
 			</tr>
 			<tr class="spaceUnder">
 				<td>Regimen Type</td>
@@ -5217,15 +5245,161 @@ lymph node metastases.</li>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td style="text-align: right;"><a id="chemoTable" onclick="removeChemo('chemoRemover2');" href="#">Click to remove this chemotherapy</a></td>
+				<td style="text-align: right;"><a id="chemoTable" onclick="removeChemo('chemoRemover2');" href="javascript:void(0);">Click to remove this chemotherapy</a></td>
 			</tr>
 		</TBODY>
 		</obsgroup>
 		<!-- End of second chemo -->
+		
+		<!-- Begin of third chemo -->
+		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
+		<TBODY id="toggleble23_3">
+			<tr>
+				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
+			</tr>
+			<tr class="spaceUnder">
+				<td>Regimen Type</td>
+				<td><obs id="chemotherapyRegimenObs"
+						conceptId="012df739-5bd1-445c-a76e-de0d5702d86a" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="checkboxGroup">
+				<td>Regimen Timing</td>
+				<td><obs id="regimenTimingNeoadjuvant"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0"
+						answerLabel="Neoadjuvant" />
+				</td>
+				<td><obs id="regimenTimingAdjuvant"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="0270b13f-7641-4544-a41b-4e66649b679d"
+						answerLabel="Adjuvant" /></td>
+				<td><obs id="regimenTimingPalliative"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="b4c1df8a-9e39-4132-89a7-463394e765cd"
+						answerLabel="Palliative" /></td>
+			</tr>
+			
+			<tr>
+				<td>Cycles</td>
+				<td><obs id="chemotherapyCyclesObs"
+						conceptId="aaeb5782-3ee6-4cb8-9d27-c557ad91e241" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Planned first cycle</td>
+				<td><obs id="chemotherapyFirstCycleObs"
+						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" allowFutureDates="true" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Planned regimen end</td>
+				<td><obs id="chemotherapyFirstCycleObs"
+						conceptId="989c2c3c-b000-45e2-9bc4-0bab9808d9c4" allowFutureDates="true" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="spaceUnder">
+				<td>Planned changes to standard regimen</td>
+				<td><obs id="chemotherapyStandardRegimenObs"
+						conceptId="d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td style="text-align: right;"><a id="chemoTable" onclick="removeChemo('chemoRemover3');" href="javascript:void(0);">Click to remove this chemotherapy</a></td>
+			</tr>
+		</TBODY>
+		</obsgroup>
+		<!-- End of third chemo -->
+		
+		<!-- Begin of second chemo -->
+		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
+		<TBODY id="toggleble23_4">
+			<tr>
+				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
+			</tr>
+			<tr class="spaceUnder">
+				<td>Regimen Type</td>
+				<td><obs id="chemotherapyRegimenObs"
+						conceptId="012df739-5bd1-445c-a76e-de0d5702d86a" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="checkboxGroup">
+				<td>Regimen Timing</td>
+				<td><obs id="regimenTimingNeoadjuvant"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0"
+						answerLabel="Neoadjuvant" />
+				</td>
+				<td><obs id="regimenTimingAdjuvant"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="0270b13f-7641-4544-a41b-4e66649b679d"
+						answerLabel="Adjuvant" /></td>
+				<td><obs id="regimenTimingPalliative"
+						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
+						answerConceptId="b4c1df8a-9e39-4132-89a7-463394e765cd"
+						answerLabel="Palliative" /></td>
+			</tr>
+			
+			<tr>
+				<td>Cycles</td>
+				<td><obs id="chemotherapyCyclesObs"
+						conceptId="aaeb5782-3ee6-4cb8-9d27-c557ad91e241" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Planned first cycle</td>
+				<td><obs id="chemotherapyFirstCycleObs"
+						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" allowFutureDates="true" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Planned regimen end</td>
+				<td><obs id="chemotherapyFirstCycleObs"
+						conceptId="989c2c3c-b000-45e2-9bc4-0bab9808d9c4" allowFutureDates="true" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="spaceUnder">
+				<td>Planned changes to standard regimen</td>
+				<td><obs id="chemotherapyStandardRegimenObs"
+						conceptId="d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc" labelText="" />
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td style="text-align: right;"><a id="chemoTable" onclick="removeChemo('chemoRemover4');" href="javascript:void(0);">Click to remove this chemotherapy</a></td>
+			</tr>
+		</TBODY>
+		</obsgroup>
+		<!-- End of fourth chemo -->
 	</table>
 	<table style='border: 0px;'>
 		<tr>
-			<td><a id="chemoTable" onclick="addChemo();" href="#">Click to add chemotherapy</a></td>
+			<td><a id="chemoTable" onclick="addChemo();" href="javascript:void(0);">Click to add chemotherapy</a></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -5446,22 +5620,39 @@ lymph node metastases.</li>
 		
 	}
 </script> 
+<!-- Handle adding/removing chemotherapy sections --> <script type="text/javascript">
+    function addChemo() {
+        var trigger23_1 = $j('#trigger23_1').find("input[type$='checkbox']").is(':checked');
+        var trigger23_2 = $j('#trigger23_2').find("input[type$='checkbox']").is(':checked');
+        var trigger23_3 = $j('#trigger23_3').find("input[type$='checkbox']").is(':checked');
+        var trigger23_4 = $j('#trigger23_4').find("input[type$='checkbox']").is(':checked');
 
-<!-- Handle adding/removing chemotherapy sections --> 
-<script type="text/javascript">
-function addChemo()
-{
-	$j('#trigger23_2').find("input[type$='checkbox']").click();
-	$j('#trigger23_2').find("input[type$='checkbox']").attr("checked",true);
-}
+        var checked = new Array();
+        checked.push(trigger23_1);
+        checked.push(trigger23_2);
+        checked.push(trigger23_3);
+        checked.push(trigger23_4);
 
-function removeChemo(elementId)
-{
-	$j('#'+elementId).find("input[type$='checkbox']").click();
-	$j('#'+elementId).find("input[type$='checkbox']").attr("checked",true);
-}
+        for (var i = 0; i &lt; checked.length; i++) {
+            var index = i + 1;
+            if (checked[i] != true) {
+                $j('#trigger23_' + index).find("input[type$='checkbox']").click();
+                $j('#trigger23_' + index).find("input[type$='checkbox']").attr("checked", true);
+                return;
+            }
+
+            if(checked[i] == true &amp;&amp; index &gt; 3){
+                alert('You can only add four chemotherapy sections');
+            }
+        }
+
+    }
+
+    function removeChemo(elementId) {
+        $j('#' + elementId).find("input[type$='checkbox']").click();
+        $j('#' + elementId).find("input[type$='checkbox']").attr("checked", true);
+    }
 </script>
-
 <ifMode mode="EDIT"> <script type="text/javascript">
   var hideAll = function(){
             $j(".togglebles").find("tbody[id^='toggleble']").hide();
