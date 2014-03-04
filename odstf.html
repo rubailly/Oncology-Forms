@@ -835,29 +835,6 @@ if(jQuery){
     					 }
     				 },	
     				
-    				handleAllergiesSection: function() {//handle Allergies section
-    					
-    					$j('#existingAndNewAllergiesPrintView tr:gt(2)').remove();
-    				    
-    					$j('#existingAndNewAllergiesScreenView tr.existingAllergy').appendTo('#existingAndNewAllergiesPrintView');   
-    				    
-    				    if(hasValue('firstAllergyCauses')){
-    				    	$j('#newAllergiesHeading tr').appendTo('#existingAndNewAllergiesPrintView');  
-    				    	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+getValueOfChildSpan('firstAllergyCauses')+'</td><td>'+getValueOfChildSpan('firstAllergyReaction')+'</td><td>'+getValueOfChildSpan('firstAllergyYear')+'</td></tr>');
-    				    
-    				    }
-    				  	 
-    				    if(hasValue('secondAllergyCauses')){
-    				    	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+getValueOfChildSpan('secondAllergyCauses')+'</td><td>'+getValueOfChildSpan('secondAllergyReaction')+'</td><td>'+getValueOfChildSpan('secondAllergyYear')+'</td></tr>');
-    				        
-    				        }
-    				    
-    				    if(hasValue('thirdAllergyCauses')){
-    				    	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+getValueOfChildSpan('thirdAllergyCauses')+'</td><td>'+getValueOfChildSpan('thirdAllergyReaction')+'</td><td>'+getValueOfChildSpan('thirdAllergyYear')+'</td></tr>');
-    				        
-    				        }
-    				},
-    				
     				handleTreatmentItentSection: function() {//handle Treatment Intent section
     				   	
     				   	if(hasValue('treatmentCurative')){
@@ -1529,29 +1506,6 @@ if(jQuery){
 		 }
 	 },	 
 	 
-	 handleAllergiesSection: function() {//handle Allergies section
-		 
-		     $j('#existingAndNewAllergiesPrintView tr:gt(2)').remove();
-                      
-             $j('#existingAndNewAllergiesScreenView tr.existingAllergy').appendTo('#existingAndNewAllergiesPrintView');  
-             
-             if(getValue('firstAllergyCauses.value') !=''){
-           	$j('#newAllergiesHeading tr').appendTo('#existingAndNewAllergiesPrintView');  
-           	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#firstAllergyCauses option:selected').text()+'</td><td>'+$j('#firstAllergyReaction option:selected').text()+'</td><td>'+getValue('firstAllergyYear.value')+'</td></tr>');
-             
-             }
-           	 
-             if(getValue('secondAllergyCauses.value') !=''){
-               	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#secondAllergyCauses option:selected').text()+'</td><td>'+$j('#secondAllergyReaction option:selected').text()+'</td><td>'+getValue('secondAllergyYear.value')+'</td></tr>');
-                 
-                 }
-             
-             if(getValue('thirdAllergyCauses.value') !=''){
-               	$j('#existingAndNewAllergiesPrintView').append('<tr><td>'+$j('#thirdAllergyCauses option:selected').text()+'</td><td>'+$j('#thirdAllergyReaction option:selected').text()+'</td><td>'+getValue('thirdAllergyYear.value')+'</td></tr>');
-                 
-                 }
-	 },
-	 
 	 handleTreatmentItentSection: function() {//handle Treatment Intent section
 		 //see which treatment intent selected
 	    	var treatmentIntent = $j(".treatmentPlan").find(":checked").closest("td").attr("id");
@@ -1727,8 +1681,6 @@ if(jQuery){
     	
          //handle pathology section    
         printHandler.handlePathologySection();
-    	//handle allergies section    	
-    	printHandler.handleAllergiesSection();
     	 
     	 /* the following lines are about handling the treatment plan section  */
  	    
@@ -1856,7 +1808,7 @@ if(jQuery){
 			</td>
 		</tr>
 		<tr class="diagnosisPrintArea">
-			<td class="lables">Clustered Stage</td>
+			<td class="lables">Treatment Group</td>
 			<td colspan="2" class="values"><span id="breastStageCS"></span>
 			</td>
 		</tr>
@@ -2393,21 +2345,6 @@ if(jQuery){
 		</tr>
 	</table>
 	<br />
-	<table id="existingAndNewAllergiesPrintView">
-		<tr class="diagnosisPrintArea">
-			<th colspan="3">Allergies</th>
-		</tr>
-		<tr>
-			<td colspan="3"><b>Existing Allergies</b></td>
-		</tr>
-		<tr bgcolor="#D9D9D9" class="diagnosisPrintArea">
-			<td>Causes</td>
-			<td>Reaction</td>
-			<td>Year of Reaction</td>
-		</tr>
-
-	</table>
-	<br />
 	<table id="treatmentPlan">
 		<tr class="diagnosisPrintArea">
 			<th colspan="3">Treatment Plan</th>
@@ -2491,18 +2428,6 @@ if(jQuery){
 	</table>
 
 	<table class="selectedCancerStagingKeys">
-
-	</table>
-
-	<table id="newAllergiesHeading" style="display: none;">
-		<tr>
-			<td colspan="3"><b>New Allergies</b></td>
-		</tr>
-		<tr bgcolor="#D9D9D9" class="diagnosisPrintArea">
-			<td>Causes</td>
-			<td>Reaction</td>
-			<td>Year of Reaction</td>
-		</tr>
 
 	</table>
 
@@ -2861,12 +2786,14 @@ if(jQuery){
 				<td colspan="5">
 				</td>
 			</tr>
-			<tr>
-				<td colspan="3"><obs id="imagingAssessmentAndFindings"
-						conceptId="997d8e3c-a93c-4cd4-822d-9630bdb5fffe" labelText="Imaging Assessment &#38; Findings:"/></td>
-				<td colspan="3"></td>
-			</tr>
-		</TBODY>
+							<tr>
+								<td>Imaging Assessment &#38; Findings:</td>
+								<td colspan="5"><obs id="imagingAssessmentAndFindings"
+										conceptId="997d8e3c-a93c-4cd4-822d-9630bdb5fffe" rows="5"
+										cols="70" labelText="" />
+								</td>
+							</tr>
+						</TBODY>
 		</obsgroup>
 	</table> </td>
 	</tr>
@@ -3095,6 +3022,9 @@ if(jQuery){
 				</td>
 			</tr>
 
+             <tr>
+				<td colspan="6">Notes:</td>
+			</tr>
 			<tr>
 				<td colspan="6"><obs id="diagnosisCommentsObs"
 						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
@@ -3105,13 +3035,13 @@ if(jQuery){
 				<td colspan="6">Confirmed Disease Stage</td>
 			</tr>
 			<tr>
-				<td>TNM Pathologic Staging*:</td>
+				<td>TNM Staging*:</td>
 				<obsgroup groupingConceptId="89089c30-a9ed-4a50-a3dd-0d12029feaf7">
 				<td><obs id="stageTNMTObs"
-						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" labelText="T:" />
+						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" answerConceptIds="002884fb-12a7-4758-8e22-e66b60201059,c890202b-48c1-402f-998e-df7bb5e2817d,7f63a1c9-370d-4dd9-9e40-c6f0e0b9db44,852245b6-4982-49fe-90ea-3b4f20ddf308,cef35546-ed22-4a27-afd1-d0169d520691,7b4d19fb-61fc-4633-87a0-392442ee2e8b,4060bf94-ce2b-48b8-b641-5c1561455294" labelText="T:" />
 				</td>
 				<td><obs id="stageTNMNObs"
-						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" labelText="N:" />
+						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" answerConceptIds="fe262f06-f0be-49c0-b55b-82361b9b8145,c8818f76-88e6-4acc-9ac7-b3fe7c1a6470,92ec921e-da58-4137-9921-f5be63792846,a0c26ed6-4e9f-4743-8f86-8cbc10e6a691,e4493745-f26e-4bb8-9fce-45770af54aae" labelText="N:" />
 				</td>
 				<td><obs id="stageTNMMObs"
 						conceptId="05303c1b-3de8-4fb8-91ad-9563ab4d2ac0" labelText="M:" />
@@ -3141,7 +3071,7 @@ if(jQuery){
 			</tr>
 
 			<tr class="checkboxGroup spaceUnder">
-				<td>Clustered Stage:</td>
+				<td>Treatment Group:</td>
 				<td><obs id="breastStageCSEarly"
 						conceptId="40a6d86f-dcd3-4e5e-88e6-bb55db8deef3"
 						answerConceptId="c37a6c5a-7ef3-43e9-9ac6-215a1cf42c1f"
@@ -3187,7 +3117,7 @@ nodes in the absence of clinically evident axillary lymph node metastases.</li>
 							<li>N2a Metastases in ispilateral level I, II axillary lymph nodes fixed to one another (matted) or to other structures.</li>
 							<li>N2b Metastases only in clinically detected ipsilateral internal mammary nodes and in the absence of clinically evident level I, II axillary<br/>
 lymph node metastases.</li>
-							<li>N3 Metastases in ipsilateralinfraclavicular (level II axillary) lymph node(s) with or without level I, II axillary lymph node involvement or in clinically
+							<li>N3 Metastases in ipsilateralinfraclavicular (level III axillary) lymph node(s) with or without level I, II axillary lymph node involvement or in clinically
 <br/>detected ipsilateral internal mammary lymph node(s) with clinically evident level I, II axillary lymph node metastases; or metastases in
 <br/>ipsilateral supraclavicular lymph node(s) with or without axillary or internal mammary lymph node involvement.</li>
 							<li>N3a Metastases in ipsilateralinfraclavicular lymph node(s).Metastases in ipsilateral internal mammary lymph node(s) and axillary lymph
@@ -3195,22 +3125,6 @@ lymph node metastases.</li>
 </li>
 							<li>N3b Regional lymph nodes cannot be assessed (eg, previously removed)</li>
 							<li>N3c No regional lymph node metastases</li>
-						</ul> </span> </td>
-			</tr>
-			<tr class="breastCancerStagingKeys">
-				<td colspan="6"><span style="float: left;">
-						<h5>*Pathologic pN Staging</h5>
-						<ul>
-						    <li>pNX Regional lymph nodes cannot be assessed (eg, previously removed, or not removed for pathologic study)</li>
-							<li>pN0 No regional lymph node metastasis identified histologically</li>
-							<li>pN1 Micrometastases, or metastases in one to three axillary lymph nodes, and/or in internal mammarynodes with metastases detected by
-<br/>sentinel lymph node biopsy but not clinically detected</li>
-							<li>pN2 Metastases in four to nine axillary lymph nodes, or in clinically detected internal mammary lymph nodes in the absence of axillary lymph
-<br/>node metastases</li>
-							<li>pN3 Metastases in 10 or more axillary lymph nodes; or in infraclavicular (level III axillary) lymph nodes;or in clinically detectedipsilateral internal
-<br/>mammary lymph nodes in the presence of 1 or more positivelevel I, II axillary lymph nodes; or in more than 3 axillary lymph nodes and in
-<br/>internal mammary lymph nodeswith micrometastases or macrometastases detected by sentinel lymph node biopsy but not clinically
-</li>
 						</ul> </span> </td>
 			</tr>
 			<tr class="breastCancerStagingKeys">
@@ -4880,123 +4794,6 @@ lymph node metastases.</li>
 		</TBODY>
 	</table>
 	<br />
-	<table id="existingAndNewAllergiesScreenView" class="togglebles"
-		width="100%">
-
-		<tr>
-			<th class="tableHeader" colspan="3">ALLERGIES</th>
-		</tr>
-		<tr class="spaceUnder">
-			<td colspan="3"></td>
-		</tr>
-		<tr>
-			<td colspan="3"><b>Existing Allergies</b></td>
-		</tr>
-		<tr class="spaceUnder">
-			<td colspan="3"></td>
-		</tr>
-		<tr bgcolor="#009D8E">
-			<th><font color="white">Causes</font></th>
-			<th><font color="white">Reaction</font></th>
-			<th><font color="white">Year of Reaction</font></th>
-		</tr>
-		<lookup
-			complexExpression="#set($obsGroupList = [])	
-						
-						#foreach($encounter in $fn.allEncounters(null)) 
-						                                         #foreach($obs in $encounter.obs)
-				                                                   #if( $obs.obsGroup.concept.uuid == '3cd95d5a-26fe-102b-80cb-0017a47871b2' )
-				                                                     #if( ($obsGroupList.contains($obs.obsGroup)) )			                                                
-				                                                     	
-				                                                     #else
-                                                                       #set($_usls =$obsGroupList.add($obs.obsGroup))	
-                                                                     #end		                                                     
-				                                                    #end				                                                   	
-				                                                   #end					                                                                                              
-				                                                 #end
-				                                      #foreach($obsGroup in $obsGroupList)
-				                                      &lt;tr class='existingAllergy'>
-                                                        #foreach($o in $obsGroup.groupMembers)
-                                                         #if( $o.concept.uuid == '3cd95ed6-26fe-102b-80cb-0017a47871b2' )
-                                                            #set($causes = $o.valueCoded.name)	                                                        
-                                                         #elseif( $o.concept.uuid == '3cd96052-26fe-102b-80cb-0017a47871b2' )
-                                                            #set($reaction = $o.valueCoded.name)
-                                                         #elseif( $o.concept.uuid == '3cd964bc-26fe-102b-80cb-0017a47871b2' )
-                                                          #set($year = $o.valueDatetime)
-                                                        #end      
-                                                      #end           
-                                                        &lt;td style='border: 1px solid black; border-collapse: collapse;'> $causes &lt;/td>  &lt;td style='border: 1px solid black; border-collapse: collapse;'> $reaction &lt;/td>  &lt;td style='border: 1px solid black; border-collapse: collapse;'> $year &lt;/td>                                            
-                                                      &lt;/tr>
-                                                    #end" />
-		<tr class="spaceUnder">
-			<td colspan="3"></td>
-		</tr>
-		<tr class="spaceUnder">
-			<td colspan="3"><b>Add New Allergies</b>
-			</td>
-		</tr>
-
-		<tr bgcolor="#009D8E">
-			<th><font color="white">Causes</font></th>
-			<th><font color="white">Reaction</font></th>
-			<th><font color="white">Year of Reaction</font></th>
-		</tr>
-
-		<tr>
-			<obsgroup groupingConceptId="3cd95d5a-26fe-102b-80cb-0017a47871b2">
-			<td><obs id="firstAllergyCauses"
-					conceptId="3cd95ed6-26fe-102b-80cb-0017a47871b2" /> <obs
-					id="firstCausesOtherNonCoded"
-					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27"
-					labelText="Specify:" />
-			</td>
-			<td><obs id="firstAllergyReaction"
-					conceptId="3cd96052-26fe-102b-80cb-0017a47871b2" /> <obs
-					id="firstReactionOtherNonCoded"
-					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2"
-					labelText="Specify:" />
-			</td>
-			<td><obs id="firstAllergyYear"
-					conceptId="3cd964bc-26fe-102b-80cb-0017a47871b2" /></td>
-			</obsgroup>
-		</tr>
-		<tr>
-			<obsgroup groupingConceptId="3cd95d5a-26fe-102b-80cb-0017a47871b2">
-			<td><obs id="secondAllergyCauses"
-					conceptId="3cd95ed6-26fe-102b-80cb-0017a47871b2" /> <obs
-					id="secondCausesOtherNonCoded"
-					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27"
-					labelText="Specify:" />
-			</td>
-			<td><obs id="secondAllergyReaction"
-					conceptId="3cd96052-26fe-102b-80cb-0017a47871b2" /> <obs
-					id="secondReactionOtherNonCoded"
-					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2"
-					labelText="Specify:" />
-			</td>
-			<td><obs id="secondAllergyYear"
-					conceptId="3cd964bc-26fe-102b-80cb-0017a47871b2" /></td>
-			</obsgroup>
-		</tr>
-		<tr>
-			<obsgroup groupingConceptId="3cd95d5a-26fe-102b-80cb-0017a47871b2">
-			<td><obs id="thirdAllergyCauses"
-					conceptId="3cd95ed6-26fe-102b-80cb-0017a47871b2" /> <obs
-					id="thirdCausesOtherNonCoded"
-					conceptId="2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27"
-					labelText="Specify:" />
-			</td>
-			<td><obs id="thirdAllergyReaction"
-					conceptId="3cd96052-26fe-102b-80cb-0017a47871b2" /> <obs
-					id="thirdReactionOtherNonCoded"
-					conceptId="3cdd0c48-26fe-102b-80cb-0017a47871b2"
-					labelText="Specify:" /></td>
-			<td><obs id="thirdAllergyYear"
-					conceptId="3cd964bc-26fe-102b-80cb-0017a47871b2" />
-			</td>
-			</obsgroup>
-		</tr>
-	</table>
 	<br />
 	<table width="100%">
 		<tr>
