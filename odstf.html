@@ -16,7 +16,7 @@
 @NONE@=3cd743f8-26fe-102b-80cb-0017a47871b2
 @DATE_OF_SURGERY@=48e392bb-0685-4ab3-a217-fd23502a5635
 @TUMOUR_PROGNOSIS_FOR_KS@=40121f41-5303-4b18-8251-1d62e0eb3e2f
-@IMMUNE_SYSTEM_PROGNOSIS_FOR_KS@=26ada79f-153a-4067-b4dd-bec6bfc40647 
+@IMMUNE_SYSTEM_PROGNOSIS_FOR_KS@=26ada79f-153a-4067-b4dd-bec6bfc40647
 @SYSTEMIC_ILLNESS_PROGNOSIS_FOR_KS@=2476256a-2c16-4605-adcb-2ca1d33c299d
 @TIS_STAGING_SYSTEM@=60f733d6-7000-48eb-be8e-c503b094b882
 @OTHER_NON_CODED@=3cee7fb4-26fe-102b-80cb-0017a47871b2
@@ -2722,7 +2722,7 @@ if(jQuery){
 					stateId="8c3f2a38-eb43-4b13-87c2-4a85d66cafb1"
 					stateLabel="Other solid cancer:" type="checkbox" /> <obs
 					id="otherSolidSpec"
-					conceptId="b9e23b4a-e714-4a55-a3d4-2e152ab4b2b8" labelText="" /></td>
+					conceptId="$@OTHER_SOLID_CANCER_NONE_CODED@" labelText="" /></td>
 		</tr>
 		<tr>
 			<td id="trigger11"><workflowState
@@ -2765,7 +2765,7 @@ if(jQuery){
 					stateId="9b9af079-2ad0-4860-9844-48d020912dc2"
 					stateLabel="Other liquid cancer:" type="checkbox" /> <obs
 					id="otherLiquidSpec"
-					conceptId="5988cf36-80fb-46b9-bf19-93ec759c4bb6" labelText="" /></td>
+					conceptId="$@OHTER_LIQUID_CANCER_NON_CODED@" labelText="" /></td>
 		</tr>
 	</table>
 	<br/>
@@ -2777,124 +2777,124 @@ if(jQuery){
 		<!-- Begin of the pathology section -->		
 		<tr class="spaceUnder">
 	<td colspan="6"><table style='border: 0px;'>
-		<obsgroup groupingConceptId="639fb794-8a5a-4958-b4b1-749e554f44fb">
+		<obsgroup groupingConceptId="$@PATHOLOGY_PERFORMED_CONSTRUCT@">
 		<tr class="checkboxGroup , spaceUnder">
 			<td width="400px">Pathology completed</td>
 			<td id="trigger20" width="265px"><obs id="pathologyCompletedYes"
-					conceptId="145c13d3-dfbb-4dc6-9986-d10fd5e9bf48"
-					answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2"
+					conceptId="$@PATHOLOGY_PERFORMED@"
+					answerConceptId="$@YES@"
 					answerLabel="Yes" style="checkbox" /></td>
 			<td><obs id="pathologyCompletedNo"
-					conceptId="145c13d3-dfbb-4dc6-9986-d10fd5e9bf48"
-					answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
+					conceptId="$@PATHOLOGY_PERFORMED@"
+					answerConceptId="$@NO@"
 					answerLabel="NO" style="checkbox" /></td>
 					<td colspan="3"></td>
 		</tr>
 		<TBODY id="toggleble20">
 			<tr class="checkboxGroup , spaceUnder">
 				<td>Date:<obs id="dateOfPathologyObs"
-						conceptId="926dd83d-5c6c-43d9-9fb8-a8c2e364d5f6" labelText="" /><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(date
+						conceptId="$@DATE_OF_PATHOLOGY_REPORT@" labelText="" /><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(date
 					of report)</td>
 				<td colspan="2">Site of Pathology:<obs id="siteOfPathologyObs"
-						conceptId="ca421c58-2c81-4fac-8cf7-aced4f2896e8" labelText="" />
+						conceptId="$@LOCATION_OF_PATHOLOGY@" labelText="" />
 				</td>
 				<td colspan="3"></td>
 			</tr>
 			<tr>
 				<td>PathologicDiagnosis:</td>
 				<td><obs id="invasiveDuctalCarcinoma"
-						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
-						answerConceptId="ae859e04-95b2-4b1c-ad61-61d643a96556"
+						conceptId="$@PATHOLOGOGIC_DIAGNOSIS@"
+						answerConceptId="$@INVASIVE_DUCTAL_CARCINOMA@"
 						answerLabel="Invasive Ductal Carcinoma" /></td>
 				<td><obs id="invasiveLobularCarcinoma"
-						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
-						answerConceptId="6a37d4d3-7d2a-48fa-89fc-b4a314ffd253"
+						conceptId="$@PATHOLOGOGIC_DIAGNOSIS@"
+						answerConceptId="$@INVASIVE_LOBULAR_CARCINOMA@"
 						answerLabel="Invasive Lobular Carcinoma" /></td>
 						<td colspan="3"></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td colspan="5"><obs id="otherInvasiveCarcinoma"
-						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
-						answerConceptId="ff5273ea-bc19-480f-9056-d830d137bca1"
+						conceptId="$@PATHOLOGOGIC_DIAGNOSIS@"
+						answerConceptId="$@OTHER_INVASIVE_CARCINOMA@"
 						answerLabel="OtherInvasive Carcinoma (specify) :" /><obs
 						id="otherInvasiveCarcinomaNonCoded"
-						conceptId="ff5273ea-bc19-480f-9056-d830d137bca1"
+						conceptId="$@OTHER_INVASIVE_CARCINOMA@"
 						labelText="" />
 				</td>
 			</tr>
 			<tr class="spaceUnder">
 				<td></td>
 				<td colspan="5"><obs id="otherPathologicDiagnosis"
-						conceptId="21f54f50-b804-476e-a0dd-a3238cd556fb"
-						answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@PATHOLOGOGIC_DIAGNOSIS@"
+						answerConceptId="$@OTHER_NON_CODED@"
 						answerLabel="Other (specify) :" /> <obs
 						id="otherPathologicDiagnosisNonCoded"
-						conceptId="387dc461-bde7-4d27-8754-8ee35e5be3ee"
+						conceptId="$@PATHOLOGIC_DIAGNOSIS_NON_CODED@"
 						labelText="" />
 				</td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Estrogen receptor:</td>
 				<td><obs id="breastStageERER+"
-						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
-						answerConceptId="28fa396e-5330-43b3-8c69-d978003f24ff"
+						conceptId="$@ESTROGEN_RECEPTOR@"
+						answerConceptId="$@ER+@"
 						answerLabel="ER+" /></td>
 				<td><obs id="breastStageERER-"
-						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
-						answerConceptId="d65a1323-e3b2-43ac-ad35-b36359d00504"
+						conceptId="$@ESTROGEN_RECEPTOR@"
+						answerConceptId="$@ER-@"
 						answerLabel="ER-" /></td>
 				<td><obs id="breastStageERNotDetermined"
-						conceptId="1acc8814-ce06-49f3-8cc1-6b5d1efe3f79"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@ESTROGEN_RECEPTOR@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="not determined" /></td>
 						<td colspan="2"></td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Progesterone receptor:</td>
 				<td><obs id="breastStagePRPR+"
-						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
-						answerConceptId="a054fa15-43aa-4271-bc24-dc24f34014ac"
+						conceptId="$@PROGESTERONE_RECEPTOR@"
+						answerConceptId="$@PR+@"
 						answerLabel="PR+" /></td>
 				<td><obs id="breastStagePRPR-"
-						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
-						answerConceptId="5007fcdc-becb-474a-ab79-c36a94e56f66"
+						conceptId="$@PROGESTERONE_RECEPTOR@"
+						answerConceptId="$@PR-@"
 						answerLabel="PR-" /></td>
 				<td><obs id="breastStagePRNotDetermined"
-						conceptId="b8c56ccc-fe19-4daa-8f2a-682b1e3acddc"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@PROGESTERONE_RECEPTOR@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="not determined" /></td>
 						<td colspan="2"></td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>HER2 IHC:</td>
 				<td><obs id="breastStageHIIHC+"
-						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
-						answerConceptId="f8e53211-e01c-4439-86e5-083b6a044652"
+						conceptId="$@HER2_IHC@"
+						answerConceptId="$@HER2_IHC+@"
 						answerLabel="HER2 IHC+" /></td>
 				<td><obs id="breastStageHIIHC-"
-						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
-						answerConceptId="2a7e3812-da32-437e-b967-079706ca955e"
+						conceptId="$@HER2_IHC@"
+						answerConceptId="$@HER2_IHC-@"
 						answerLabel="HER2 IHC-" /></td>
 				<td><obs id="breastStageHINotDetermined"
-						conceptId="6270e371-3fc9-4ed1-96fb-84b072067b1b"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@HER2_IHC@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="not determined" /></td>
 						<td colspan="2"></td>
 			</tr>
 			<tr class="checkboxGroup, spaceUnder">
 				<td>HER2 FISH:</td>
 				<td><obs id="breastStageHFFISH+"
-						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
-						answerConceptId="7c7b9746-010e-42a1-97f7-4b5e5fe0f374"
+						conceptId="$@HER2_FISH@"
+						answerConceptId="$@HER2_FISH+@"
 						answerLabel="HER2 FISH+" /></td>
 				<td><obs id="breastStageHFFISH-"
-						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
-						answerConceptId="bc45c3ef-701d-4279-8434-ce94525fc7df"
+						conceptId="$@HER2_FISH@"
+						answerConceptId="$@HER2_FISH-@"
 						answerLabel="HER2 FISH-" /></td>
 				<td><obs id="breastStageHFNotDetermined"
-						conceptId="c40c9293-14bf-4e42-becd-e2af798d217d"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@HER2_FISH@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="not determined" /></td>
 						<td colspan="2"></td>
 			</tr>
@@ -2903,60 +2903,60 @@ if(jQuery){
 			</tr>
 			<tr>
 				<td><obs id="chestXRay"
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="3ccc6186-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@IMAGING_STUDIES@"
+						answerConceptId="$@X-RAY_CHEST@"
 						answerLabel="Chest X-ray" /></td>
 				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesChest"
-						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
+						conceptId="$@IMAGING_STUDY_DATE@" labelText="" />
 				</td>
 				<td>Site: <obs id="siteOfImagingStudiesChest"
-						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
+						conceptId="$@IMAGING_STUDY_SITE@" labelText="" />
 				</td>
 				<td colspan="2"></td>
 			</tr>
 			<tr>
 				<td><obs id="abdominalPelvicUltrasound "
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="0ffd0c89-efdf-474f-8d2d-e4f8de7c7d90"
+						conceptId="$@IMAGING_STUDIES@"
+						answerConceptId="$@ABDOMINAL_PELVIC_ULTRASOUND@"
 						answerLabel="Abdominal/Pelvic Ultrasound"/></td>
 				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesUltrasound"
-						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
+						conceptId="$@IMAGING_STUDY_DATE@" labelText="" />
 				</td>
 				<td>Site: <obs id="siteOfImagingStudiesUltrasound"
-						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
+						conceptId="$@IMAGING_STUDY_SITE@" labelText="" />
 				</td>
 				<td colspan="2"></td>
 			</tr>
 			<tr>
 				<td><obs id="scanOfChestAbdomenPelvis"
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="f0645e5e-ad7e-45c3-a4d4-a412aa61b64c"
+						conceptId="$@IMAGING_STUDIES@"
+						answerConceptId="$@CT_SCAN_OF_CHEST_ABDOMEN_PELVIS@"
 						answerLabel="CT scan of Chest/Abdomen/Pelvis (7561)" /></td>
 				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesChestAbdomenPelvis"
-						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
+						conceptId="$@IMAGING_STUDY_DATE@" labelText="" />
 				</td>
 				<td>Site: <obs id="siteOfImagingStudiesChestAbdomenPelvis"
-						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
+						conceptId="$@IMAGING_STUDY_SITE@" labelText="" />
 				</td>
 				<td colspan="2"></td>
 			</tr>
 			<tr>
 				<td><obs id="CTscanOtherNonCode"
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@IMAGING_STUDIES@"
+						answerConceptId="$@OTHER_NON_CODED@"
 						answerLabel="Other:"/></td>
 				<td colspan="2">Study Date: <obs id="dateOfImagingStudiesOtherNonCode"
-						conceptId="71d7014e-3f02-4c41-b49a-bb6462de85ff" labelText="" />
+						conceptId="$@IMAGING_STUDY_DATE@" labelText="" />
 				</td>
 				<td>Site: <obs id="siteOfImagingStudiesOtherNonCode"
-						conceptId="1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5" labelText="" />
+						conceptId="$@IMAGING_STUDY_SITE@" labelText="" />
 				</td>
 				<td colspan="2"></td>
 			</tr>
 			<tr>
 				<td><obs id="CTscanNone"
-						conceptId="24e5c4c1-ac2b-42f5-a144-aa41e4375cb5"
-						answerConceptId="3cd743f8-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@IMAGING_STUDIES@"
+						answerConceptId="$@NONE@"
 						answerLabel="None" /></td>
 				<td colspan="5">
 				</td>
@@ -2964,7 +2964,7 @@ if(jQuery){
 							<tr>
 								<td>Imaging Assessment &#38; Findings:</td>
 								<td colspan="5"><obs id="imagingAssessmentAndFindings"
-										conceptId="997d8e3c-a93c-4cd4-822d-9630bdb5fffe" rows="5"
+										conceptId="$@IMAGING_ASSESSMENT_AND_FINDINGS@" rows="5"
 										cols="70" labelText="" />
 								</td>
 							</tr>
@@ -2983,27 +2983,27 @@ if(jQuery){
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="ad1daadc-b671-493c-bb68-2ece80790706">
+			<obsgroup groupingConceptId="$@BREAST_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@">
 			<tr class="checkboxGroup">
 				<td>Right breast mass:</td>
-				<obsgroup groupingConceptId="e695754b-1c5f-41a8-9d08-5768b8202648">
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@RIGHT_BREAST_MASS_CONSTRUCT@">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="3"><obs id="rightBreastMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92" labelText="" />
+						conceptId="$@MASS_LOCATION@" labelText="" />
 				</td>
 				<td>Size:<obs id="rightBreastMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="rightBreastMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 
 				<td><obs id="rightBreastMassMobilityMobile"
-						conceptId="13f2f074-3c53-4074-a690-6626220acbdf"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@BREAST_MASS_MOBILITY@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile" /></td>
 				<td><obs id="rightBreastMassMobilityFixed"
-						conceptId="13f2f074-3c53-4074-a690-6626220acbdf"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@BREAST_MASS_MOBILITY@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed" /></td>
 				</obsgroup>
 				<td></td>
@@ -3011,24 +3011,24 @@ if(jQuery){
 
 			<tr class="checkboxGroup">
 				<td>Left breast mass:</td>
-				<obsgroup groupingConceptId="7b9a2f55-d8dd-4e5f-8638-9e212032a14c">
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@LEFT_BREAST_MASS_CONSTRUCT@">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="3"><obs id="leftBreastMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92" labelText="" />
+						conceptId="$@MASS_LOCATION@" labelText="" />
 				</td>
 				<td>Size:<obs id="leftBreastMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="leftBreastMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 
 				<td><obs id="leftBreastMassMobilityMobile"
-						conceptId="13f2f074-3c53-4074-a690-6626220acbdf"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@BREAST_MASS_MOBILITY@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile" /></td>
 				<td><obs id="leftBreastMassMobilityFixed"
-						conceptId="13f2f074-3c53-4074-a690-6626220acbdf"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@BREAST_MASS_MOBILITY@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed" /></td>
 				</obsgroup>
 				<td></td>
@@ -3037,7 +3037,7 @@ if(jQuery){
 			<tr>
 				<td>Skin changes:</td>
 				<td colspan="5"><obs id="diagnosisSkinChangesObs"
-						conceptId="5b357578-179a-4ddf-996f-2eb760b092d7" labelText="" />
+						conceptId="$@SKIN_CHANGES_RELATED_TO_BREAST_CANCER_DIAGNOSIS@" labelText="" />
 				</td>
 			</tr>
 
@@ -3047,152 +3047,152 @@ if(jQuery){
 			
 			<tr>
 				<td colspan="2"><obs id="axillary"
-						conceptId="206ed02d-251f-42ee-8703-4cc175f55578"
-						answerConceptId="94a7738a-b2a3-45ec-b0b5-25b5aecf1599"
+						conceptId="$@LYMPHANEDOPATHY_LEVELS@"
+						answerConceptId="$@AXILLARY_LEVEL-I-II@"
 						answerLabel="axillary level I/II" /></td>
 				<td colspan="2"><obs id="ipsalateralAxillary"
-						conceptId="94a7738a-b2a3-45ec-b0b5-25b5aecf1599"
-						answerConceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
+						conceptId="$@AXILLARY_LEVEL-I-II@"
+						answerConceptId="$@IPSALATERAL@"
 						answerLabel="ipsalateral: "/>
 						
 						<obs id="ipsalateralMobile"
-						conceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@IPSALATERAL@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile "/>
 						
 						<obs id="ipsalateralFixed"
-						conceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@IPSALATERAL@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed/matted"/>
 				</td>
 				
 				<td colspan="2"><obs id="contralateralAxillary"
-						conceptId="94a7738a-b2a3-45ec-b0b5-25b5aecf1599"
-						answerConceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
+						conceptId="$@AXILLARY_LEVEL-I-II@"
+						answerConceptId="$@CONTRALATERAL@"
 						answerLabel="contralateral: "/>
 						
 						<obs id="contralateralMobile"
-						conceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@CONTRALATERAL@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile "/>
 						
 						<obs id="contralateralFixed"
-						conceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@CONTRALATERAL@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed/matted"/>
 				</td>
 			</tr>
 			
 			<tr>
 				<td colspan="2"><obs id="infraclavicular"
-						conceptId="206ed02d-251f-42ee-8703-4cc175f55578"
-						answerConceptId="953afb46-e52f-4b41-88b7-7176fdd7747d"
+						conceptId="$@LYMPHANEDOPATHY_LEVELS@"
+						answerConceptId="$@INFRACLAVICULAR_AXILLARY_LEVEL_III@"
 						answerLabel="infraclavicular/axillary level III" /></td>
 				<td colspan="2"><obs id="ipsalateralInfra"
-						conceptId="953afb46-e52f-4b41-88b7-7176fdd7747d"
-						answerConceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
+						conceptId="$@INFRACLAVICULAR_AXILLARY_LEVEL_III@"
+						answerConceptId="$@IPSALATERAL@"
 						answerLabel="ipsalateral: "/>
 						
 						<obs id="ipsalateralMobile"
-						conceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@IPSALATERAL@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile "/>
 						
 						<obs id="ipsalateralFixed"
-						conceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@IPSALATERAL@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed/matted"/>
 				</td>
 				
 				<td colspan="2"><obs id="contralateralInfra"
-						conceptId="953afb46-e52f-4b41-88b7-7176fdd7747d"
-						answerConceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
+						conceptId="$@INFRACLAVICULAR_AXILLARY_LEVEL_III@"
+						answerConceptId="$@CONTRALATERAL@"
 						answerLabel="contralateral: "/>
 						
 						<obs id="contralateralMobile"
-						conceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@CONTRALATERAL@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile "/>
 						
 						<obs id="contralateralFixed"
-						conceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@CONTRALATERAL@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed/matted"/>
 				</td>
 			</tr>
 			
 			<tr>
 				<td colspan="2"><obs id="supraclavicular"
-						conceptId="206ed02d-251f-42ee-8703-4cc175f55578"
-						answerConceptId="8a69a66d-48ac-4bc5-9f01-9c186a5c7cbd"
+						conceptId="$@LYMPHANEDOPATHY_LEVELS@"
+						answerConceptId="$@SUPRACLAVICULAR_LEVEL@"
 						answerLabel="supraclavicular" /></td>
 				<td colspan="2"><obs id="ipsalateralSupraclavicular"
-						conceptId="8a69a66d-48ac-4bc5-9f01-9c186a5c7cbd"
-						answerConceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
+						conceptId="$@SUPRACLAVICULAR_LEVEL@"
+						answerConceptId="$@IPSALATERAL@"
 						answerLabel="ipsalateral: "/>
 						
 						<obs id="ipsalateralMobile"
-						conceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@IPSALATERAL@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile "/>
 						
 						<obs id="ipsalateralFixed"
-						conceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@IPSALATERAL@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed/matted"/>
 				</td>
 				
 				<td colspan="2"><obs id="contralateralSupraclavicular"
-						conceptId="8a69a66d-48ac-4bc5-9f01-9c186a5c7cbd"
-						answerConceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
+						conceptId="$@SUPRACLAVICULAR_LEVEL@"
+						answerConceptId="$@CONTRALATERAL@"
 						answerLabel="contralateral: "/>
 						
 						<obs id="contralateralMobile"
-						conceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@CONTRALATERAL@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile "/>
 						
 						<obs id="contralateralFixed"
-						conceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@CONTRALATERAL@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed/matted"/>
 				</td>
 			</tr>
 			
 			<tr class="spaceUnder">
 				<td colspan="2"><obs id="internalMammary"
-						conceptId="206ed02d-251f-42ee-8703-4cc175f55578"
-						answerConceptId="088a4f0a-0b6f-497b-ad07-2de7b8a72985"
+						conceptId="$@LYMPHANEDOPATHY_LEVELS@"
+						answerConceptId="$@INTERNAL_MAMMARY_LEVEL@"
 						answerLabel="internal mammary" /></td>
 				<td colspan="2"><obs id="ipsalateralInternalMammary"
-						conceptId="088a4f0a-0b6f-497b-ad07-2de7b8a72985"
-						answerConceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
+						conceptId="$@INTERNAL_MAMMARY_LEVEL@"
+						answerConceptId="$@IPSALATERAL@"
 						answerLabel="ipsalateral: "/>
 						
 						<obs id="ipsalateralMobile"
-						conceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@IPSALATERAL@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile "/>
 						
 						<obs id="ipsalateralFixed"
-						conceptId="eb544294-bc35-4f28-b7bd-1b91f8703452"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@IPSALATERAL@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed/matted"/>
 				</td>
 				
 				<td colspan="2"><obs id="contralateralInternalMammary"
-						conceptId="088a4f0a-0b6f-497b-ad07-2de7b8a72985"
-						answerConceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
+						conceptId="$@INTERNAL_MAMMARY_LEVEL@"
+						answerConceptId="$@CONTRALATERAL@"
 						answerLabel="contralateral: "/>
 						
 						<obs id="contralateralMobile"
-						conceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
-						answerConceptId="a0f3848e-5380-4f61-b679-558f881bb4b4"
+						conceptId="$@CONTRALATERAL@"
+						answerConceptId="$@MOBILE@"
 						answerLabel="mobile "/>
 						
 						<obs id="contralateralFixed"
-						conceptId="5012f7d5-d833-4888-ada6-10642214b2f9"
-						answerConceptId="5de8377b-6170-4328-895b-f4131b147af2"
+						conceptId="$@CONTRALATERAL@"
+						answerConceptId="$@FIXED@"
 						answerLabel="fixed/matted"/>
 				</td>
 			</tr>
@@ -3202,7 +3202,7 @@ if(jQuery){
 			</tr>
 			<tr>
 				<td colspan="6"><obs id="diagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 
@@ -3211,15 +3211,15 @@ if(jQuery){
 			</tr>
 			<tr>
 				<td>TNM Staging*:</td>
-				<obsgroup groupingConceptId="89089c30-a9ed-4a50-a3dd-0d12029feaf7">
+				<obsgroup groupingConceptId="$@TNM_STAGING@">
 				<td><obs id="stageTNMTObs"
-						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" answerConceptIds="002884fb-12a7-4758-8e22-e66b60201059,c890202b-48c1-402f-998e-df7bb5e2817d,7f63a1c9-370d-4dd9-9e40-c6f0e0b9db44,852245b6-4982-49fe-90ea-3b4f20ddf308,cef35546-ed22-4a27-afd1-d0169d520691,7b4d19fb-61fc-4633-87a0-392442ee2e8b,4060bf94-ce2b-48b8-b641-5c1561455294" labelText="T:" />
+						conceptId="$@TUMOR@" answerConceptIds="$@TX_STAGING_FOR_TNM@,$@TO_STAGING_FOR_TNM@,$@TIS_STAGING_FOR_TNM@,$@T1_STAGING_FOR_TNM@,$@T2_STAGING_FOR_TNM@,$@T3_STAGING_FOR_TNM@,$@T4_STAGING_FOR_TNM@" labelText="T:" />
 				</td>
 				<td><obs id="stageTNMNObs"
-						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" answerConceptIds="fe262f06-f0be-49c0-b55b-82361b9b8145,c8818f76-88e6-4acc-9ac7-b3fe7c1a6470,92ec921e-da58-4137-9921-f5be63792846,a0c26ed6-4e9f-4743-8f86-8cbc10e6a691,e4493745-f26e-4bb8-9fce-45770af54aae" labelText="N:" />
+						conceptId="$@NODE@" answerConceptIds="$@NX_STAGING_FOR_TNM@,$@NO_STAGING_FOR_TNM@,$@N1_STAGING_FOR_TNM@,$@N2_STAGING_FOR_TNM@,$@N3_STAGING_FOR_TNM@" labelText="N:" />
 				</td>
 				<td><obs id="stageTNMMObs"
-						conceptId="05303c1b-3de8-4fb8-91ad-9563ab4d2ac0" labelText="M:" />
+						conceptId="$@METASTASES@" labelText="M:" />
 				</td>
 				</obsgroup>
 				<td></td>
@@ -3228,36 +3228,36 @@ if(jQuery){
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td colspan="5"><obs id="breastStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /> <obs id="breastStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /> <obs id="breastStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /> <obs id="breastStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /> <obs id="breastStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 
 			<tr class="checkboxGroup spaceUnder">
 				<td>Treatment Group:</td>
 				<td><obs id="breastStageCSEarly"
-						conceptId="40a6d86f-dcd3-4e5e-88e6-bb55db8deef3"
-						answerConceptId="c37a6c5a-7ef3-43e9-9ac6-215a1cf42c1f"
+						conceptId="$@CLUSTERED_ONCOLOGY_STAGE@"
+						answerConceptId="$@EARLY@"
 						answerLabel="Early" /></td>
 				<td><obs id="breastStageCSLocallyAdvanced"
-						conceptId="40a6d86f-dcd3-4e5e-88e6-bb55db8deef3"
-						answerConceptId="3ab42fcd-df0f-4d5f-898f-1889ccb23a5b"
+						conceptId="$@CLUSTERED_ONCOLOGY_STAGE@"
+						answerConceptId="$@LOCALLY_ADVANCED@"
 						answerLabel="Locally advanced" /></td>
 				<td><obs id="breastStageCSMetastatic"
-						conceptId="40a6d86f-dcd3-4e5e-88e6-bb55db8deef3"
-						answerConceptId="ca3a621e-9d13-483a-8863-b76f61812699"
+						conceptId="$@CLUSTERED_ONCOLOGY_STAGE@"
+						answerConceptId="$@METASTATIC@"
 						answerLabel="Metastatic" /></td>
 				<td></td>
 				<td></td>
@@ -3326,24 +3326,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="41a80891-3bb2-4423-9647-1f803cebed60">
+			<obsgroup groupingConceptId="$@CERVICAL_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="cervicalMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="cervicalMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="cervicalMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="cervicalDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -3352,32 +3352,32 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td colspan="5"><obs id="cervicalStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /> <obs id="cervicalStageOSI"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I:" /> <obs id="cervicalStageOSIA"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="0a51df04-8563-4e83-8869-56fd79fe4113"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE_A@"
 						answerLabel="IA" /> <obs id="cervicalStageOSIB1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="8f133498-607b-49d1-ab3a-9e09f9fa2246"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE_B_ONE@"
 						answerLabel="IB1" /> <obs id="cervicalStageOSIB2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="5d823631-ebf5-4849-919e-914b639cc060"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE_B_TWO@"
 						answerLabel="IB2" /> <obs id="cervicalStageOSII"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /> <obs id="cervicalStageOSIII"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /> <obs id="cervicalStageOSIVA"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="013bfdb5-8bf0-46aa-b11f-cef89acfd0f2"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR_A@"
 						answerLabel="IVA" /> <obs id="cervicalStageOSIVB"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="6d86391c-10a5-49d6-967b-e619c1c908a3"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR_B@"
 						answerLabel="IVB" /></td>
 			</tr>
 			</obsgroup>
@@ -3405,24 +3405,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="c4042973-e670-467d-a4a5-bd4f109bdea1">
+			<obsgroup groupingConceptId="$@KS_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="3"><obs id="kaposiMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td colspan="3" align="right">Size:<obs id="kaposiMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="kaposiMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="kaposiDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr>
@@ -3430,15 +3430,15 @@ lymph node metastases.</li>
 			</tr>
 			<tr>
 				<td>TIS Staging*:</td>
-				<obsgroup groupingConceptId="60f733d6-7000-48eb-be8e-c503b094b882">
+				<obsgroup groupingConceptId="$@TIS_STAGING_SYSTEM@">
 				<td><obs id="kaposiStageTISTObs"
-						conceptId="40121f41-5303-4b18-8251-1d62e0eb3e2f" labelText="T:" />
+						conceptId="$@TUMOUR_PROGNOSIS_FOR_KS@" labelText="T:" />
 				</td>
 				<td><obs id="kaposiStageTISIObs"
-						conceptId="26ada79f-153a-4067-b4dd-bec6bfc40647" labelText="I:" />
+						conceptId="$@IMMUNE_SYSTEM_PROGNOSIS_FOR_KS@" labelText="I:" />
 				</td>
 				<td><obs id="kaposiStageTISSObs"
-						conceptId="2476256a-2c16-4605-adcb-2ca1d33c299d" labelText="S:" />
+						conceptId="$@SYSTEMIC_ILLNESS_PROGNOSIS_FOR_KS@" labelText="S:" />
 				</td>
 				</obsgroup>
 				<td></td>
@@ -3447,20 +3447,20 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td colspan="5"><obs id="kaposiStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /> <obs id="kaposiStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /> <obs id="kaposiStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /> <obs id="kaposiStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /> <obs id="kaposiStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			</obsgroup>
@@ -3516,28 +3516,28 @@ lymph node metastases.</li>
 
 		</TBODY>
 		<TBODY id="toggleble4">
-			<obsgroup groupingConceptId="bc662e4d-6c74-48ab-a0c6-99e3f2d6dba9">
+			<obsgroup groupingConceptId="$@H-N_COMMENTS_AND_STAGING_CONSTRUCT@">
 			<tr class="checkboxGroup">
 				<td colspan="6">Cancer type:&#160;&#160;&#160;<obs
 						id="headCancerTypeOral"
-						conceptId="60272648-efe7-4522-9b3b-b3567fe5b403"
-						answerConceptId="5181b953-119e-4123-9a71-f6bdbef3973a"
+						conceptId="$@EDIT_HEAD_AND_NECK_CANCER_DIAGNOSIS_STATE@"
+						answerConceptId="$@ORAL_CAVITY-OROPHARYNX-HYPOPHARYNX@"
 						answerLabel="Oral cavity / Oropharynx/Hypopharynx" /> <obs
 						id="headCancerTypeLarynx"
-						conceptId="60272648-efe7-4522-9b3b-b3567fe5b403"
-						answerConceptId="4bd37944-e0e5-486a-8c14-03e9cf716e18"
+						conceptId="$@EDIT_HEAD_AND_NECK_CANCER_DIAGNOSIS_STATE@"
+						answerConceptId="$@LARYNX@"
 						answerLabel="Larynx" /> <obs id="headCancerTypeNasopharynx"
-						conceptId="60272648-efe7-4522-9b3b-b3567fe5b403"
-						answerConceptId="cb08c841-6b04-4028-83dc-d349a837bcc5"
+						conceptId="$@EDIT_HEAD_AND_NECK_CANCER_DIAGNOSIS_STATE@"
+						answerConceptId="$@NASOPHARYNX@"
 						answerLabel="Nasopharynx" /> <obs id="headCancerTypeSinuses"
-						conceptId="60272648-efe7-4522-9b3b-b3567fe5b403"
-						answerConceptId="fec03580-5d54-4b5d-8926-fd0b184b84db"
+						conceptId="$@EDIT_HEAD_AND_NECK_CANCER_DIAGNOSIS_STATE@"
+						answerConceptId="$@SINUSES_NASAL_CAVITY@"
 						answerLabel="Sinuses / Nasal cavity" /> <obs
 						id="headCancerTypeOther"
-						conceptId="60272648-efe7-4522-9b3b-b3567fe5b403"
-						answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@EDIT_HEAD_AND_NECK_CANCER_DIAGNOSIS_STATE@"
+						answerConceptId="$@OTHER_NON_CODED@"
 						answerLabel="Other:" /> <obs
-						conceptId="7e952ad1-935a-4792-96a7-c0ba2079711e" /></td>
+						conceptId="$@HEAD_AND_NECK_DIAGNOSIS_NON_CODED@" /></td>
 			</tr>
 			<tr class="spaceUnder">
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
@@ -3546,21 +3546,21 @@ lymph node metastases.</li>
 
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="3"><obs id="headMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td colspan="3" align="right">Size:<obs id="headMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="headMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="headDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -3568,17 +3568,17 @@ lymph node metastases.</li>
 			</tr>
 			<tr>
 				<td>TNM Pathologic Staging*:</td>
-				<obsgroup groupingConceptId="89089c30-a9ed-4a50-a3dd-0d12029feaf7">
+				<obsgroup groupingConceptId="$@TNM_STAGING@">
 				<td><obs id="headStageTNMTObs"
-						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" labelText="T:" />
+						conceptId="$@TUMOR@" labelText="T:" />
 				</td>
 
 				<td colspan="2"><obs id="headStageTNMNObs"
-						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" labelText="N:" />
+						conceptId="$@NODE@" labelText="N:" />
 				</td>
 				<td></td>
 				<td><obs id="headStageTNMMObs"
-						conceptId="05303c1b-3de8-4fb8-91ad-9563ab4d2ac0" labelText="M:" />
+						conceptId="$@METASTASES@" labelText="M:" />
 				</td>
 
 				<td></td>
@@ -3587,20 +3587,20 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td colspan="5"><obs id="headStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /> <obs id="headStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /> <obs id="headStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /> <obs id="headStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /> <obs id="headStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			</obsgroup>
@@ -3684,24 +3684,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="971098c1-8e3b-42cf-bd10-ffc0f339c9aa">
+			<obsgroup groupingConceptId="$@GASTRIC_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="gastricMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="gastricMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="gastricMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="gastricDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -3709,15 +3709,15 @@ lymph node metastases.</li>
 			</tr>
 			<tr>
 				<td>TNM Pathologic Staging*:</td>
-				<obsgroup groupingConceptId="89089c30-a9ed-4a50-a3dd-0d12029feaf7">
+				<obsgroup groupingConceptId="$@TNM_STAGING@">
 				<td><obs id="gastricStageTNMTObs"
-						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" labelText="T:" />
+						conceptId="$@TUMOR@" labelText="T:" />
 				</td>
 				<td><obs id="gastricStageTNMNObs"
-						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" labelText="N:" />
+						conceptId="$@NODE@" labelText="N:" />
 				</td>
 				<td><obs id="gastricStageTNMMObs"
-						conceptId="05303c1b-3de8-4fb8-91ad-9563ab4d2ac0" labelText="M:" />
+						conceptId="$@METASTASES@" labelText="M:" />
 				</td>
 				</obsgroup>
 				<td></td>
@@ -3726,42 +3726,42 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="gastricStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="gastricStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="gastricStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="gastricStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="gastricStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 
 			<tr>
 				<td>H.pylori status:</td>
 				<td><obs id="gastricStageHPPositive"
-						conceptId="e45fd262-8a8c-4f72-ae42-d540973cc39f"
-						answerConceptId="3cd3a7a2-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@H_PYLORI_STATUS@"
+						answerConceptId="$@POSITIVE@"
 						answerLabel="Positive" /></td>
 				<td></td>
 				<td><obs id="gastricStageHPNegative"
-						conceptId="e45fd262-8a8c-4f72-ae42-d540973cc39f"
-						answerConceptId="3cd28732-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@H_PYLORI_STATUS@"
+						answerConceptId="$@NEGATIVE@"
 						answerLabel="Negative" /></td>
 				<td></td>
 				<td><obs id="gastricStageHPNotDetermined"
-						conceptId="e45fd262-8a8c-4f72-ae42-d540973cc39f"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@H_PYLORI_STATUS@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="Not determined" /></td>
 			</tr>
 			</obsgroup>
@@ -3808,24 +3808,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="a46f5808-7e2d-4fa9-9266-facac792167f">
+			<obsgroup groupingConceptId="$@COLO-RECTAL_COMMENTS_AND_STAGING@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="colonMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="colonMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="colonMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="colonDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -3833,15 +3833,15 @@ lymph node metastases.</li>
 			</tr>
 			<tr>
 				<td>TNM Pathologic Staging*:</td>
-				<obsgroup groupingConceptId="89089c30-a9ed-4a50-a3dd-0d12029feaf7">
+				<obsgroup groupingConceptId="$@TNM_STAGING@">
 				<td><obs id="colonStageTNMTObs"
-						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" labelText="T:" />
+						conceptId="$@TUMOR@" labelText="T:" />
 				</td>
 				<td><obs id="colonStageTNMNObs"
-						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" labelText="N:" />
+						conceptId="$@NODE@" labelText="N:" />
 				</td>
 				<td><obs id="colonStageTNMMObs"
-						conceptId="05303c1b-3de8-4fb8-91ad-9563ab4d2ac0" labelText="M:" />
+						conceptId="$@METASTASES@" labelText="M:" />
 				</td>
 				</obsgroup>
 				<td></td>
@@ -3850,20 +3850,20 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td colspan="5"><obs id="colonStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /> <obs id="colonStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /> <obs id="colonStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /> <obs id="colonStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /> <obs id="colonStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			</obsgroup>
@@ -3900,24 +3900,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="de77bcbb-4027-44af-9e22-3bb691cd1736">
+			<obsgroup groupingConceptId="$@PROSTATE_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="prostateMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="prostateMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="prostateMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="prostateDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -3925,15 +3925,15 @@ lymph node metastases.</li>
 			</tr>
 			<tr>
 				<td>TNM Pathologic Staging*:</td>
-				<obsgroup groupingConceptId="89089c30-a9ed-4a50-a3dd-0d12029feaf7">
+				<obsgroup groupingConceptId="$@TNM_STAGING@">
 				<td><obs id="prostateStageTNMTObs"
-						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" labelText="T:" />
+						conceptId="$@TUMOR@" labelText="T:" />
 				</td>
 				<td><obs id="prostateStageTNMNObs"
-						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" labelText="N:" />
+						conceptId="$@NODE@" labelText="N:" />
 				</td>
 				<td><obs id="prostateStageTNMMObs"
-						conceptId="05303c1b-3de8-4fb8-91ad-9563ab4d2ac0" labelText="M:" />
+						conceptId="$@METASTASES@" labelText="M:" />
 				</td>
 				</obsgroup>
 				<td></td>
@@ -3942,24 +3942,24 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="prostateStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="prostateStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="prostateStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="prostateStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="prostateStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			</obsgroup>
@@ -3988,24 +3988,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="7c2e9249-1c84-4b98-b4c2-7d0465b1257d">
+			<obsgroup groupingConceptId="$@NEPHROBLASTOMA_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="nephroblastomaMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="nephroblastomaMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="nephroblastomaMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="nephroblastomaDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4014,28 +4014,28 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="nephroblastomaStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="nephroblastomaStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="nephroblastomaStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="nephroblastomaStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="nephroblastomaStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<obs
 						id="nephroblastomaStageOS5"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="afe0e350-6be0-4093-a701-923a446f1924"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FIVE@"
 						answerLabel="V" /></td>
 			</tr>
 			</obsgroup>
@@ -4072,16 +4072,16 @@ lymph node metastases.</li>
 			</tr>
 		</TBODY>
 		<TBODY id="toggleble9">
-			<obsgroup groupingConceptId="9c5d0b7e-0de8-4c3a-aea1-7284735ceeef">
+			<obsgroup groupingConceptId="$@LUNG_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@">
 			<tr class="checkboxGroup spaceUnder">
 				<td>Cancer type:</td>
 				<td><obs id="lungCancerTypeSmallCell"
-						conceptId="bc67ddac-4085-4427-978d-d214595ff304"
-						answerConceptId="73087fb3-7d1f-4660-81a2-79f68ac001f0"
+						conceptId="$@LUNG_CANCER_DIAGNOSIS@"
+						answerConceptId="$@SMALL_CELL_LUNG_CANCER@"
 						answerLabel="Small cell lung cancer" /></td>
 				<td><obs id="lungCancerTypeNonSmall"
-						conceptId="bc67ddac-4085-4427-978d-d214595ff304"
-						answerConceptId="924fd607-4986-4cd1-af54-505b8b90f990"
+						conceptId="$@LUNG_CANCER_DIAGNOSIS@"
+						answerConceptId="$@NON_SMALL_CELL_LUNG_CANCER@"
 						answerLabel="Non-small cell lung cancer" /></td>
 				<td></td>
 				<td></td>
@@ -4094,21 +4094,21 @@ lymph node metastases.</li>
 
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="lungMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="lungMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="lungMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="lungDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4117,12 +4117,12 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>If small cell lung cancer:</td>
 				<td><obs id="lungSmallCellLimited"
-						conceptId="3c7a530f-6061-4b0b-b541-f44bbadeb06b"
-						answerConceptId="14f8ee91-6fe1-4907-8e4f-b12974a5f92a"
+						conceptId="$@SMALL_CELL_LUNG_CANCER_STAGING@"
+						answerConceptId="$@LIMITED_STAGE@"
 						answerLabel="Limited stage" /></td>
 				<td><obs id="lungSmallCellExtensive"
-						conceptId="3c7a530f-6061-4b0b-b541-f44bbadeb06b"
-						answerConceptId="0d1221e1-e361-48e9-a79f-660baf25c141"
+						conceptId="$@SMALL_CELL_LUNG_CANCER_STAGING@"
+						answerConceptId="$@EXTENSIVE_STAGE@"
 						answerLabel="Extensive stage" /></td>
 				<td></td>
 				<td></td>
@@ -4133,15 +4133,15 @@ lymph node metastases.</li>
 			</tr>
 			<tr>
 				<td>TNM Pathologic Staging*:</td>
-				<obsgroup groupingConceptId="89089c30-a9ed-4a50-a3dd-0d12029feaf7">
+				<obsgroup groupingConceptId="$@TNM_STAGING@">
 				<td><obs id="lungStageTNMTObs"
-						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" labelText="T:" />
+						conceptId="$@TUMOR@" labelText="T:" />
 				</td>
 				<td><obs id="lungStageTNMNObs"
-						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" labelText="N:" />
+						conceptId="$@NODE@" labelText="N:" />
 				</td>
 				<td><obs id="lungStageTNMMObs"
-						conceptId="05303c1b-3de8-4fb8-91ad-9563ab4d2ac0" labelText="M:" />
+						conceptId="$@METASTASES@" labelText="M:" />
 				</td>
 				</obsgroup>
 				<td></td>
@@ -4150,23 +4150,23 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td colspan="5"><obs id="lungStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /> <obs id="lungStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /> <obs id="lungStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /> <obs id="lungStageOS3A"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="5833e1dc-ed16-4f46-91d4-af33b9a5dd48"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE_A@"
 						answerLabel="III-A" /> <obs id="lungStageOS3B"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="cbb88e1b-2d13-4557-8ebd-9c622cd8b0c8"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE_B@"
 						answerLabel="III-B" /> <obs id="lungStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			</obsgroup>
@@ -4226,24 +4226,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="e4179f1d-9fb0-427e-9ca8-be6098fae679">
+			<obsgroup groupingConceptId="$@OTHER_SOLID_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="otherSolidMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="otherSolidMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="otherSolidMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="otherSolidDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4251,15 +4251,15 @@ lymph node metastases.</li>
 			</tr>
 			<tr>
 				<td>TNM Pathologic Staging*:</td>
-				<obsgroup groupingConceptId="89089c30-a9ed-4a50-a3dd-0d12029feaf7">
+				<obsgroup groupingConceptId="$@TNM_STAGING@">
 				<td><obs id="otherSolidStageTNMTObs"
-						conceptId="8a1b7c95-6f00-4d66-b3da-cd091a693cf1" labelText="T:" />
+						conceptId="$@TUMOR@" labelText="T:" />
 				</td>
 				<td><obs id="otherSolidStageTNMNObs"
-						conceptId="5f6e7585-27a2-4174-8958-95b52a408dbc" labelText="N:" />
+						conceptId="$@NODE@" labelText="N:" />
 				</td>
 				<td><obs id="otherSolidStageTNMMObs"
-						conceptId="05303c1b-3de8-4fb8-91ad-9563ab4d2ac0" labelText="M:" />
+						conceptId="$@METASTASES@" labelText="M:" />
 				</td>
 				</obsgroup>
 				<td></td>
@@ -4268,24 +4268,24 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="otherSolidStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="otherSolidStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="otherSolidStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="otherSolidStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="otherSolidStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			</obsgroup>
@@ -4295,24 +4295,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="d75d402a-a9da-40e3-827c-2e76114f51e6">
+			<obsgroup groupingConceptId="$@HODKINS_LYMPHOMA_COMMENTS_AND-STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="hodgkinMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="hodgkinMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="hodgkinMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="hodgkinDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4321,39 +4321,39 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="hodgkinStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="hodgkinStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="hodgkinStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="hodgkinStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="hodgkinStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Bulky Mediastinal disease:</td>
 				<td><obs id="hodgkinStageBulkyYes"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@YES@"
 						answerLabel="Yes" /></td>
 				<td><obs id="hodgkinStageBulkyNo"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@NO@"
 						answerLabel="No" /></td>
 				<td><obs id="hodgkinStageBulkyNotDetermined"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="Not determined" /></td>
 				<td></td>
 				<td></td>
@@ -4366,12 +4366,12 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Symptomatic:</td>
 				<td><obs id="hodgkinStageSymptomaticNoBSymptoms"
-						conceptId="24e02fad-f94f-4a81-84e7-6c753f37edd7"
-						answerConceptId="fb525380-e1f3-4740-a05b-7a57201a98dd"
+						conceptId="$@SYMPTOMATIC_STAGING@"
+						answerConceptId="$@NO_B_SYMPTOMS@"
 						answerLabel="No B symptoms" /></td>
 				<td><obs id="hodgkinStageSymptomaticBSymptoms"
-						conceptId="24e02fad-f94f-4a81-84e7-6c753f37edd7"
-						answerConceptId="94e19d03-ba1b-46ee-ac78-0cc853f85be0"
+						conceptId="$@SYMPTOMATIC_STAGING@"
+						answerConceptId="$@B_SYMPTOMS_PRESENT@"
 						answerLabel="B symptoms present" /></td>
 				<td></td>
 				<td></td>
@@ -4401,24 +4401,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="3e4f8536-d583-437b-9b48-4e10ee8e1b17">
+			<obsgroup groupingConceptId="$@BURKITTS_LYMPHOMA_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="burkittMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="burkittMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="burkittMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="burkittDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4427,39 +4427,39 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="burkittStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="burkittStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="burkittStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="burkittStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="burkittStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Bulky Mediastinal disease:</td>
 				<td><obs id="burkittStageBulkyYes"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@YES@"
 						answerLabel="Yes" /></td>
 				<td><obs id="burkittStageBulkyNo"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@NO@"
 						answerLabel="No" /></td>
 				<td><obs id="burkittStageBulkyNotDetermined"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="Not determined" /></td>
 				<td></td>
 				<td></td>
@@ -4472,12 +4472,12 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Symptomatic:</td>
 				<td><obs id="burkittStageSymptomaticNoBSymptoms"
-						conceptId="24e02fad-f94f-4a81-84e7-6c753f37edd7"
-						answerConceptId="fb525380-e1f3-4740-a05b-7a57201a98dd"
+						conceptId="$@SYMPTOMATIC_STAGING@"
+						answerConceptId="$@NO_B_SYMPTOMS@"
 						answerLabel="No B symptoms" /></td>
 				<td><obs id="burkittStageSymptomaticBSymptoms"
-						conceptId="24e02fad-f94f-4a81-84e7-6c753f37edd7"
-						answerConceptId="94e19d03-ba1b-46ee-ac78-0cc853f85be0"
+						conceptId="$@SYMPTOMATIC_STAGING@"
+						answerConceptId="$@B_SYMPTOMS_PRESENT@"
 						answerLabel="B symptoms present" /></td>
 				<td></td>
 				<td></td>
@@ -4507,24 +4507,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="5e0d8a90-4029-480e-a6c7-b2e925723261">
+			<obsgroup groupingConceptId="$@LARGE-B_CELL_LYMPHOMA_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="largeMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="largeMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="largeMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="largeDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4533,39 +4533,39 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="largeStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="largeStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="largeStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="largeStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="largeStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Bulky Mediastinal disease:</td>
 				<td><obs id="largeStageBulkyYes"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@YES@"
 						answerLabel="Yes" /></td>
 				<td><obs id="largeStageBulkyNo"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@NO@"
 						answerLabel="No" /></td>
 				<td><obs id="largeStageBulkyNotDetermined"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="Not determined" /></td>
 				<td></td>
 				<td></td>
@@ -4578,12 +4578,12 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Symptomatic:</td>
 				<td><obs id="largeStageSymptomaticNoBSymptoms"
-						conceptId="24e02fad-f94f-4a81-84e7-6c753f37edd7"
-						answerConceptId="fb525380-e1f3-4740-a05b-7a57201a98dd"
+						conceptId="$@SYMPTOMATIC_STAGING@"
+						answerConceptId="$@NO_B_SYMPTOMS@"
 						answerLabel="No B symptoms" /></td>
 				<td><obs id="largeStageSymptomaticBSymptoms"
-						conceptId="24e02fad-f94f-4a81-84e7-6c753f37edd7"
-						answerConceptId="94e19d03-ba1b-46ee-ac78-0cc853f85be0"
+						conceptId="$@SYMPTOMATIC_STAGING@"
+						answerConceptId="$@B_SYMPTOMS_PRESENT@"
 						answerLabel="B symptoms present" /></td>
 				<td></td>
 				<td></td>
@@ -4613,24 +4613,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="9c82b777-7ee8-440a-a95f-24c4e3ede867">
+			<obsgroup groupingConceptId="$@OHTER_NHL_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="otherNHLMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="otherNHLMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="otherNHLMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="otherNHLDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4639,39 +4639,39 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="otherNHLStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="otherNHLStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="otherNHLStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="otherNHLStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="otherNHLStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Bulky Mediastinal disease:</td>
 				<td><obs id="otherNHLStageBulkyYes"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@YES@"
 						answerLabel="Yes" /></td>
 				<td><obs id="otherNHLStageBulkyNo"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@NO@"
 						answerLabel="No" /></td>
 				<td><obs id="otherNHLStageBulkyNotDetermined"
-						conceptId="a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@BULKY_MEDIASTINAL_DISEASE_STAGING@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="Not determined" /></td>
 				<td></td>
 				<td></td>
@@ -4684,12 +4684,12 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Symptomatic:</td>
 				<td><obs id="otherNHLStageSymptomaticNoBSymptoms"
-						conceptId="24e02fad-f94f-4a81-84e7-6c753f37edd7"
-						answerConceptId="fb525380-e1f3-4740-a05b-7a57201a98dd"
+						conceptId="$@SYMPTOMATIC_STAGING@"
+						answerConceptId="$@NO_B_SYMPTOMS@"
 						answerLabel="No B symptoms" /></td>
 				<td><obs id="otherNHLStageSymptomaticBSymptoms"
-						conceptId="24e02fad-f94f-4a81-84e7-6c753f37edd7"
-						answerConceptId="94e19d03-ba1b-46ee-ac78-0cc853f85be0"
+						conceptId="$@SYMPTOMATIC_STAGING@"
+						answerConceptId="$@B_SYMPTOMS_PRESENT@"
 						answerLabel="B symptoms present" /></td>
 				<td></td>
 				<td></td>
@@ -4719,11 +4719,11 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="1775fe51-cc4d-44db-9702-acc3f85c5fb3">
+			<obsgroup groupingConceptId="$@ALL_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
 				<td colspan="6"><obs id="ALLDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 
@@ -4732,35 +4732,35 @@ lymph node metastases.</li>
 			</tr>
 			<tr class="checkboxGroup">
 				<td><obs id="ALLStageLowRisk"
-						conceptId="7b10db39-009a-4e99-8ef5-abc0977dbf65"
-						answerConceptId="a5428445-23de-43bd-bbfb-b4054d3b1005"
+						conceptId="$@ACUTE_LYMPHOBLASTIC_LEUKEMIA_STAGING@"
+						answerConceptId="$@LOW_RISK@"
 						answerLabel="Low risk" /></td>
 				<td><obs id="ALLStageMediumRisk"
-						conceptId="7b10db39-009a-4e99-8ef5-abc0977dbf65"
-						answerConceptId="7a5652ea-dacc-46f0-8c45-329fa28e09aa"
+						conceptId="$@ACUTE_LYMPHOBLASTIC_LEUKEMIA_STAGING@"
+						answerConceptId="$@MEDIUM_RISK@"
 						answerLabel="Medium risk" /></td>
 				<td colspan="3"><obs id="ALLStageHighRisk"
-						conceptId="7b10db39-009a-4e99-8ef5-abc0977dbf65"
-						answerConceptId="c5382fcc-e3b5-4676-95a3-1b09489f8429"
+						conceptId="$@ACUTE_LYMPHOBLASTIC_LEUKEMIA_STAGING@"
+						answerConceptId="$@HIGH_RISK@"
 						answerLabel="High risk (always when Ph+, infant)" /></td>
 				<td><obs id="ALLStageVeryHighRisk"
-						conceptId="7b10db39-009a-4e99-8ef5-abc0977dbf65"
-						answerConceptId="88e2ac87-6e53-4933-81db-949c759f2d2a"
+						conceptId="$@ACUTE_LYMPHOBLASTIC_LEUKEMIA_STAGING@"
+						answerConceptId="$@VERY_HIGH_RISK@"
 						answerLabel="Very High risk" /></td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Ph status:</td>
 				<td><obs id="ALLStagePhStatusPh+"
-						conceptId="341f9b25-da06-4153-8abc-8fc9d52ee849"
-						answerConceptId="0a01e9a5-94a9-42df-8674-1602b7d455fb"
+						conceptId="$@PH_STATUS@"
+						answerConceptId="$@PH+@"
 						answerLabel="Ph+" /></td>
 				<td><obs id="ALLStagePhStatusPh-"
-						conceptId="341f9b25-da06-4153-8abc-8fc9d52ee849"
-						answerConceptId="1d19d217-b491-4bff-8de7-a1f65dea3314"
+						conceptId="$@PH_STATUS@"
+						answerConceptId="$@PH-@"
 						answerLabel="Ph-" /></td>
 				<td colspan="3"><obs id="ALLStagePhStatusNotDetermined"
-						conceptId="341f9b25-da06-4153-8abc-8fc9d52ee849"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@PH_STATUS@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="not determined" /></td>
 			</tr>
 			</obsgroup>
@@ -4770,11 +4770,11 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="c8945be9-d3b8-41bb-918a-e3bb424c244e">
+			<obsgroup groupingConceptId="$@CML_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
 				<td colspan="6"><obs id="CMLDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 
@@ -4783,32 +4783,32 @@ lymph node metastases.</li>
 			</tr>
 			<tr class="checkboxGroup">
 				<td><obs id="CMLStageChronicPhase"
-						conceptId="d960c608-37f7-4525-877c-bb4b41015ba7"
-						answerConceptId="a6b97e07-2087-435b-a921-c96984da5e35"
+						conceptId="$@CML_STAGING@"
+						answerConceptId="$@CHRONIC_PHASE@"
 						answerLabel="Chronic phase" /></td>
 				<td><obs id="CMLStageAcceleratedPhase"
-						conceptId="d960c608-37f7-4525-877c-bb4b41015ba7"
-						answerConceptId="0bb18969-3e13-4686-b718-ac5ec5caec39"
+						conceptId="$@CML_STAGING@"
+						answerConceptId="$@ACCELERATED_PHASE@"
 						answerLabel="Accelerated phase" /></td>
 				<td colspan="3"><obs id="CMLStageBlastCrisis"
-						conceptId="d960c608-37f7-4525-877c-bb4b41015ba7"
-						answerConceptId="71835cb2-aeba-4014-9c33-3c3a8ee1f456"
+						conceptId="$@CML_STAGING@"
+						answerConceptId="$@BLAST_CRISIS@"
 						answerLabel="Blast crisis" /></td>
 				<td></td>
 			</tr>
 			<tr class="checkboxGroup">
 				<td>Cytogenetics:</td>
 				<td><obs id="CMLStageCytogeneticsTPositive"
-						conceptId="e591db39-b26d-4e28-802e-1e435d2c0d22"
-						answerConceptId="5fc18aa2-9d23-4a82-886e-3b8c5c7bbb38"
+						conceptId="$@CYTOGENETICS@"
+						answerConceptId="$@T922+@"
 						answerLabel="t(9,22)+" /></td>
 				<td><obs id="CMLStageCytogeneticsT-"
-						conceptId="e591db39-b26d-4e28-802e-1e435d2c0d22"
-						answerConceptId="3223fbd6-00ab-44dd-9d6a-e0826520d1e9"
+						conceptId="$@CYTOGENETICS@"
+						answerConceptId="$@T922-@"
 						answerLabel="t(9,22)-" /></td>
 				<td colspan="3"><obs id="CMLStageCytogeneticsNotDetermined"
-						conceptId="e591db39-b26d-4e28-802e-1e435d2c0d22"
-						answerConceptId="09c8c10f-c3a6-41f8-ac91-55493ee008c6"
+						conceptId="$@CYTOGENETICS@"
+						answerConceptId="$@NOT_DETERMINED@"
 						answerLabel="not determined" /></td>
 			</tr>
 			</obsgroup>
@@ -4831,24 +4831,24 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="68b163a4-9d9c-4571-86e4-cb70b5b92ca7">
+			<obsgroup groupingConceptId="$@MULTIPLE_MYELOMA_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
-				<obsgroup groupingConceptId="2e775064-6ece-4546-9375-50480e8e0020">
+				<obsgroup groupingConceptId="$@MASS_SIZE_CONSTRUCT@">
 				<td colspan="5"><obs id="multipleMassObs"
-						conceptId="e95848e2-f31c-485f-ba8b-8c9424840f92"
+						conceptId="$@MASS_LOCATION@"
 						labelText="Mass location:" /></td>
 				<td align="right">Size:<obs id="multipleMassSize1Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> X <obs
+						conceptId="$@MASS_SIZE@" /> X <obs
 						id="multipleMassSize2Obs"
-						conceptId="f174b027-79cf-4ebf-a103-d34b26eacafd" /> cm</td>
+						conceptId="$@MASS_SIZE@" /> cm</td>
 				</obsgroup>
 			</tr>
 
 
 			<tr>
 				<td colspan="6"><obs id="multipleDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4857,29 +4857,29 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td colspan="5"><obs id="multipleStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /> <obs id="multipleStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /> <obs id="multipleStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /> <obs id="multipleStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 			</tr>
 
 			<tr class="checkboxGroup">
 				<td>Subclassification:</td>
 				<td colspan="5"><obs id="multipleSubclassificationA"
-						conceptId="fefcac01-aadb-4b19-8390-07746920d506"
-						answerConceptId="911e8796-0bbb-482d-a20f-486f1581528d"
+						conceptId="$@MULTIPLE_MYELOMA_SUBCLASSIFICATION@"
+						answerConceptId="$@NORMAL_RENAL_FUNCTION@"
 						answerLabel="A: relatively normal renal function (serum creatinine value &lt;2.0 mg/dl)" />
 					<obs id="multipleSubclassificationB"
-						conceptId="fefcac01-aadb-4b19-8390-07746920d506"
-						answerConceptId="bedc9e04-41ee-441e-9ec6-0be4833f75b8"
+						conceptId="$@MULTIPLE_MYELOMA_SUBCLASSIFICATION@"
+						answerConceptId="$@ABNOMAL_RENAL_FUNCTION@"
 						answerLabel="B: abnomal renal function (serum creatinine &gt;2.0 mg/dl)" />
 				</td>
 			</tr>
@@ -4907,10 +4907,10 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="58f97dd5-c583-42a6-97c0-5dabd8171b5c">
+			<obsgroup groupingConceptId="$@METASTATIC_CANCER_COMMENTS_AND-STAGING_CONSTRUCT@">
 			<tr>
 				<td colspan="6"><obs id="metastaticDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 			<tr class="spaceUnder">
@@ -4919,24 +4919,24 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Overall Stage*:</td>
 				<td><obs id="metastaticStageOS0"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="11ad3741-d3fe-48ff-8872-ce42c8764d34"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ZERO@"
 						answerLabel="0" /></td>
 				<td><obs id="metastaticStageOS1"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="39c6497d-fe50-4dcf-86e4-5360e1d32f82"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_ONE@"
 						answerLabel="I" /></td>
 				<td><obs id="metastaticStageOS2"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="c899d4c0-91a1-42f2-b395-114740f237fd"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_TWO@"
 						answerLabel="II" /></td>
 				<td><obs id="metastaticStageOS3"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="1d5896f3-2e0e-4bc2-aa6c-afe1911afa79"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_THREE@"
 						answerLabel="III" /></td>
 				<td><obs id="metastaticStageOS4"
-						conceptId="e9cf4aed-34be-4c0a-9004-4294d9bb2d74"
-						answerConceptId="d2f21acb-9519-42ca-a72d-2fcb6bb15c5d"
+						conceptId="$@OVERALL_ONCOLOGY_STAGE@"
+						answerConceptId="$@OVERALL_CANCER_STAGE_FOUR@"
 						answerLabel="IV" /></td>
 			</tr>
 			</obsgroup>
@@ -4946,11 +4946,11 @@ lymph node metastases.</li>
 				<td colspan="6">Confirmed Diagnosis Details (include a copy of
 					pathology report in chart)</td>
 			</tr>
-			<obsgroup groupingConceptId="92fee1a2-d4de-43c2-b880-d4235b889986">
+			<obsgroup groupingConceptId="$@OTHER_LIQUID_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@">
 
 			<tr>
 				<td colspan="6"><obs id="otherLiquidDiagnosisCommentsObs"
-						conceptId="826af985-d6b8-46a5-8773-92e53ee10d45" rows="7"
+						conceptId="$@CANCER_DIAGNOSIS_DETAILS@" rows="7"
 						cols="60" /></td>
 			</tr>
 
@@ -4959,7 +4959,7 @@ lymph node metastases.</li>
 			</tr>
 			<tr>
 				<td><obs id="otherLiquidStageOSObs"
-						conceptId="ed671ebe-7b3e-40ed-a1ef-3d758b54fc97"
+						conceptId="$@LIQUID_CANCER_STAGING@"
 						labelText="Other liquid staging:" /></td>
 				<td></td>
 				<td></td>
@@ -5080,7 +5080,7 @@ lymph node metastases.</li>
 		</tr>
 	</table>
 	<table class="togglebles" width="100%">
-		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
+		<obsgroup groupingConceptId="$@PLANNED_CHEMOTHERAPY_CONSTRUCT@">
 		<TBODY id="toggleble23_1">
 			<tr>
 				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
@@ -5088,7 +5088,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Regimen Type</td>
 				<td><obs id="chemotherapyRegimenObs"
-						conceptId="012df739-5bd1-445c-a76e-de0d5702d86a" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_REGIMEN@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5096,24 +5096,24 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Regimen Timing</td>
 				<td><obs id="regimenTimingNeoadjuvant"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@NEOADJUVANT@"
 						answerLabel="Neoadjuvant" />
 				</td>
 				<td><obs id="regimenTimingAdjuvant"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="0270b13f-7641-4544-a41b-4e66649b679d"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@ADJUVANT@"
 						answerLabel="Adjuvant" /></td>
 				<td><obs id="regimenTimingPalliative"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="b4c1df8a-9e39-4132-89a7-463394e765cd"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@PALLIATIVE@"
 						answerLabel="Palliative" /></td>
 			</tr>
 			
 			<tr>
 				<td>Cycles</td>
 				<td><obs id="chemotherapyCyclesObs"
-						conceptId="aaeb5782-3ee6-4cb8-9d27-c557ad91e241" labelText="" />
+						conceptId="$@NUMBER_OF_PLANNED_CHEMOTHERAPY_CYCLES@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5121,7 +5121,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned first cycle</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" allowFutureDates="true" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_START_DATE@" allowFutureDates="true" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5129,7 +5129,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned regimen end</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="989c2c3c-b000-45e2-9bc4-0bab9808d9c4" allowFutureDates="true" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_REGIMEN_END_DATE@" allowFutureDates="true" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5137,7 +5137,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Planned changes to standard regimen</td>
 				<td><obs id="chemotherapyStandardRegimenObs"
-						conceptId="d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc" labelText="" />
+						conceptId="$@PLANNED_CHANGES_TO_STANDARD_CHEMOTHERAPY_REGIMEN@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5151,7 +5151,7 @@ lymph node metastases.</li>
 		</TBODY>
 		</obsgroup>
 		<!-- Begin of second chemo -->
-		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
+		<obsgroup groupingConceptId="$@PLANNED_CHEMOTHERAPY_CONSTRUCT@">
 		<TBODY id="toggleble23_2">
 			<tr>
 				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
@@ -5159,7 +5159,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Regimen Type</td>
 				<td><obs id="chemotherapyRegimenObs"
-						conceptId="012df739-5bd1-445c-a76e-de0d5702d86a" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_REGIMEN@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5167,24 +5167,24 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Regimen Timing</td>
 				<td><obs id="regimenTimingNeoadjuvant"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@NEOADJUVANT@"
 						answerLabel="Neoadjuvant" />
 				</td>
 				<td><obs id="regimenTimingAdjuvant"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="0270b13f-7641-4544-a41b-4e66649b679d"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@ADJUVANT@"
 						answerLabel="Adjuvant" /></td>
 				<td><obs id="regimenTimingPalliative"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="b4c1df8a-9e39-4132-89a7-463394e765cd"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@PALLIATIVE@"
 						answerLabel="Palliative" /></td>
 			</tr>
 			
 			<tr>
 				<td>Cycles</td>
 				<td><obs id="chemotherapyCyclesObs"
-						conceptId="aaeb5782-3ee6-4cb8-9d27-c557ad91e241" labelText="" />
+						conceptId="$@NUMBER_OF_PLANNED_CHEMOTHERAPY_CYCLES@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5192,7 +5192,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned first cycle</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" allowFutureDates="true" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_START_DATE@" allowFutureDates="true" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5200,7 +5200,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned regimen end</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="989c2c3c-b000-45e2-9bc4-0bab9808d9c4" allowFutureDates="true" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_REGIMEN_END_DATE@" allowFutureDates="true" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5208,7 +5208,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Planned changes to standard regimen</td>
 				<td><obs id="chemotherapyStandardRegimenObs"
-						conceptId="d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc" labelText="" />
+						conceptId="$@PLANNED_CHANGES_TO_STANDARD_CHEMOTHERAPY_REGIMEN@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5224,7 +5224,7 @@ lymph node metastases.</li>
 		<!-- End of second chemo -->
 		
 		<!-- Begin of third chemo -->
-		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
+		<obsgroup groupingConceptId="$@PLANNED_CHEMOTHERAPY_CONSTRUCT@">
 		<TBODY id="toggleble23_3">
 			<tr>
 				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
@@ -5232,7 +5232,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Regimen Type</td>
 				<td><obs id="chemotherapyRegimenObs"
-						conceptId="012df739-5bd1-445c-a76e-de0d5702d86a" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_REGIMEN@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5240,24 +5240,24 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Regimen Timing</td>
 				<td><obs id="regimenTimingNeoadjuvant"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@NEOADJUVANT@"
 						answerLabel="Neoadjuvant" />
 				</td>
 				<td><obs id="regimenTimingAdjuvant"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="0270b13f-7641-4544-a41b-4e66649b679d"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@ADJUVANT@"
 						answerLabel="Adjuvant" /></td>
 				<td><obs id="regimenTimingPalliative"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="b4c1df8a-9e39-4132-89a7-463394e765cd"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@PALLIATIVE@"
 						answerLabel="Palliative" /></td>
 			</tr>
 			
 			<tr>
 				<td>Cycles</td>
 				<td><obs id="chemotherapyCyclesObs"
-						conceptId="aaeb5782-3ee6-4cb8-9d27-c557ad91e241" labelText="" />
+						conceptId="$@NUMBER_OF_PLANNED_CHEMOTHERAPY_CYCLES@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5265,7 +5265,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned first cycle</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" allowFutureDates="true" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_START_DATE@" allowFutureDates="true" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5273,7 +5273,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned regimen end</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="989c2c3c-b000-45e2-9bc4-0bab9808d9c4" allowFutureDates="true" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_REGIMEN_END_DATE@" allowFutureDates="true" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5281,7 +5281,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Planned changes to standard regimen</td>
 				<td><obs id="chemotherapyStandardRegimenObs"
-						conceptId="d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc" labelText="" />
+						conceptId="$@PLANNED_CHANGES_TO_STANDARD_CHEMOTHERAPY_REGIMEN@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5297,7 +5297,7 @@ lymph node metastases.</li>
 		<!-- End of third chemo -->
 		
 		<!-- Begin of second chemo -->
-		<obsgroup groupingConceptId="d4ceafd0-e5b5-422a-aecd-eac58207cbcc">
+		<obsgroup groupingConceptId="$@PLANNED_CHEMOTHERAPY_CONSTRUCT@">
 		<TBODY id="toggleble23_4">
 			<tr>
 				<th class="tableHeader" colspan="4">CHEMOTHERAPY</th>
@@ -5305,7 +5305,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Regimen Type</td>
 				<td><obs id="chemotherapyRegimenObs"
-						conceptId="012df739-5bd1-445c-a76e-de0d5702d86a" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_REGIMEN@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5313,24 +5313,24 @@ lymph node metastases.</li>
 			<tr class="checkboxGroup">
 				<td>Regimen Timing</td>
 				<td><obs id="regimenTimingNeoadjuvant"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@NEOADJUVANT@"
 						answerLabel="Neoadjuvant" />
 				</td>
 				<td><obs id="regimenTimingAdjuvant"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="0270b13f-7641-4544-a41b-4e66649b679d"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@ADJUVANT@"
 						answerLabel="Adjuvant" /></td>
 				<td><obs id="regimenTimingPalliative"
-						conceptId="bfe19cc9-27cc-484f-8cdf-c737153dceaa"
-						answerConceptId="b4c1df8a-9e39-4132-89a7-463394e765cd"
+						conceptId="$@CHEMOTHERAPY_REGIMEN_TIMING@"
+						answerConceptId="$@PALLIATIVE@"
 						answerLabel="Palliative" /></td>
 			</tr>
 			
 			<tr>
 				<td>Cycles</td>
 				<td><obs id="chemotherapyCyclesObs"
-						conceptId="aaeb5782-3ee6-4cb8-9d27-c557ad91e241" labelText="" />
+						conceptId="$@NUMBER_OF_PLANNED_CHEMOTHERAPY_CYCLES@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5338,7 +5338,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned first cycle</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="e9b59f4e-8a3f-467f-b5e0-1296025fb286" allowFutureDates="true" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_START_DATE@" allowFutureDates="true" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5346,7 +5346,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned regimen end</td>
 				<td><obs id="chemotherapyFirstCycleObs"
-						conceptId="989c2c3c-b000-45e2-9bc4-0bab9808d9c4" allowFutureDates="true" labelText="" />
+						conceptId="$@PLANNED_CHEMOTHERAPY_REGIMEN_END_DATE@" allowFutureDates="true" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5354,7 +5354,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Planned changes to standard regimen</td>
 				<td><obs id="chemotherapyStandardRegimenObs"
-						conceptId="d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc" labelText="" />
+						conceptId="$@PLANNED_CHANGES_TO_STANDARD_CHEMOTHERAPY_REGIMEN@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5378,7 +5378,7 @@ lymph node metastases.</li>
 		</tr>
 	</table>
 	<table class="togglebles" width="100%">
-		<obsgroup groupingConceptId="c0f544c2-b233-4956-a8d6-b75153992f00">
+		<obsgroup groupingConceptId="$@PLANNED_ONCOLOGY_SURGERY_CONSTRUCT@">
 		<TBODY id="toggleble21">
 			<tr>
 				<th class="tableHeader" colspan="4">SURGERY</th>
@@ -5386,7 +5386,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Facility</td>
 				<td><obs id="surgeryFacilityObs"
-						conceptId="1e1a2f81-ef1b-4eff-a1a4-457aa5ee8b32" labelText="" />
+						conceptId="$@ONCOLOGY_SURGERY_FACILITY@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5394,7 +5394,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Planned date</td>
 				<td><obs id="surgeryStartDateObs"
-						conceptId="409ebbae-8a1e-43d4-82e8-eea7b493b51d"
+						conceptId="$@PLANNED_ONCOLOGY_SURGERY_DATE@"
 						labelText="Start date:" />
 				</td>
 				<td></td>
@@ -5403,7 +5403,7 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Surgery Type</td>
 				<td><obs id="surgeryTypeObs"
-						conceptId="f2dc764c-255b-4959-beec-b2a14b597cd3" labelText="" />
+						conceptId="$@SURGERY_TYPE@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5411,18 +5411,18 @@ lymph node metastases.</li>
 			<tr class="spaceUnder">
 				<td>Surgical Pathology report date</td>
 				<td><obs id="surgeryPathologyReportDateObs"
-						conceptId="926dd83d-5c6c-43d9-9fb8-a8c2e364d5f6" labelText="" />
+						conceptId="$@DATE_OF_PATHOLOGY_REPORT@" labelText="" />
 				</td>
 				<td></td>
 				<td><obs id="SurgicalPathologyCompletedNo"
-					conceptId="145c13d3-dfbb-4dc6-9986-d10fd5e9bf48"
-					answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
+					conceptId="$@PATHOLOGY_PERFORMED@"
+					answerConceptId="$@NO@"
 					answerLabel="N/A (no pathology)" style="checkbox" /></td>
 			</tr>
 			<tr class="spaceUnder">
 				<td>Institution issuing Surgical pathology report:</td>
 				<td><obs id="institutionsPathologyObs"
-						conceptId="ca421c58-2c81-4fac-8cf7-aced4f2896e8" labelText="" />
+						conceptId="$@LOCATION_OF_PATHOLOGY@" labelText="" />
 				</td>
 				<td></td>
 				<td></td>
@@ -5432,17 +5432,17 @@ lymph node metastases.</li>
 			</tr>
 			<tr class="spaceUnder">
 				<td>Date of Surgery:<obs id="surgeryDateObs"
-						conceptId="48e392bb-0685-4ab3-a217-fd23502a5635" labelText="" /></td>
+						conceptId="$@DATE_OF_SURGERY@" labelText="" /></td>
 				<td>Institution:<obs id="institutionsSurgeryObs"
-						conceptId="1e1a2f81-ef1b-4eff-a1a4-457aa5ee8b32" labelText="" /></td>
+						conceptId="$@ONCOLOGY_SURGERY_FACILITY@" labelText="" /></td>
 				<td></td>
 				<td>Procedure:<obs id="surgeryProcedureObs"
-						conceptId="afbed187-03de-4fff-838a-66bbefb07993" labelText="" /></td>
+						conceptId="$@SURGERY_PROCEDURE@" labelText="" /></td>
 			</tr>
 			<tr class="spaceUnder">
 				<td>Surgery Performed:</td>
 				<td colspan="3"><obs id="surgeryTypeObs"
-						conceptId="f2dc764c-255b-4959-beec-b2a14b597cd3" labelText="" /></td>
+						conceptId="$@SURGERY_TYPE@" labelText="" /></td>
 			</tr>
 			<tr>
 				<td>Pathologic N Stage* (if surgical pathology is adequate): pN:</td>
@@ -5454,7 +5454,7 @@ lymph node metastases.</li>
 		</obsgroup>
 	</table>
 	<table class="togglebles" width="100%">
-		<obsgroup groupingConceptId="63ad7caa-b6e2-4b9a-b462-771a9b048c36">
+		<obsgroup groupingConceptId="$@PLANNED_RADIATION_CONSTRUCT@">
 		<TBODY id="toggleble22">
 			<tr>
 				<th class="tableHeader" colspan="4">RADIATION THERAPY</th>
@@ -5462,7 +5462,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Facility</td>
 				<td><obs id="radiationFacilityObs"
-						conceptId="09693eb4-aa3d-4804-bcc3-eb149cb0614a"
+						conceptId="$@PLANNED_RADIATION_FACILITY@"
 						defaultValue="ceac8227-23ec-4f51-9dab-6ed3886151aa" labelText="" />
 				</td>
 				<td></td>
@@ -5471,7 +5471,7 @@ lymph node metastases.</li>
 			<tr>
 				<td>Planned dates</td>
 				<td><obs id="radiationStartDateObs"
-						conceptId="25064eeb-932e-4c93-994c-b4053e732ed3" 
+						conceptId="$@PLANNED_RADIATION_DATE@" 
 						labelText="Start date:" />
 				</td>
 				<td></td>
